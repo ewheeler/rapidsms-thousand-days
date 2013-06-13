@@ -1,0 +1,65 @@
+[
+    {
+        "pk": 1, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 1, 
+            "name": "6 day appointment", 
+            "offset": 6
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 1, 
+            "name": "6 week appointment", 
+            "offset": 42
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 1, 
+            "name": "6 month appointment", 
+            "offset": 180
+        }
+    }, 
+    {
+        "pk": 4, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 2, 
+            "name": "1st ANC visit", 
+            "offset": 63
+        }
+    }, 
+    {
+        "pk": 5, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 2, 
+            "name": "2nd ANC visit", 
+            "offset": 175
+        }
+    }, 
+    {
+        "pk": 6, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 2, 
+            "name": "3rd ANC visit", 
+            "offset": 224
+        }
+    }, 
+    {
+        "pk": 7, 
+        "model": "appointments.milestone", 
+        "fields": {
+            "timeline": 2, 
+            "name": "4th ANC visit", 
+            "offset": 259
+        }
+    }
+]

@@ -29,6 +29,11 @@ Run south migrations::
 
     python manage.py migrate
 
+Load timelines and milestones::
+
+    python manage.py loaddata appointments_timeline.json
+    python manage.py loaddata appointments_milestone.json
+
 You should now be able to run the development server::
 
     python manage.py runserver
