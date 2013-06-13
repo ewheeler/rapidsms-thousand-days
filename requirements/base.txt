@@ -1,0 +1,8 @@
+South
+redis
+hiredis
+django-celery
+RapidSMS==0.15.0
+-e git://github.com/caktus/rapidsms-appointments.git#egg=appointments
+-e git://github.com/caktus/rapidsms-nutrition.git#egg=nutrition
+-e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
