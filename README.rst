@@ -1,6 +1,15 @@
 
 Thousand
 ========================
+RapidSMS project for tracking mother/child pairs and supporting interventions
+across the contiuum of care from conception to age two: the most critical 1000 days
+of a child's life.
+
+Includes modules for::
+   Antenatal care appointment reminders
+   Postnatal care appointment reminders
+   Growth monitoring and analysis
+
 
 Below you will find basic setup instructions for the thousand
 project. To begin you should have the following applications installed on your
