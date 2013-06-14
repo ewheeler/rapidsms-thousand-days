@@ -29,6 +29,14 @@ DATABASES = {
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
+    },
+    'patients': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'patients.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
@@ -105,6 +113,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.core.context_processors.static',
+    'cilantro.context_processors.cilantro',
+    'openmrs.context_processors.static',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,6 +124,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'serrano.middleware.SessionMiddleware',
 )
 
 ROOT_URLCONF = 'thousand.urls'
@@ -138,43 +149,24 @@ FIXTURE_DIRS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'filters': {
-        'require_debug_false': {
-            '()': 'django.utils.log.RequireDebugFalse'
-        }
-    },
-    'formatters': {
-        'basic': {
-            'format': '%(asctime)s %(name)-20s %(levelname)-8s %(message)s',
-        },
-    },
     'handlers': {
-        'mail_admins': {
-            'level': 'ERROR',
-            'filters': ['require_debug_false'],
-            'class': 'django.utils.log.AdminEmailHandler'
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
         },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
-            'formatter': 'basic',
         },
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'formatter': 'basic',
-            'filename': os.path.join(PROJECT_PATH, 'rapidsms.log'),
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler',
         },
     },
     'loggers': {
         'django.request': {
             'handlers': ['mail_admins'],
             'level': 'ERROR',
-            'propagate': True,
-        },
-        'rapidsms': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
             'propagate': True,
         },
     }
@@ -190,6 +182,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # External apps
     "django_nose",
+
     #"djtables",  # required by rapidsms.contrib.locations
     "django_tables2",
     "selectable",
@@ -209,6 +202,17 @@ INSTALLED_APPS = (
     "appointments",
     "natalcare",
     'healthcare.backends.djhealth',
+
+    'django.contrib.markup',
+    'django.contrib.humanize',
+    'openmrs',
+    'openmrs.drugs',
+    'openmrs.vaccines',
+    'openmrs.diagnoses',
+    'avocado',
+    'serrano',
+    'cilantro',
+
     "rapidsms.contrib.default",  # Must be last
 )
 
@@ -255,3 +259,14 @@ CELERYBEAT_SCHEDULE = {
         'schedule': crontab(minute=5),
     },
 }
+
+MODELTREES = {
+    'default': {
+        'model': 'openmrs.patient',
+    }
+}
+
+SERRANO_CORS_ENABLED = True
+
+DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter', 'thousand.dbrouters.AvocadoRouter',
+                    'thousand.dbrouters.SerranoRouter', 'thousand.dbrouters.CilantroRouter']

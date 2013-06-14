@@ -1,0 +1,464 @@
+{% extends "base.html" %}
+{% load url from future %}
+
+{% block extra_stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}thousand/stylesheets/dc.css"/>
+    <style>
+      .control {
+        position: fixed;
+        float: none;
+        right: 10px;
+      }
+      .donut {
+        right: -20px;
+      }
+      #risks-pie-chart {
+        top: 200px;
+      }
+      .legend {
+        width: 4em;
+        list-style-type: none;
+        float: left;
+        padding: 0px;
+      }
+      .legend > li {
+        color: #CCC;
+        text-align: center;
+      }
+    </style>
+{% endblock extra_stylesheets %}
+
+{% block extra_javascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/d3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/crossfilter.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/queue.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/dc.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/colorbrewer.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/underscore-min.js"></script>
+
+<script type="text/javascript">
+  window.onload = vis;
+    if(typeof console === undefined) {
+      console = {
+        log:function() {}
+      }
+    }
+function vis() {
+    function rainbow(numOfSteps, step) {
+        // based on http://stackoverflow.com/a/7419630
+        // This function generates vibrant, "evenly spaced" colours (i.e. no clustering). This is ideal for creating easily distiguishable vibrant markers in Google Maps and other apps.
+        // Adam Cole, 2011-Sept-14
+        // HSV to RBG adapted from: http://mjijackson.com/2008/02/rgb-to-hsl-and-rgb-to-hsv-color-model-conversion-algorithms-in-javascript
+        var r, g, b;
+        var h = step / numOfSteps;
+        var i = ~~(h * 6);
+        var f = h * 6 - i;
+        var q = 1 - f;
+        switch(i % 6){
+            case 0: r = 1, g = f, b = 0; break;
+            case 1: r = q, g = 1, b = 0; break;
+            case 2: r = 0, g = 1, b = f; break;
+            case 3: r = 0, g = q, b = 1; break;
+            case 4: r = f, g = 0, b = 1; break;
+            case 5: r = 1, g = 0, b = q; break;
+        }
+        var c = "#" + ("00" + (~ ~(r * 235)).toString(16)).slice(-2) + ("00" + (~ ~(g * 235)).toString(16)).slice(-2) + ("00" + (~ ~(b * 235)).toString(16)).slice(-2);
+        return (c);
+    }
+
+    var numberFormat = d3.format(".2f");
+
+    var rwChart = dc.geoChoroplethChart("#rw-chart");
+    var totalsChart = dc.bubbleChart("#totals-chart");
+    var totalsBarChart = dc.barChart("#totals-bar-chart");
+    var provincePieChart = dc.pieChart("#province-pie-chart");
+    var risksPieChart = dc.pieChart("#risks-pie-chart");
+
+    // https://github.com/mbostock/d3/wiki/Arrays#wiki-d3_map
+    var provinceNumber = d3.map({"NORTHERN": 1, "KIGALI CITY": 2, "SOUTHERN": 3, "EASTERN": 4, "WESTERN": 5});
+    var provinceColors = d3.scale.ordinal()
+      .domain(["NORTHERN", "KIGALI CITY", "SOUTHERN", "EASTERN", "WESTERN"])
+      .range(["#f7fcf0", "#ccebc5", "#7bccc4", "#2b8cbe", "#084081"]);
+
+    var golden = ((1 + Math.sqrt(5)) / 2); // golden ratio FTW
+    var height = 400,
+        width = height * golden;
+
+    var projection = d3.geo.albers()
+        .center([33, 0])
+        // rw is slanted on albers projection,
+        // so adjust pitch and roll
+        // such that bottom of rw straight
+        // (its straigt on mercator projections,
+        // which is what most people are used to)
+        // [yaw, pitch, roll] AKA [lat, long, roll]
+        .rotate([1.5, 12.7, -16.4])
+        .parallels([25, 35])
+        .scale(13000)
+        .translate([width / 2, height / 2]);
+
+    // declare some vars here so they are available
+    // in the browser console for debugging
+    var data;
+    var districts;
+    var shapes;
+
+    var caseDistricts = [];
+    var mapDistricts = [];
+
+    var caseData;
+    var debug = true;
+
+    queue()
+      //.defer(d3.json, "/static/webapp/javascripts/wb_rw_districts.json")
+      .defer(d3.json, "{{ STATIC_URL }}thousand/javascripts/wb_rw_districts.json")
+      .defer(d3.json, "{{ STATIC_URL }}thousand/javascripts/red_alerts.json")
+      .await(ready);
+
+    function ready(error, rw, cases) {
+        //cases = {{ red_alerts|safe }};
+        caseData = cases;
+        // TODO handle error!
+        console.log('error: ',error);
+
+        // TODO uppercase district names in the geojson file instead of in the browser
+        rw.features = _.map(rw.features, function(d) {d.properties.name = d.properties.distr_name.toUpperCase(); return d; });
+        shapes = rw;
+
+        // debug info for comparing districts from map and from cases
+        caseDistricts = _.unique(_.map(cases, function(d) { return d.district; }));
+        mapDistricts = _.map(rw.features, function(d) { return d.properties.name; });
+        // mapping between french and english province names
+        fr2en = d3.map({Nord: "NORTHERN", "Ville De Kigali": "KIGALI CITY", Ouest: "WESTERN", Est: "EASTERN", Sud: "SOUTHERN"});
+        mapProvinces = _.map(rw.features, function(d) { return fr2en.get(d.properties.province); });
+        provincesMap = _.object(mapDistricts, mapProvinces);
+
+        if (debug){
+          console.log('have cases, no map', _.difference(caseDistricts, mapDistricts));
+          console.log(_.difference(caseDistricts, mapDistricts).length)
+          console.log('on map, not cases', _.difference(mapDistricts, caseDistricts));
+          console.log(_.difference(mapDistricts, caseDistricts).length)
+        };
+
+
+        // add english name of province to each record
+        data = crossfilter(_.map(cases, function(p) {return _.defaults(p, {'province': provincesMap[p.district]});}));
+
+        // crossfilter dimension for districts
+        districts = data.dimension(function (d) {
+            return d["district"];
+        });
+
+        // crossfilter group (map-reduce) for case counts and stats by district
+        // see https://github.com/square/crossfilter/wiki/API-Reference#wiki-group_reduce
+        districtsGroup = districts.group().reduce(
+            function(p, v) {
+              p.total += +v.total;
+              // push non-zero risk types into list
+              if (v.total !== 0){
+                p.risks.push(v.type);
+              };
+              p.province = v.province;
+              // count how many times each risk appears
+              // and create object mapping {risk: n}
+              p.counts = _.chain(p.risks).reduce(function(counts, risk) {
+                            counts[risk] = (counts[risk] || 0) + 1;
+                            return counts;
+                          }, {})
+                          .value();
+              // create a sorted list of lists in decreasing order
+              // with [[risk, n],...]
+              p.countsList = _.sortBy(_.pairs(p.counts), function(d){ return d[1];});
+              return p;
+             },
+            function(p, v) {
+              p.total -= +v.total
+              if (v.total !== 0){
+                // remove all of the type that is being filtered
+                p.risks = _.without(p.risks, v.type);
+              };
+              p.province = v.province;
+              p.counts = _.chain(p.risks).reduce(function(counts, risk) {
+                            counts[risk] = (counts[risk] || 0) + 1;
+                            return counts;
+                          }, {})
+                          .value();
+              p.countsList = _.sortBy(_.pairs(p.counts), function(d){ return d[1];});
+              return p;
+             },
+            function() {
+              return {total: 0, province: '', counts: {}, countsList: [], risks: []};
+             }
+            );
+
+        maxRisks = _.max(districtsGroup.top(1000), function(p) {return p.value.total;}).value.total;
+        maxRiskTypes = _.unique(_.max(districtsGroup.top(1000), function(p) {return _.unique(p.value.risks).length;}).value.risks).length;
+
+        provinces = data.dimension(function (d) {
+            return d["province"];
+        });
+        provincesGroup = provinces.group().reduceSum(function(d) { return d.total; });
+        provinceColors = d3.scale.category20();
+        
+
+        risks = data.dimension(function (d) {
+            return d["type"];
+        });
+
+        // gather all the risk types
+        caseTypes = _.sortBy(_.unique(_.pluck(risks.top(10000), 'type')), function(c) {return c;});
+
+        numCaseTypes = caseTypes.length;
+
+        risksGroup = risks.group().reduceSum(function(d) { return d.total; });
+
+        // d3's builtin ordinal scales just go up to 20 categories,
+        // so create a scale that will have a unique color for each risk.
+        // (actually make the scale larger than we need so colors are more distinct).
+        var riskColors = d3.scale.ordinal()
+          .domain(0, numCaseTypes)
+          .range(_.map(d3.range(0, numCaseTypes), function(v) { return rainbow(numCaseTypes+5, v); }));
+
+
+        function enumerateCountsForDatumTitle(d) {
+          var countsText = _.map(d.value.countsList, function(x) {return x[1] + ":\t " + x[0] + "\n";}).join('');
+          return d.key + ' (' + d.value.province + ')'
+                  + "\n"
+                  + "Risks: \n" + countsText;
+        }
+
+        rwChart.width(width)
+                .height(height)
+                .dimension(districts)
+                .projection(projection)
+                .group(districtsGroup)
+                .valueAccessor(function (p) {
+                    return p.value.total;
+                })
+                // TODO look into patching dc.js so we can
+                // use topojson instead of geojson (topojson files are much smaller)
+                .overlayGeoJson(rw.features, "district", function (d) {
+                    if (_.find(caseDistricts, function(x){ return x == d.properties.name; })){
+                      // if district name from map is the same
+                      // as district name in cases, use it
+                      return d.properties.name;
+                    }
+                    // print debug info if district cannont be reconciled with map
+                    if (debug) {
+                      console.log('no district named ', d.properties.name);
+                    };
+                    return d.properties.name;
+                })
+                .colors(colorbrewer.YlOrRd[9])
+                .colorDomain([0, maxRisks])
+                .title(function (d) {
+                    return d.key + "\n Risks: " + (d.value ? d.value : 0);
+                });
+
+            totalsChart.width((width))
+                    .height(height)
+                    .margins({top: 10, right: 50, bottom: 30, left: 60})
+                    .dimension(districts)
+                    .group(districtsGroup)
+                    .keyAccessor(function (p) {
+                        return p.value.total;
+                    })
+                    .valueAccessor(function (p) {
+                        return _.unique(p.value.risks).length;
+                    })
+                    .radiusValueAccessor(function (p) {
+                        return p.value.total;
+                    })
+                    .colors(provinceColors)
+                    .colorAccessor(function(d, i){ return provinceNumber.get(d.value.province); })
+                    .x(d3.scale.linear().domain([0, (2 + maxRisks)]))
+                    .r(d3.scale.linear().domain([0, maxRisks]))
+                    .minRadiusWithLabel(5)
+                    .elasticY(true)
+                    .yAxisPadding(5)
+                    //.elasticX(true)
+                    .xAxisPadding(200)
+                    .maxBubbleRelativeSize(0.07)
+                    .renderHorizontalGridLines(true)
+                    .renderVerticalGridLines(true)
+                    .renderLabel(true)
+                    .renderTitle(true)
+                    .title(function(d){ return enumerateCountsForDatumTitle(d);} );
+
+            totalsChart.yAxis().tickFormat(function (s) {
+                return s;
+            });
+            totalsChart.xAxis().tickFormat(function (s) {
+                return s;
+            });
+
+          totalsBarChart
+                  .width((width))
+                  .height((height))
+                  .margins({top: 10, right: 50, bottom: 30, left: 60})
+                  .dimension(districts)
+                  .group(districtsGroup)
+                  .keyAccessor(function (p) {
+                        // x axis positioning
+                        return p.key;
+                    })
+                   .valueAccessor(function (p) {
+                        if (p.value.countsList[0]) {
+                          return p.value.countsList[0][1];
+                        } else {
+                          return 0;
+                        };
+                    })
+                  // stack y height of other risks
+                  // TODO do this differently! its conceivable that a district could have
+                   // more than 10 red alert types...
+                   .stack(districtsGroup, function(d){if (d.value.countsList[1]) {return d.value.countsList[1][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[2]) {return d.value.countsList[2][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[3]) {return d.value.countsList[3][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[4]) {return d.value.countsList[4][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[5]) {return d.value.countsList[5][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[6]) {return d.value.countsList[6][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[7]) {return d.value.countsList[7][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[8]) {return d.value.countsList[8][1];} else { return 0; } })
+                   .stack(districtsGroup, function(d){if (d.value.countsList[9]) {return d.value.countsList[9][1];} else { return 0; } })
+                  .xUnits(dc.units.ordinal)
+                  .x(d3.scale.ordinal().domain(caseDistricts))
+                  //.gap(10)
+                  .renderHorizontalGridLines(true)
+                  .centerBar(false)
+                  //.elasticY(true)
+                  .brushOn(false)
+                  .title(function(d){ return enumerateCountsForDatumTitle(d);} )
+                  .xAxis().ticks(caseDistricts.length);
+
+
+          provincePieChart
+              .width(300)
+              .height(200)
+              .transitionDuration(500)
+              .colors(provinceColors)
+              .colorAccessor(function(d, i){ return provinceNumber.get(d.data.key); })
+              .radius(90)
+              .innerRadius(40)
+              .dimension(provinces)
+              .group(provincesGroup)
+              .renderLabel(true)
+              .renderTitle(true);
+
+          risksPieChart
+              .width(300)
+              .height(200)
+              .transitionDuration(500)
+              .colors(riskColors)
+              .colorAccessor(function(d, i){return _.indexOf(caseTypes, d.data.key); })
+              .radius(90)
+              .innerRadius(40)
+              .dimension(risks)
+              .group(risksGroup)
+              .renderLabel(true)
+              .renderTitle(true);
+
+            dc.renderAll();
+
+          function addRiskColor(d, i) {
+            // theres not a good way to color the stacked bar chart segments
+            // with dc.js https://groups.google.com/d/topic/dc-js-user-group/dxgrc_G4r9c/discussion
+            // so this is a workaround to color the segments with d3
+            // after the chart is rendered/redrawn.
+            // this hack works because each datum has a sorted array
+            // whose indices will match the numbered classes added by dc.
+            // find the stack index (stack0 is at the bottom of the bar)
+            var n = this.classList[1].substr(this.classList[1].length - 1);
+            if (d.value.countsList.length > 0 && d.value.countsList[n]) {
+              // find the name of the risk at the same position in the countsList
+              var r = d.value.countsList[n][0];
+              // look up the index of the name in caseTypes and use to determine color
+              return this.setAttribute('style', 'fill: ' + riskColors(_.indexOf(caseTypes, r)) + ';' );
+            };
+          }
+
+          function rotateBarChartLabels() {
+            d3.selectAll('div#totals-bar-chart > svg > g > .axis.x > .tick.major > text')
+              // rotate bar chart labels so they don't overlap
+              .attr("transform", function(d) { return "rotate(20, -5, 50)"; });
+          };
+
+          // add listeners to color the bar chart segments with d3 and rotate labels
+          totalsBarChart.on("postRender", function(c) { d3.selectAll('rect.bar').each(addRiskColor); rotateBarChartLabels();} );
+          totalsBarChart.on("postRedraw", function(c) { d3.selectAll('rect.bar').each(addRiskColor); rotateBarChartLabels();} );
+
+          mapLegendColors = d3.scale.linear()
+              .domain(d3.range(0, 9))
+              .range(colorbrewer.YlOrRd[9]);
+
+          var legend = d3.select('.legend')
+            .attr("style", function (d) { return "margin-top: " + (height / 4) + "px;"; });
+
+          var legendItems = legend.selectAll('.legend-item')
+            .data(_.zip(mapLegendColors.domain(), mapLegendColors.range()))
+
+          legendItems.enter().append('li')
+              .attr("style", function (d) { return "background-color: " + mapLegendColors(d[0]) + ";"; })
+              .html(function(d) {
+                if (d[0] === 0){
+                  return d[0] + " risks";
+                };
+                if (d[0] === 8){
+                    return maxRisks + " risks";
+                };
+                return "&nbsp;";
+              });
+    };
+};
+</script>
+{% endblock extra_javascript %}
+
+{% block content %}
+<div class="page-header"><h1>RapidSMS 1000 Days</h1></div>
+
+<div class="container">
+        <ol class="legend"></ol>
+    <div id="rw-chart">
+        <a class="reset" href="javascript:rwChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+        <span class="reset" style="display: none;"> | Current filter: <span class="filter"></span></span>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div id="totals-chart">
+        <strong>Red alerts by district</strong> (y: total red alerts, x: total unique types of red alerts, r: total red alerts, color: province)
+        <a class="reset" href="javascript:totalsChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div id="totals-bar-chart">
+        <strong>Red alerts by district</strong> (y: total red alerts, x: district)
+        <a class="reset" href="javascript:totalsBarChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div id="province-pie-chart" class="donut control">
+        <a class="reset" href="javascript:provincePieChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+    </div>
+
+
+    <div id="risks-pie-chart" class="donut control">
+        <a class="reset" href="javascript:risksPieChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+
+    </div>
+
+    <div class="control">
+        <a href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+    </div>
+
+</div>
+{% endblock content %}
