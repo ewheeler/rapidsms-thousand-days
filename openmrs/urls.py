@@ -21,9 +21,6 @@ urlpatterns = patterns('',
 
     # Harvest API
     url(r'^api/', include('serrano.urls')),
-
-    # Administrative components
-    url(r'^admin/', include(admin.site.urls)),
 )
 
 # In production, these two locations must be served up statically
