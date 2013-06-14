@@ -9,6 +9,7 @@ Includes modules for::
    Antenatal care appointment reminders
    Postnatal care appointment reminders
    Growth monitoring and analysis
+   Arbitrary exploration of patient data
 
 
 Below you will find basic setup instructions for the thousand
