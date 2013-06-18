@@ -12,6 +12,7 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
 # wsgi.py, fixtures, etc.
 PROJECT_PATH = os.path.join(PROJECT_ROOT, 'thousand')
 
+# XXX disable for production
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -180,15 +181,16 @@ INSTALLED_APPS = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.admin",
+
     # External apps
     "django_nose",
-
     #"djtables",  # required by rapidsms.contrib.locations
     "django_tables2",
     "selectable",
     "south",
     "kombu.transport.django",
     "djcelery",
+
     # RapidSMS
     "rapidsms",
     "rapidsms.backends.database",
@@ -199,13 +201,13 @@ INSTALLED_APPS = (
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
 
-    #"healthcare.backends.djhealth",
-    #"thousand.openmrs_backend",
+    # Thousand Days
     "thousand.backends.openmrs",
     "nutrition",
     "appointments",
     "natalcare",
 
+    # Harvest stack
     "django.contrib.markup",
     "django.contrib.humanize",
     "openmrs",
@@ -272,7 +274,7 @@ MODELTREES = {
 }
 
 SERRANO_CORS_ENABLED = True
-# XXX set to True for production
+# XXX enable for production
 SERRANO_AUTH_REQUIRED = False
 
 AUTHENTICATION_BACKENDS = (
