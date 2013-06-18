@@ -1,17 +1,18 @@
 
-Thousand
+RapidSMS Thousand Days
 ========================
 RapidSMS project for tracking mother/child pairs and supporting interventions
 across the contiuum of care from conception to age two: the most critical 1000 days
 of a child's life.
 
-Includes modules for::
-   Antenatal care appointment reminders
-   Postnatal care appointment reminders
-   Growth monitoring and analysis
-   Arbitrary exploration of patient data
-   API for accessing patient information
-   Simple exporting of data formatted for csv, html, json, R, or SAS
+Includes modules for:
+
+- Antenatal care appointment reminders
+- Postnatal care appointment reminders
+- Growth monitoring and analysis
+- Arbitrary exploration of patient data
+- API for accessing patient information
+- Simple exporting of data formatted for csv, html, json, R, or SAS
 
 
 Below you will find basic setup instructions for the thousand
