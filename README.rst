@@ -10,6 +10,8 @@ Includes modules for::
    Postnatal care appointment reminders
    Growth monitoring and analysis
    Arbitrary exploration of patient data
+   API for accessing patient information
+   Simple exporting of data formatted for csv, html, json, R, or SAS
 
 
 Below you will find basic setup instructions for the thousand

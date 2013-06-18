@@ -173,13 +173,13 @@ LOGGING = {
 }
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.sites",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.admin",
     # External apps
     "django_nose",
 
@@ -198,20 +198,23 @@ INSTALLED_APPS = (
     "rapidsms.contrib.messaging",
     "rapidsms.contrib.registration",
     "rapidsms.contrib.echo",
+
+    #"healthcare.backends.djhealth",
+    #"thousand.openmrs_backend",
+    "thousand.backends.openmrs",
     "nutrition",
     "appointments",
     "natalcare",
-    'healthcare.backends.djhealth',
 
-    'django.contrib.markup',
-    'django.contrib.humanize',
-    'openmrs',
-    'openmrs.drugs',
-    'openmrs.vaccines',
-    'openmrs.diagnoses',
-    'avocado',
-    'serrano',
-    'cilantro',
+    "django.contrib.markup",
+    "django.contrib.humanize",
+    "openmrs",
+    "openmrs.drugs",
+    "openmrs.vaccines",
+    "openmrs.diagnoses",
+    "avocado",
+    "serrano",
+    "cilantro",
 
     "rapidsms.contrib.default",  # Must be last
 )
@@ -221,6 +224,8 @@ INSTALLED_BACKENDS = {
         "ENGINE": "rapidsms.backends.database.DatabaseBackend",
     },
 }
+
+HEALTHCARE_STORAGE_BACKEND = "thousand.backends.openmrs.storage.DjangoStorage"
 
 LOGIN_REDIRECT_URL = '/'
 
@@ -267,6 +272,14 @@ MODELTREES = {
 }
 
 SERRANO_CORS_ENABLED = True
+# XXX set to True for production
+SERRANO_AUTH_REQUIRED = False
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'serrano.backends.TokenBackend',
+)
+
 
 DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter', 'thousand.dbrouters.AvocadoRouter',
                     'thousand.dbrouters.SerranoRouter', 'thousand.dbrouters.CilantroRouter']
