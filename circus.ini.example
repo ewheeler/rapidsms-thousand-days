@@ -3,33 +3,33 @@ host = 127.0.0.1
 port = 8000
 
 [watcher:dwebworker]
-cmd = /Users/ewheeler/.virtualenvs/thousand/bin/chaussette --fd $(circus.sockets.dwebapp) --backend=gevent thousand.wsgi.application
+cmd = /path/to/.virtualenvs/thousand/bin/chaussette --fd $(circus.sockets.dwebapp) --backend=gevent thousand.wsgi.application
 use_sockets = True
 numprocesses = 1
 copy_env = True
 copy_path = True
-virtualenv = /Users/ewheeler/.virtualenvs/thousand
+virtualenv = /path/to/.virtualenvs/thousand
 
 [watcher:dcelery]
-working_dir = /Users/ewheeler/dev/thousand
-cmd = /Users/ewheeler/.virtualenvs/thousand/bin/python
+working_dir = /path/to/rapidsms-thousand-days
+cmd = /path/to/.virtualenvs/thousand/bin/python
 args = manage.py celery worker -E --loglevel=info --settings=thousand.settings
 stdout_stream.class = StdoutStream
 stderr_stream.class = StdoutStream
 copy_env = True
 copy_path = True
-virtualenv = /Users/ewheeler/.virtualenvs/thousand
+virtualenv = /path/to/.virtualenvs/thousand
 
 [watcher:dcelerybeat]
-working_dir = /Users/ewheeler/dev/thousand
-cmd = /Users/ewheeler/.virtualenvs/thousand/bin/python
+working_dir = /path/to/rapidsms-thousand-days
+cmd = /path/to/.virtualenvs/thousand/bin/python
 args = manage.py celery beat --loglevel=info --settings=thousand.settings
 stdout_stream.class = StdoutStream
 stderr_stream.class = StdoutStream
 copy_env = True
 copy_path = True
-virtualenv = /Users/ewheeler/.virtualenvs/thousand
+virtualenv = /path/to/.virtualenvs/thousand
 
 [env]
-PYTHONPATH = /Users/ewheeler/dev/thousand/
+PYTHONPATH = /path/to/rapidsms-thousand-days
 DJANGO_SETTINGS_MODULE=thousand.settings
