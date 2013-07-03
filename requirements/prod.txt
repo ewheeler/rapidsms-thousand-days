@@ -2,3 +2,5 @@ chaussette
 circus
 meinheld
 circus-web
+gevent-socketio
+flower

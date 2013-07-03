@@ -56,16 +56,37 @@ Along with celery and celerybeat::
     python manage.py celery worker -E --loglevel=info  --settings=thousand.settings
     python manage.py celery beat --loglevel=info --settings=thousand.settings
 
+
+Production
+----------
+
+See included nginx.conf.example for example web server configuration
+
+To generate admin credentials for circus-web::
+
+    printf "admin:$(openssl passwd -crypt ch@ng3m3)\n" >> htpasswd-example
+
+
+Use Django's management command to prepare static assets::
+
+    python manage.py collectstatic
+
+
 For production deployment, there is an included ini file for circus that can
 be used to start and manage the django and celery services::
 
     circusd --daemon circus.ini
 
-Then use
+
+Then use::
 
     circusctl
 
-Or
+
+Or::
     circus-top
 
-Or navigate to http://localhost:8080 to manage the django and celery services
+
+Or navigate to http://localhost:8001 to manage circus
+
+And navigate to http://localhost:8002 to manage celery
