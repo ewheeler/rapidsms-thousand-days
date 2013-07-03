@@ -1,3 +1,7 @@
+[circus]
+statsd = 1
+httpd = 1
+
 [socket:dwebapp]
 host = 127.0.0.1
 port = 8000
