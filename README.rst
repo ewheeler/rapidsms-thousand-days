@@ -21,7 +21,10 @@ local development system:
 
 - Python >= 2.6 (2.7 recommended)
 - `pip >= 1.1 <http://www.pip-installer.org/>`_
-- `virtualenv >= 1.8 <http://www.virtualenv.org/>`_
+- `virtualenv >= 1.7 <http://www.virtualenv.org/>`_
+- `virtualenvwrapper >= 3.0 <http://pypi.python.org/pypi/virtualenvwrapper>`_
+- Postgres >= 8.4 (9.1 recommended)
+- git >= 1.7
 
 Getting Started
 ---------------
@@ -30,16 +33,23 @@ To setup your local environment you should create a virtualenv and install the
 necessary requirements::
 
     virtualenv --distribute thousand-env
-    source thousand-env/bin/activate
-    cd thousand
-    pip install -r requirements/base.txt
+    $VIRTUAL_ENV/bin/pip install -r $PWD/requirements/dev.txt
 
-Run syncdb::
+Then create a local settings file and set your ``DJANGO_SETTINGS_MODULE`` to use it::
 
+    cp thousand/settings/local.example.py thousand/settings/local.py
+    echo "export DJANGO_SETTINGS_MODULE=thousand.settings.local" >> $VIRTUAL_ENV/bin/postactivate
+    echo "unset DJANGO_SETTINGS_MODULE" >> $VIRTUAL_ENV/bin/postdeactivate
+
+Exit the virtualenv and reactivate it to activate the settings just changed::
+
+    deactivate
+    workon thousand-env
+
+Create the Postgres database and run the initial syncdb/migrate::
+
+    createdb -E UTF-8 deployproj
     python manage.py syncdb
-
-Run south migrations::
-
     python manage.py migrate
 
 Load timelines and milestones::

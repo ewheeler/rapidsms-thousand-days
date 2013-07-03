@@ -6,15 +6,10 @@ import os
 # and README.rst, a thousand directory with settings etc (see
 # PROJECT_PATH), as well as a directory for each Django app added to this
 # project.
-PROJECT_ROOT = os.path.dirname(os.path.dirname(__file__))
-
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 # The directory with this project's templates, settings, urls, static dir,
 # wsgi.py, fixtures, etc.
-PROJECT_PATH = os.path.join(PROJECT_ROOT, 'thousand')
-
-# XXX disable for production
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+PROJECT_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -24,16 +19,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dev-thousand.db',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dev-thousand',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
     },
     'patients': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'patients.db',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dev-patients',
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -45,7 +40,7 @@ DATABASES = {
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -97,7 +92,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '{{ secret_key }}'
+SECRET_KEY = 'wat'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -199,7 +194,6 @@ INSTALLED_APPS = (
     "rapidsms.contrib.messagelog",
     "rapidsms.contrib.messaging",
     "rapidsms.contrib.registration",
-    "rapidsms.contrib.echo",
 
     # Thousand Days
     "thousand.backends.openmrs",
@@ -274,8 +268,6 @@ MODELTREES = {
 }
 
 SERRANO_CORS_ENABLED = True
-# XXX enable for production
-SERRANO_AUTH_REQUIRED = False
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
