@@ -1,6 +1,5 @@
 South
 redis
-hiredis
 django-celery
 RapidSMS==0.15.0
 -e git://github.com/caktus/rapidsms-appointments.git#egg=appointments
