@@ -59,5 +59,13 @@ Along with celery and celerybeat::
 For production deployment, there is an included ini file for circus that can
 be used to start and manage the django and celery services::
 
-    circusd circus.ini
+    circusd --daemon circus.ini
 
+Then use
+
+    circusctl
+
+Or
+    circus-top
+
+Or navigate to http://localhost:8080 to manage the django and celery services
