@@ -100,3 +100,18 @@ Or::
 Or navigate to http://localhost:8001 to manage circus
 
 And navigate to http://localhost:8002 to manage celery
+
+And navigate to http://localhost:8003 to view cleaver experiments
+
+
+Experiments
+-----------
+
+The Thousand Days project includes `Cleaver <https://github.com/ryanpetrello/cleaver>`_
+for split testing experiments.
+
+To conduct web split testing experiments, add your experiments to thousand/context_processors.py
+which makes the experiment choice available in the RequestContext.
+
+See thousand/context_processors.py and thousand/templates/thousand/index.html for example usage.
+

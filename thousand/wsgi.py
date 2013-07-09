@@ -23,6 +23,11 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "thousand.settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-# Apply WSGI middleware here.
-# from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
+# Apply cleaver WSGI middleware
+from cleaver import SplitMiddleware
+from cleaver.backend.db import SQLAlchemyBackend
+from experiments.identity import RapidSMSIdentityProvider
+application = SplitMiddleware(application,
+                              RapidSMSIdentityProvider(),
+                              SQLAlchemyBackend('sqlite:///experiments/experiment.data')
+                              )

@@ -4,6 +4,10 @@
 {% block extra_stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}thousand/stylesheets/dc.css"/>
     <style>
+      body {
+        background-color: {{ dashboard_background_color_experiment }};
+      }
+
       .control {
         position: fixed;
         float: none;
@@ -414,7 +418,7 @@ function vis() {
 {% endblock extra_javascript %}
 
 {% block content %}
-<div class="page-header"><h1>RapidSMS 1000 Days</h1></div>
+<div class="page-header"><h1>{{ dashboard_title_experiment }}</h1></div>
 
 <div class="container">
         <ol class="legend"></ol>
