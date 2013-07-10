@@ -13,6 +13,7 @@ Includes modules for:
 - Arbitrary exploration of patient data
 - API for accessing patient information
 - Simple exporting of data formatted for csv, html, json, R, or SAS
+- A/B and split testing for web views and SMS messages
 
 
 Below you will find basic setup instructions for the thousand
