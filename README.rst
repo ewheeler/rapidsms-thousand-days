@@ -83,7 +83,7 @@ Use Django's management command to prepare static assets::
     python manage.py collectstatic
 
 
-For production deployment, there is an included ini file for circus that can
+For production deployment, there is an included ``circus.ini`` file for circus that can
 be used to start and manage the django and celery services::
 
     circusd --daemon circus.ini
@@ -111,19 +111,21 @@ Experiments
 The Thousand Days project includes `Cleaver <https://github.com/ryanpetrello/cleaver>`_
 for split testing experiments.
 
-To conduct web split testing experiments, add your experiments to thousand/context_processors.py
-which makes the experiment choice available in the RequestContext.
+To conduct web split testing experiments, add your experiments to ``experiments/context_processors.py``
+which makes the experiment choice available in the RequestContext. You don't have to put your
+experiments here -- this is just a convenient location so they can all be in one place.
 
-See thousand/context_processors.py and thousand/templates/thousand/index.html for example usage.
+
+See ``experiments/context_processors.py`` and ``thousand/templates/thousand/index.html`` for example usage.
 
 To conduct sms split testing experiments, add your experiments to your app.py or handler and
-ensure that the `experiments` app is listed in your setting.py's `INSTALLED_APPS`
-experiments/app.py will deal with identifying experiment participation during the router's
-`filter` phase, so experiments can be conducted in any of the subsequent incoming phases.
+ensure that the ``experiments`` app is listed in your setting.py's ``INSTALLED_APPS``
+``experiments/app.py`` will deal with identifying experiment participation during the router's
+``filter`` phase, so experiments can be conducted in any of the subsequent incoming phases.
 
 Please be aware that experiment participation is handled separately for web and sms
 split testing (specifically, web participant identity is cookie-based, whereas sms participant
 identity is connection-based) -- that is, a web experiment participant cannot be scored
 by a SMS conversion event and vice-versa.
 
-See experiments/app.py for example usage.
+See ``experiments/app.py`` for example usage.
