@@ -38,9 +38,10 @@ class WebIdentityProvider(CleaverIdentityProvider):
                     # From here, you can load your user's django object
                     # and attach it to the environ object
                     # for example:
-                    from django.contrib.auth.models import User
-                    environ['CURRENT_USER'] = User.objects.get(id=user_id)
-                    return user_id
+                    if user_id is not None:
+                        from django.contrib.auth.models import User
+                        environ['CURRENT_USER'] = User.objects.get(id=user_id)
+                        return user_id
             # if user is not logged in, use sessionid
             return cookie['sessionid']
         return self.fingerprint(environ)
