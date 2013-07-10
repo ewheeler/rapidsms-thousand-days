@@ -26,8 +26,9 @@ application = get_wsgi_application()
 # Apply cleaver WSGI middleware
 from cleaver import SplitMiddleware
 from cleaver.backend.db import SQLAlchemyBackend
-from experiments.identity import RapidSMSIdentityProvider
+from experiments.identity import WebIdentityProvider
+# TODO specify cleaver backend URI in settings
 application = SplitMiddleware(application,
-                              RapidSMSIdentityProvider(),
+                              WebIdentityProvider(),
                               SQLAlchemyBackend('sqlite:///experiments/experiment.data')
                               )

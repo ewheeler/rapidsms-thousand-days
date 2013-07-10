@@ -1,5 +1,5 @@
 
-def experiments(request):
+def web_experiments(request):
     cleaver = request.environ['cleaver']
 
     experiments = {}

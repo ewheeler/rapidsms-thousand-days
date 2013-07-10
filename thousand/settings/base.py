@@ -111,7 +111,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'cilantro.context_processors.cilantro',
     'openmrs.context_processors.static',
-    'thousand.context_processors.experiments',
+    'experiments.context_processors.web_experiments',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -159,6 +159,12 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
         },
+        'rapidsms_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'logs/rapidsms-router.log',
+        },
+
     },
     'loggers': {
         'django.request': {
@@ -166,6 +172,12 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': True,
         },
+        'rapidsms': {
+            'handlers': ['rapidsms_file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+
     }
 }
 
@@ -201,6 +213,7 @@ INSTALLED_APPS = (
     "nutrition",
     "appointments",
     "natalcare",
+    "experiments",
 
     # Harvest stack
     "django.contrib.markup",

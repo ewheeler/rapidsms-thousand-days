@@ -115,3 +115,14 @@ which makes the experiment choice available in the RequestContext.
 
 See thousand/context_processors.py and thousand/templates/thousand/index.html for example usage.
 
+To conduct sms split testing experiments, add your experiments to your app.py or handler and
+ensure that the `experiments` app is listed in your setting.py's `INSTALLED_APPS`
+experiments/app.py will deal with identifying experiment participation during the router's
+`filter` phase, so experiments can be conducted in any of the subsequent incoming phases.
+
+Please be aware that experiment participation is handled separately for web and sms
+split testing (specifically, web participant identity is cookie-based, whereas sms participant
+identity is connection-based) -- that is, a web experiment participant cannot be scored
+by a SMS conversion event and vice-versa.
+
+See experiments/app.py for example usage.
