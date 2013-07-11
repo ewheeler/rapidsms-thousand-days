@@ -7,3 +7,6 @@ RapidSMS==0.15.0
 -e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
 SQLAlchemy
 -e git://github.com/ryanpetrello/cleaver.git#egg=cleaver
+django-reversion==1.6.1
+django-reversion-compare
+diff-patch-match

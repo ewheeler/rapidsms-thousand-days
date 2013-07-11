@@ -122,6 +122,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'serrano.middleware.SessionMiddleware',
+    'django.middleware.transaction.TransactionMiddleware',
+    'reversion.middleware.RevisionMiddleware',
 )
 
 ROOT_URLCONF = 'thousand.urls'
@@ -196,6 +198,8 @@ INSTALLED_APPS = (
     "django_tables2",
     "selectable",
     "south",
+    "reversion",
+    "reversion_compare",
     "kombu.transport.django",
     "djcelery",
 
