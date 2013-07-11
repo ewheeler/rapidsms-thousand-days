@@ -95,14 +95,15 @@ Then use::
 
 
 Or::
+
     circus-top
 
 
-Or navigate to http://localhost:8001 to manage circus
+Then navigate to http://circus.example.com to manage circus
 
-And navigate to http://localhost:8002 to manage celery
+Navigate to http://celery.example.com to manage celery
 
-And navigate to http://localhost:8003 to view cleaver experiments
+Navigate to http://cleaver.example.com to view cleaver experiments
 
 
 Experiments
