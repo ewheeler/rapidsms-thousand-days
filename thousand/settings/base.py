@@ -162,7 +162,7 @@ LOGGING = {
         'rapidsms_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': 'logs/rapidsms-router.log',
+            'filename': '/var/log/thousand/rapidsms-router.log',
         },
 
     },
