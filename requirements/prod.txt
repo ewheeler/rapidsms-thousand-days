@@ -6,3 +6,4 @@ meinheld
 circus-web
 gevent-socketio
 flower
+fabric
