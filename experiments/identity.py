@@ -18,7 +18,7 @@ headers_for_fingerprint = ['USER-AGENT', 'HOST', 'ACCEPT', 'ACCEPT-LANGUAGE', 'A
 
 class WebIdentityProvider(CleaverIdentityProvider):
 
-    def fingerprint(environ):
+    def fingerprint(self, environ):
         header_info = []
         headers_upper = dict((k.upper(), v) for k, v in environ.iteritems() if isinstance(v, str))
         for header in headers_for_fingerprint:
