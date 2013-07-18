@@ -2,7 +2,7 @@
 hiredis
 chaussette
 circus
--e git+git@github.com:mozilla-services/circus-web.git#egg=circusweb
+-e git+git://github.com/mozilla-services/circus-web.git#egg=circusweb
 waitress
 gevent-socketio
 flower
