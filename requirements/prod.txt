@@ -2,8 +2,9 @@
 hiredis
 chaussette
 circus
-meinheld
-circus-web
+-e git@github.com:mozilla-services/circus-web.git#egg=circusweb
+waitress
 gevent-socketio
 flower
 fabric
+raven

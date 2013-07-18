@@ -7,3 +7,4 @@ RapidSMS==0.15.0
 -e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
 SQLAlchemy
 -e git://github.com/ryanpetrello/cleaver.git#egg=cleaver
+phonenumbers
