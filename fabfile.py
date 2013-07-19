@@ -189,6 +189,7 @@ def setup_server(*roles):
     if 'data' in roles:
         put('dev-thousand.db', env.code_root)
         put('patients.db', env.code_root)
+        put('experiments/experiment.data', '%s/experiments/experiment.data' % env.code_root)
 
 
 @task
