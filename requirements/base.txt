@@ -1,5 +1,6 @@
 South
 redis
+Django==1.4
 django-celery
 RapidSMS==0.15.0
 -e git+git://github.com/caktus/rapidsms-appointments.git#egg=appointments
@@ -8,4 +9,4 @@ RapidSMS==0.15.0
 SQLAlchemy
 -e git+git://github.com/ryanpetrello/cleaver.git#egg=cleaver
 phonenumbers
-jinja2
+pystache

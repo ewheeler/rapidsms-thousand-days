@@ -168,7 +168,7 @@ LOGGING = {
         'rapidsms_file': {
             'level': 'DEBUG',
             'class': 'logging.FileHandler',
-            'filename': '/var/log/thousand/rapidsms-router.log',
+            'filename': os.path.join(PROJECT_PATH, 'rapidsms-router.log'),
         },
         'sentry': {
             'level': 'ERROR',

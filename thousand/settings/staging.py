@@ -1,20 +1,30 @@
+import os
 from thousand.settings.base import *
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 SERRANO_AUTH_REQUIRED = True
 
-DATABASES['default']['NAME'] = 'thousand'
-DATABASES['patients']['NAME'] = 'patients'
-
-CACHES = {
+DATABASES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'dev-thousand.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
+    },
+    'patients': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'patients.db',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
-EMAIL_SUBJECT_PREFIX = '[Thousand Staging] '
+LOGGING['handlers']['rapidsms_file']['filename'] = os.path.join(PROJECT_PATH, 'rapidsms-router.log')
 
 COMPRESS_ENABLED = True
 
