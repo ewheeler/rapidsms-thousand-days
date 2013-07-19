@@ -2,6 +2,8 @@ import logging
 
 logger = logging.getLogger('rapidsms')
 
+from django.conf import settings
+
 from cleaver.base import Cleaver
 from cleaver.identity import CleaverIdentityProvider
 from cleaver.backend import CleaverBackend
@@ -29,9 +31,8 @@ class App(AppBase):
         self._cleaver_identity = cleaver_identity
 
     def __init__(self, router):
-        # TODO specify cleaver backend URI in settings
         self.__init_cleaver(SMSIdentityProvider(),
-                          SQLAlchemyBackend('sqlite:///experiments/experiment.data'))
+                          SQLAlchemyBackend(settings.CLEAVER_DATABASE))
 
     def filter(self, message):
 

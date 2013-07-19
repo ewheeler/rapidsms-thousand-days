@@ -33,3 +33,5 @@ COMPRESS_ENABLED = True
 # wildcard this for Django.
 ALLOWED_HOSTS = ['*']
 
+# TODO set this via salt and/or fabric
+CLEAVER_DATABASE = 'sqlite:////home/ewheeler/www/staging/thousand/experiments/experiment.data'

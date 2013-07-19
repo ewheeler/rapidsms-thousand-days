@@ -325,3 +325,7 @@ DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter', 'thousand.dbrouters.Avoc
 RAVEN_CONFIG = {
     'dsn': 'https://ca900f5daeee45fe90fdf8d0763d17b4:021fe82debde4c4f9017e89250bbfcc8@app.getsentry.com/10728',
 }
+
+# TODO relative path *probably* works in dev environments
+# TODO set this via salt and/or fabric
+CLEAVER_DATABASE = 'sqlite:///experiments/experiment.data'
