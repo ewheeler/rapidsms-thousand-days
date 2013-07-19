@@ -13,4 +13,3 @@ pystache
 avocado
 cilantro
 serrano
-sqlite3
