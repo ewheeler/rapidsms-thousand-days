@@ -10,3 +10,6 @@ SQLAlchemy
 -e git+git://github.com/ryanpetrello/cleaver.git#egg=cleaver
 phonenumbers
 pystache
+avocado
+cilantro
+serrano
