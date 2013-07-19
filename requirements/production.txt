@@ -3,7 +3,7 @@ hiredis
 chaussette
 circus
 -e git+git://github.com/mozilla-services/circus-web.git#egg=circusweb
-waitress
+meinheld
 gevent-socketio
 flower
 fabric
