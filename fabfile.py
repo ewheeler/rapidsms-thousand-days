@@ -139,7 +139,7 @@ def deploy(branch=None):
         syncdb()
     elif migrations:
         syncdb()
-    #collectstatic()
+    collectstatic()
     sudo("service circus restart")
 
 
