@@ -121,9 +121,8 @@ def deploy(branch=None):
     migrations = False
     # Fetch latest changes
     with cd(env.code_root):
-        #run("git stash")
         # remove pyc files
-        project_run('find . -name "*.pyc" -exec rm {} \;')
+        sudo('find . -name "*.pyc" -exec rm {} \;')
         with settings(user=env.project_user):
             run('git fetch origin')
         # Look for new requirements or migrations
@@ -131,11 +130,9 @@ def deploy(branch=None):
         requirements = match_changes(changes, r"requirements/")
         migrations = match_changes(changes, r"/migrations/")
         if requirements or migrations:
-            #run("%(virtualenv_root)s/bin/circusctl stop" % env)
-            run("service circus stop")
+            sudo("service circus stop")
         with settings(user=env.project_user):
             run("git reset --hard origin/%(branch)s" % env)
-        #run("git stash pop")
     if requirements:
         update_requirements()
         # New requirements might need new tables/migrations
@@ -143,11 +140,7 @@ def deploy(branch=None):
     elif migrations:
         syncdb()
     #collectstatic()
-    #run("%(virtualenv_root)s/bin/circusctl stop" % env)
-    #run("%(virtualenv_root)s/bin/circusctl reloadconfig" % env)
-    #run("%(virtualenv_root)s/bin/circusctl restart" % env)
-    #run("%(virtualenv_root)s/bin/circusd --daemon %(code_root)s/circus.ini" % env)
-    run("service circus restart")
+    sudo("service circus restart")
 
 
 @task
