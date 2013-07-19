@@ -8,7 +8,7 @@ SERRANO_AUTH_REQUIRED = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'dev-thousand.db',
+        'NAME': os.path.join(PROJECT_PATH, 'dev-thousand.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -16,7 +16,7 @@ DATABASES = {
     },
     'patients': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'patients.db',
+        'NAME': os.path.join(PROJECT_PATH, 'patients.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
