@@ -1,4 +1,4 @@
-import os
+#import os
 import hashlib
 import logging
 logger = logging.getLogger('rapidsms')
@@ -10,7 +10,7 @@ from django.conf import settings
 
 from .decorators import memoize
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'thousand.settings.local'
+#os.environ['DJANGO_SETTINGS_MODULE'] = 'thousand.settings.local'
 SessionStore = __import__(settings.SESSION_ENGINE, fromlist=['']).SessionStore
 
 # thanks to:
