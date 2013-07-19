@@ -131,7 +131,8 @@ def deploy(branch=None):
         requirements = match_changes(changes, r"requirements/")
         migrations = match_changes(changes, r"/migrations/")
         if requirements or migrations:
-            run("%(virtualenv_root)s/bin/circusctl stop" % env)
+            #run("%(virtualenv_root)s/bin/circusctl stop" % env)
+            run("service circus stop")
         with settings(user=env.project_user):
             run("git reset --hard origin/%(branch)s" % env)
         #run("git stash pop")
@@ -145,7 +146,8 @@ def deploy(branch=None):
     #run("%(virtualenv_root)s/bin/circusctl stop" % env)
     #run("%(virtualenv_root)s/bin/circusctl reloadconfig" % env)
     #run("%(virtualenv_root)s/bin/circusctl restart" % env)
-    run("%(virtualenv_root)s/bin/circusd --daemon %(code_root)s/circus.ini" % env)
+    #run("%(virtualenv_root)s/bin/circusd --daemon %(code_root)s/circus.ini" % env)
+    run("service circus restart")
 
 
 @task
@@ -226,8 +228,14 @@ def upload_circus_conf(app_name, template_name=None, context=None):
     """Upload circus configuration from a template."""
 
     template_name = template_name or u'circus/circus.ini'
-    destination = u"%(code_root)s/circus.ini" % env
+    destination = u"/etc/circus.ini"
     upload_template(template_name, destination, context=context, use_sudo=True)
+    sudo('chown root:root /etc/circus.ini')
+
+    upstart_conf = u'circus/circus.conf'
+    upstart_destination = u'/etc/init/circus.conf'
+    upload_template(upstart_conf, upstart_destination, context=context, use_sudo=True)
+    sudo('chown root:root /etc/init/circus.conf')
 
 
 @task
