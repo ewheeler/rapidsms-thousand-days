@@ -8,7 +8,7 @@ SERRANO_AUTH_REQUIRED = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_PATH, 'dev-thousand.db'),
+        'NAME': os.path.join(PROJECT_ROOT, 'dev-thousand.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -16,7 +16,7 @@ DATABASES = {
     },
     'patients': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_PATH, 'patients.db'),
+        'NAME': os.path.join(PROJECT_ROOT, 'patients.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
@@ -24,7 +24,7 @@ DATABASES = {
     }
 }
 
-LOGGING['handlers']['rapidsms_file']['filename'] = os.path.join(PROJECT_PATH, 'rapidsms-router.log')
+LOGGING['handlers']['rapidsms_file']['filename'] = os.path.join(PROJECT_ROOT, 'rapidsms-router.log')
 
 COMPRESS_ENABLED = True
 

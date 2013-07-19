@@ -19,16 +19,16 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dev-thousand',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'dev-thousand.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
         'PORT': '',
     },
     'patients': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dev-patients',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(PROJECT_ROOT, 'patients.db'),
         'USER': '',
         'PASSWORD': '',
         'HOST': '',
