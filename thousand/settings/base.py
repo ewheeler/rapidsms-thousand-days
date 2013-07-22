@@ -6,7 +6,8 @@ import os
 # and README.rst, a thousand directory with settings etc (see
 # PROJECT_PATH), as well as a directory for each Django app added to this
 # project.
-PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+PROJECT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__),
+                                            os.pardir))
 # The directory with this project's templates, settings, urls, static dir,
 # wsgi.py, fixtures, etc.
 PROJECT_ROOT = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
@@ -115,7 +116,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'raven.contrib.django.raven_compat.middleware.SentryResponseErrorIdMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -123,7 +123,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'serrano.middleware.SessionMiddleware',
-    'raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
 )
 
 ROOT_URLCONF = 'thousand.urls'
@@ -148,10 +147,6 @@ FIXTURE_DIRS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'root': {
-        'level': 'WARNING',
-        'handlers': ['sentry'],
-    },
     'handlers': {
         'null': {
             'level': 'DEBUG',
@@ -170,10 +165,6 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': os.path.join(PROJECT_PATH, 'rapidsms-router.log'),
         },
-        'sentry': {
-            'level': 'ERROR',
-            'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
-        },
 
     },
     'loggers': {
@@ -186,16 +177,6 @@ LOGGING = {
             'handlers': ['rapidsms_file'],
             'propagate': True,
             'level': 'DEBUG',
-        },
-        'raven': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
-        },
-        'sentry.errors': {
-            'level': 'DEBUG',
-            'handlers': ['console'],
-            'propagate': False,
         },
 
     }
@@ -217,7 +198,6 @@ INSTALLED_APPS = (
     "selectable",
     "south",
     "kombu.transport.django",
-    "raven.contrib.django.raven_compat",
     "djcelery",
 
     # RapidSMS
@@ -289,9 +269,6 @@ CELERY_QUEUES = {
     "default": {
         "exchange": "default",
         "binding_key": "default"},
-    "sentry": {
-        "exchange": "default",
-        "binding_key": "sentry"},
 }
 CELERYBEAT_SCHEDULE = {
     'generate-appointments': {
@@ -318,14 +295,13 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
-DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter', 'thousand.dbrouters.AvocadoRouter',
-                    'thousand.dbrouters.SerranoRouter', 'thousand.dbrouters.CilantroRouter']
+DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter',
+                    'thousand.dbrouters.AvocadoRouter',
+                    'thousand.dbrouters.SerranoRouter',
+                    'thousand.dbrouters.CilantroRouter']
 
-# TODO separate dev and prod projects
-RAVEN_CONFIG = {
-    'dsn': 'https://ca900f5daeee45fe90fdf8d0763d17b4:021fe82debde4c4f9017e89250bbfcc8@app.getsentry.com/10728',
-}
-
-# TODO relative path *probably* works in dev environments
-# TODO set this via salt and/or fabric
-CLEAVER_DATABASE = 'sqlite:///experiments/experiment.data'
+# TODO use postgres
+CLEAVER_DATABASE = 'sqlite:///%s' %\
+                   os.path.abspath(os.path.join(PROJECT_ROOT,
+                                                'experiments',
+                                                'experiment.data'))

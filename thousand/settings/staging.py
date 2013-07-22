@@ -1,4 +1,5 @@
 import os
+import copy
 from thousand.settings.base import *
 
 DEBUG = False
@@ -24,7 +25,8 @@ DATABASES = {
     }
 }
 
-LOGGING['handlers']['rapidsms_file']['filename'] = os.path.join(PROJECT_ROOT, 'rapidsms-router.log')
+LOGGING['handlers']['rapidsms_file']['filename'] = \
+    os.path.join(PROJECT_ROOT, 'rapidsms-router.log')
 
 COMPRESS_ENABLED = True
 
@@ -33,5 +35,43 @@ COMPRESS_ENABLED = True
 # wildcard this for Django.
 ALLOWED_HOSTS = ['*']
 
-# TODO set this via salt and/or fabric
-CLEAVER_DATABASE = 'sqlite:////home/ewheeler/www/staging/thousand/experiments/experiment.data'
+LOGGING['handlers']['sentry'] = {
+    'level': 'ERROR',
+    'class': 'raven.contrib.django.raven_compat.handlers.SentryHandler',
+}
+LOGGING['root'] = {
+    'level': 'WARNING',
+    'handlers': ['sentry'],
+}
+LOGGING['loggers']['raven'] = {
+    'level': 'DEBUG',
+    'handlers': ['console'],
+    'propagate': False,
+}
+LOGGING['loggers']['sentry.errors'] = {
+    'level': 'DEBUG',
+    'handlers': ['console'],
+    'propagate': False,
+}
+
+# raven docs say to put SentryResponseErrorIdMiddleware
+# 'as high in the chain as possible'
+TEMP = list(copy.copy(MIDDLEWARE_CLASSES))
+TEMP.insert(0, 'raven.contrib.django.raven_compat.'
+               'middleware.SentryResponseErrorIdMiddleware')
+TEMP.append('raven.contrib.django.raven_compat.'
+            'middleware.Sentry404CatchMiddleware')
+MIDDLEWARE_CLASSES = tuple(TEMP)
+
+INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
+
+# TODO separate staging and prod configs
+RAVEN_CONFIG = {
+    'dsn': 'https://ca900f5daeee45fe90fdf8d0763d17b4:'
+           '021fe82debde4c4f9017e89250bbfcc8@app.getsentry.com/10728',
+}
+
+CELERY_QUEUES["sentry"] = {
+    "exchange": "default",
+    "binding_key": "sentry"
+}
