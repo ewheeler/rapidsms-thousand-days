@@ -58,6 +58,16 @@ def vagrant():
 
 
 @task
+def staging():
+    env.environment = 'staging'
+    env.hosts = ['127.0.0.1']
+    env.port = 2222
+    env.branch = 'master'
+    env.server_name = 'vagrant.localhost'
+    setup_path()
+
+
+@task
 def production():
     env.environment = 'production'
     env.hosts = ["thousand-days.lobos.biz"]
@@ -70,11 +80,14 @@ def production():
 def update_requirements():
     """Update required Python libraries."""
     require('environment')
-    project_run(u'HOME=%(home)s %(virtualenv)s/bin/pip install --use-mirrors --quiet -r %(requirements)s' % {
-        'virtualenv': env.virtualenv_root,
-        'requirements': os.path.join(env.code_root, 'requirements', 'production.txt'),
-        'home': env.home,
-    })
+    project_run(u'HOME=%(home)s %(virtualenv)s/bin/pip install'
+                u'--use-mirrors --quiet -r %(requirements)s' % {
+                'virtualenv': env.virtualenv_root,
+                'requirements': os.path.join(env.code_root,
+                                             'requirements',
+                                             'production.txt'),
+                'home': env.home,
+                })
 
 
 def project_run(cmd):
@@ -126,7 +139,8 @@ def deploy(branch=None):
         with settings(user=env.project_user):
             run('git fetch origin')
         # Look for new requirements or migrations
-        changes = run("git diff origin/%(branch)s --stat-name-width=9999" % env)
+        changes = run("git diff origin/%(branch)s --stat-name-width=9999" %
+                      env)
         requirements = match_changes(changes, r"requirements/")
         migrations = match_changes(changes, r"/migrations/")
         if requirements or migrations:
@@ -151,7 +165,8 @@ def setup_server(*roles):
     roles = list(roles)
 
     if not roles:
-        abort("setup_server requires one or more server roles, e.g. setup_server:app or setup_server:all")
+        abort("setup_server requires one or more server roles,"
+              "e.g. setup_server:app or setup_server:all")
 
     if roles == ['all', ]:
         roles = SERVER_ROLES
@@ -164,18 +179,21 @@ def setup_server(*roles):
         # FIXME: update to SSH as normal user and use sudo
         # we ssh as the project_user here to maintain ssh agent
         # forwarding, because it doesn't work with sudo. read:
-        # http://serverfault.com/questions/107187/sudo-su-username-while-keeping-ssh-key-forwarding
+        # http://serverfault.com/q/107187
         with settings(user=env.project_user):
             if not files.exists(env.code_root):
                 run('git clone --quiet %(repo)s %(code_root)s' % env)
             with cd(env.code_root):
                 run('git checkout %(branch)s' % env)
         if not files.exists(env.virtualenv_root):
-            project_run('virtualenv --quiet -p python2.7 --clear --distribute %s' % env.virtualenv_root)
+            project_run('virtualenv --quiet -p python2.7'
+                        '--clear --distribute %s' % env.virtualenv_root)
             # TODO: Why do we need this next part?
-            path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7', 'site-packages', 'project.pth')
+            path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7',
+                                     'site-packages', 'project.pth')
             files.append(path_file, env.code_root, use_sudo=True)
-            sudo('chown %s:%s %s' % (env.project_user, env.project_user, path_file))
+            sudo('chown %s:%s %s' % (env.project_user,
+                                     env.project_user, path_file))
         update_requirements()
         upload_circus_conf(app_name=u'%(project)s-%(environment)s' % env)
     if 'lb' in roles:
@@ -184,7 +202,8 @@ def setup_server(*roles):
     if 'data' in roles:
         put('dev-thousand.db', env.code_root)
         put('patients.db', env.code_root)
-        put('experiments/experiment.data', '%s/experiments/experiment.data' % env.code_root)
+        put('experiments/experiment.data',
+            '%s/experiments/experiment.data' % env.code_root)
 
 
 @task
@@ -227,7 +246,8 @@ def upload_circus_conf(app_name, template_name=None, context=None):
 
     upstart_conf = u'circus/circus.conf'
     upstart_destination = u'/etc/init/circus.conf'
-    upload_template(upstart_conf, upstart_destination, context=context, use_sudo=True)
+    upload_template(upstart_conf, upstart_destination,
+                    context=context, use_sudo=True)
     sudo('chown root:root /etc/init/circus.conf')
 
 
@@ -241,12 +261,14 @@ def remove_default_site():
 
 
 @task
-def upload_nginx_site_conf(site_name, template_name=None, context=None, enable=True):
+def upload_nginx_site_conf(site_name, template_name=None,
+                           context=None, enable=True):
     """Upload Nginx site configuration from a template."""
 
     template_name = template_name or u'nginx/%s.conf' % site_name
     site_available = u'/etc/nginx/conf.d/%s.conf' % site_name
-    upload_template(template_name, site_available, context=context, use_sudo=True)
+    upload_template(template_name, site_available,
+                    context=context, use_sudo=True)
     restart_service(u'nginx')
 
 
