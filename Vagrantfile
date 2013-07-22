@@ -2,6 +2,15 @@ Vagrant.configure("2") do |config|
     # Every Vagrant virtual environment requires a box to build off of.
     config.vm.box = "precise32"
 
+    # https://github.com/fgrehm/vagrant-cachier
+    config.cache.auto_detect = true
+    config.cache.scope = :machine
+    config.cache.enable :apt
+    # probably not too helpful to cache ruby gems, but why not
+    config.cache.enable :gem
+    # no pip cache support... yet
+    # https://github.com/fgrehm/vagrant-cachier/issues/18
+
     # The url from where the 'config.vm.box' box will be fetched if it
     # doesn't already exist on the user's system.
     config.vm.box_url = "http://files.vagrantup.com/precise32.box"
