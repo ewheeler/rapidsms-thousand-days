@@ -10,8 +10,8 @@ django-celery
 
 # harvest stack components
 avocado>=2.0.18,<2.1
-serrano>=2.0.1,<2.0.9
-cilantro>=2.0.7,<2.1
+serrano>=2.0.13,<2.1
+cilantro>=2.0.1,<2.0.9
 modeltree>=1.1.3,<1.2
 
 # etc
