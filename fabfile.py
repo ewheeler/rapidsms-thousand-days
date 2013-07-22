@@ -53,7 +53,7 @@ def vagrant():
     env.hosts = ['127.0.0.1']
     env.port = 2222
     env.branch = 'master'
-    env.server_name = 'dev.example.com'
+    env.server_name = 'vagrant.localhost'
     setup_path()
 
 
