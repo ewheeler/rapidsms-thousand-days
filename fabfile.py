@@ -80,7 +80,7 @@ def production():
 def update_requirements():
     """Update required Python libraries."""
     require('environment')
-    project_run(u'HOME=%(home)s %(virtualenv)s/bin/pip install'
+    run(u'HOME=%(home)s %(virtualenv)s/bin/pip install'
                 u' --use-mirrors --quiet -r %(requirements)s' % {
                 'virtualenv': env.virtualenv_root,
                 'requirements': os.path.join(env.code_root,
@@ -88,10 +88,6 @@ def update_requirements():
                                              'production.txt'),
                 'home': env.home,
                 })
-
-
-def project_run(cmd):
-    run(cmd)
 
 
 @task
@@ -103,7 +99,7 @@ def manage_run(command):
         command = u"%s --pythonpath=%s" % (command, env.code_root)
     if '--settings' not in command:
         command = u"%s --settings=%s" % (command, env.settings)
-    project_run(u'%s %s' % (manage_base, command))
+    run(u'%s %s' % (manage_base, command))
 
 
 @task
@@ -174,8 +170,8 @@ def setup_server(*roles):
         roles.insert(0, 'base')
     if 'app' in roles:
         # Create project directories and install Python requirements
-        project_run('mkdir -p %(root)s' % env)
-        project_run('mkdir -p %(log_dir)s' % env)
+        run('mkdir -p %(root)s' % env)
+        run('mkdir -p %(log_dir)s' % env)
         # FIXME: update to SSH as normal user and use sudo
         # we ssh as the project_user here to maintain ssh agent
         # forwarding, because it doesn't work with sudo. read:
@@ -186,7 +182,7 @@ def setup_server(*roles):
             with cd(env.code_root):
                 run('git checkout %(branch)s' % env)
         if not files.exists(env.virtualenv_root):
-            project_run('virtualenv --quiet -p python2.7'
+            run('virtualenv --quiet -p python2.7'
                         ' --clear --distribute %s' % env.virtualenv_root)
             # TODO: Why do we need this next part?
             path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7',
@@ -269,10 +265,4 @@ def upload_nginx_site_conf(site_name, template_name=None,
     site_available = u'/etc/nginx/conf.d/%s.conf' % site_name
     upload_template(template_name, site_available,
                     context=context, use_sudo=True)
-    restart_service(u'nginx')
-
-
-@task
-def restart_service(name):
-    sudo(u'/etc/init.d/%(name)s %(command)s' %
-         {'name': name, 'command': 'restart'})
+    sudo(u'/etc/init.d/nginx restart')
