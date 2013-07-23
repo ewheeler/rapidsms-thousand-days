@@ -304,4 +304,4 @@ DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter',
 CLEAVER_DATABASE = 'sqlite:///%s' %\
                    os.path.abspath(os.path.join(PROJECT_ROOT,
                                                 'experiments',
-                                                'experiment.data'))
+                                                'experiment.db'))
