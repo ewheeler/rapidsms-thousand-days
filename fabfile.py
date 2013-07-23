@@ -238,7 +238,7 @@ def upload_template(filename, destination, context=None,
 @task
 def upload_circus_conf(app_name, template_name=None, context=None):
     """Upload circus configuration from a template."""
-
+    # TODO should this be a salt-managed file?
     template_name = template_name or u'circus/circus.ini'
     destination = u"/etc/circus.ini"
     upload_template(template_name, destination, context=context, use_sudo=True)
@@ -264,7 +264,7 @@ def remove_default_site():
 def upload_nginx_site_conf(site_name, template_name=None,
                            context=None, enable=True):
     """Upload Nginx site configuration from a template."""
-
+    # TODO should this be a salt-managed file?
     template_name = template_name or u'nginx/%s.conf' % site_name
     site_available = u'/etc/nginx/conf.d/%s.conf' % site_name
     upload_template(template_name, site_available,
