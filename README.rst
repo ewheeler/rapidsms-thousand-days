@@ -100,11 +100,11 @@ Or::
     circus-top
 
 
-Then navigate to http://circus.example.com to manage circus
+Then navigate to `http://circus.example.com <http://circus.example.com>`_ to manage circus
 
-Navigate to http://celery.example.com to manage celery
+Navigate to `http://celery.example.com <http://celery.example.com>`_ to manage celery
 
-Navigate to http://cleaver.example.com to view cleaver experiments
+Navigate to `http://cleaver.example.com <http://cleaver.example.com>`_ to view cleaver experiments
 
 
 Provisioning
@@ -119,10 +119,8 @@ After installing Vagrant, install `Salty Vagrant <https://github.com/saltstack/s
 
     vagrant plugin install vagrant-salt
 
-(optional) Installing `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ will
+Installing `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ will
 help avoid repeated downloads of project dependencies if you reload or provision VMs often.
-See the `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ documentation for
-additional configuration steps.
 
     vagrant plugin install vagrant-cachier
 
@@ -223,12 +221,14 @@ your app's ``context_processors.py`` which makes the experiment choice
 available in the RequestContext. You don't have to put your experiments in a
 context_processor -- its just a convenient location so they can all be in one place.
 
-See ``experiments/context_processors.py``
-and ``thousand/templates/thousand/index.html`` for example usage.
+See `experiments/context_processors.py 
+<https://github.com/ewheeler/rapidsms-thousand-days/blob/master/experiments/context_processors.py>`_
+and `thousand/templates/thousand/index.html
+<https://github.com/ewheeler/rapidsms-thousand-days/blob/master/thousand/templates/thousand/index.html>`_ for example usage.
 
 To conduct sms split testing experiments, add your experiments to your app.py or handler and
 ensure that the ``experiments`` app is listed in your setting.py's ``INSTALLED_APPS``
-``experiments/app.py`` will deal with identifying experiment participation during the router's
+`experiments/app.py <https://github.com/ewheeler/rapidsms-thousand-days/blob/master/experiments/app.py>`_ will deal with identifying experiment participation during the router's
 ``filter`` phase, so experiments can be conducted in any of the subsequent incoming phases.
 
 Please be aware that experiment participation is handled separately for web and sms
@@ -237,4 +237,5 @@ uses and is user_id-based for logged-in users, whereas sms participant identity
 is based on mobile number) -- that is, a web experiment participant cannot be scored
 by a SMS conversion event and vice-versa.
 
-See ``experiments/app.py`` for example usage.
+See `experiments/app.py
+<https://github.com/ewheeler/rapidsms-thousand-days/blob/master/experiments/app.py>`_ for example usage.
