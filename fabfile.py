@@ -81,13 +81,13 @@ def update_requirements():
     """Update required Python libraries."""
     require('environment')
     run(u'HOME=%(home)s %(virtualenv)s/bin/pip install'
-                u' --use-mirrors --quiet -r %(requirements)s' % {
-                'virtualenv': env.virtualenv_root,
-                'requirements': os.path.join(env.code_root,
-                                             'requirements',
-                                             'production.txt'),
-                'home': env.home,
-                })
+        u' --use-mirrors --quiet -r %(requirements)s' % {
+        'virtualenv': env.virtualenv_root,
+        'requirements': os.path.join(env.code_root,
+                                     'requirements',
+                                     'production.txt'),
+        'home': env.home,
+        })
 
 
 @task
@@ -183,7 +183,7 @@ def setup_server(*roles):
                 run('git checkout %(branch)s' % env)
         if not files.exists(env.virtualenv_root):
             run('virtualenv --quiet -p python2.7'
-                        ' --clear --distribute %s' % env.virtualenv_root)
+                ' --clear --distribute %s' % env.virtualenv_root)
             # TODO: Why do we need this next part?
             path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7',
                                      'site-packages', 'project.pth')
@@ -218,6 +218,7 @@ def upload_template(filename, destination, context=None,
     env_context = env.copy()
     env_context.update(context)
     filepath = os.path.join(CONF_ROOT, filename)
+    # TODO use jinja?
     text = pystache.render(open(filepath).read(), env_context)
     # Back up original file
     if backup and files.exists(destination):
