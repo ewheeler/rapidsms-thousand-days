@@ -115,15 +115,14 @@ and a `Fabric <http://fabfile.org>`_ fabfile for server provisioning and managem
 
 You can test the provisioning/deployment using `Vagrant <http://vagrantup.com/>`_.
 
-After installing Vagrant, install `Salty Vagrant <https://github.com/saltstack/salty-vagrant>`_:
+After installing Vagrant, install `Salty Vagrant <https://github.com/saltstack/salty-vagrant>`_::
 
     vagrant plugin install vagrant-salt
 
 Installing `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ will
-help avoid repeated downloads of project dependencies if you reload or provision VMs often.
+help avoid repeated downloads of project dependencies if you reload or provision VMs often.::
 
     vagrant plugin install vagrant-cachier
-
 
 Edit `salt/roots/pillar/users.sls` and add your user and ssh key, following
 the examples. Later you'll be able to ssh to the vagrant system using that
@@ -133,7 +132,7 @@ Using the Vagrantfile you can start up the VM. This requires the ``precise32`` b
 
     vagrant up
 
-You can find out how ssh is set up by running:
+You can find out how ssh is set up by running::
 
     vagrant ssh_config
 
@@ -190,9 +189,9 @@ as port 8089 on the host system. The fabfile sets up the configuration
 to assume a hostname of `dev.example.com`. So to visit the running
 web site:
 
-1. Add `127.0.0.1 dev.example.com` to your `/etc/hosts` file (change the hostname
+1. Add ``127.0.0.1 dev.example.com`` to your ``/etc/hosts`` file (and change the hostname
    if you changed it in the fabfile).
-1. Visit `http://dev.example.com:8089/`
+2. Visit `http://dev.example.com:8089/`
 
 
 Deployment
