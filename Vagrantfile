@@ -1,7 +1,10 @@
+# vi:ft=ruby:
+
 Vagrant.configure("2") do |config|
     # Every Vagrant virtual environment requires a box to build off of.
     config.vm.box = "precise32"
 
+    # cache packages installed on provisioned VMs
     # https://github.com/fgrehm/vagrant-cachier
     config.cache.auto_detect = true
     config.cache.scope = :machine
@@ -26,6 +29,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :forwarded_port, guest: 80, host: 8089
 
     ## Set your salt configs here
+    # https://github.com/saltstack/salty-vagrant
     config.vm.provision :salt do |salt|
         ## Minion config is set to ``file_client: local`` for masterless
         salt.minion_config = "salt/minion"
