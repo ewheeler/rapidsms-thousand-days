@@ -11,5 +11,6 @@
 public/static/
 public/media/
 *-env/
-rapidsms.log
+*.log
 *.pid
+*.bak
