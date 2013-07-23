@@ -14,6 +14,7 @@ Includes modules for:
 - API for accessing patient information
 - Simple exporting of data formatted for csv, html, json, R, or SAS
 - A/B and split testing for web views and SMS messages
+- Scripts for provisioning and managing servers
 
 
 Below you will find basic setup instructions for the thousand
@@ -106,18 +107,124 @@ Navigate to http://celery.example.com to manage celery
 Navigate to http://cleaver.example.com to view cleaver experiments
 
 
+Provisioning
+------------
+
+The Thousand Days project includes `Salt <http://saltstack.com>`_ states,
+and a `Fabric <http://fabfile.org>`_ fabfile for server provisioning and management.
+
+You can test the provisioning/deployment using `Vagrant <http://vagrantup.com/>`_.
+
+After installing Vagrant, install `Salty Vagrant <https://github.com/saltstack/salty-vagrant>`_:
+
+    vagrant plugin install vagrant-salt
+
+(optional) Installing `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ will
+help avoid repeated downloads of project dependencies if you reload or provision VMs often.
+See the `vagrant-cachier <https://github.com/fgrehm/vagrant-cachier>`_ documentation for
+additional configuration steps.
+
+    vagrant plugin install vagrant-cachier
+
+
+Edit `salt/roots/pillar/users.sls` and add your user and ssh key, following
+the examples. Later you'll be able to ssh to the vagrant system using that
+userid and key.
+
+Using the Vagrantfile you can start up the VM. This requires the ``precise32`` box::
+
+    vagrant up
+
+You can find out how ssh is set up by running:
+
+    vagrant ssh_config
+
+Example output::
+
+    $ vagrant ssh-config
+    Host default
+      HostName 127.0.0.1
+      User vagrant
+      Port 2222
+
+You can ssh in as any user with::
+
+    ssh -p 2222 yourusername@127.0.0.1
+
+where `yourusername` is a user you added to users.sls, and 2222 and
+127.0.0.1 are changed to whatever vagrant reported.
+
+You can also ssh in as `vagrant` by simply doing::
+
+    vagrant ssh
+
+and vagrant has sudo, so you can do anything you need that way.
+
+
+If you change the salt files and want to update the virtual machine,
+you can::
+
+    ssh -p 2222 localhost sudo salt-call --local state.highstate [-l debug]
+
+but it's easier to::
+
+    vagrant reload
+
+which will both provision and reboot.
+
+You can provision a new server with the
+``setup_server`` fab command. It takes a list of roles for this server
+('app', 'db', 'lb', 'data') or you can say 'all'::
+
+        fab vagrant setup_server:all
+
+Then you have to do an initial deploy.  You also use this command to
+deploy updates::
+
+        fab vagrant deploy
+
+or::
+
+        fab vagrant deploy:<branchname>
+
+The Vagrantfile arranges for port 80 in the vm to be accessible
+as port 8089 on the host system. The fabfile sets up the configuration
+to assume a hostname of `dev.example.com`. So to visit the running
+web site:
+
+1. Add `127.0.0.1 dev.example.com` to your `/etc/hosts` file (change the hostname
+   if you changed it in the fabfile).
+1. Visit `http://dev.example.com:8089/`
+
+
+Deployment
+----------
+
+For future deployments, you can deploy changes to a particular environment with
+the ``deploy`` command. This takes an optional branch name to deploy. If the branch
+is not given, it will use the default branch defined for this environment in
+``env.branch``::
+
+    fab staging deploy
+    fab staging deploy:new-feature
+
+New requirements or South migrations are detected by parsing the VCS changes and
+will be installed/run automatically.
+
+
 Experiments
 -----------
 
 The Thousand Days project includes `Cleaver <https://github.com/ryanpetrello/cleaver>`_
 for split testing experiments.
 
-To conduct web split testing experiments, add your experiments to ``experiments/context_processors.py``
-which makes the experiment choice available in the RequestContext. You don't have to put your
-experiments here -- this is just a convenient location so they can all be in one place.
+To conduct web split testing experiments, add your experiments to
+your app's ``context_processors.py`` which makes the experiment choice
+available in the RequestContext. You don't have to put your experiments in a
+context_processor -- its just a convenient location so they can all be in one place.
 
-
-See ``experiments/context_processors.py`` and ``thousand/templates/thousand/index.html`` for example usage.
+See ``experiments/context_processors.py``
+and ``thousand/templates/thousand/index.html`` for example usage.
 
 To conduct sms split testing experiments, add your experiments to your app.py or handler and
 ensure that the ``experiments`` app is listed in your setting.py's ``INSTALLED_APPS``
@@ -125,8 +232,9 @@ ensure that the ``experiments`` app is listed in your setting.py's ``INSTALLED_A
 ``filter`` phase, so experiments can be conducted in any of the subsequent incoming phases.
 
 Please be aware that experiment participation is handled separately for web and sms
-split testing (specifically, web participant identity is cookie-based, whereas sms participant
-identity is connection-based) -- that is, a web experiment participant cannot be scored
+split testing (specifically, web participant identity is cookie-based for non-logged-in
+uses and is user_id-based for logged-in users, whereas sms participant identity
+is based on mobile number) -- that is, a web experiment participant cannot be scored
 by a SMS conversion event and vice-versa.
 
 See ``experiments/app.py`` for example usage.

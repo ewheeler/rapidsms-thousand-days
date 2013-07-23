@@ -1,0 +1,46 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  <thousand-days.lobos.biz>: <RapidSMS 1000 Days Demo>
+  Site: http://github.com/ewheeler/rapidsms-thousand-days/
+  Twitter: @evmw
+  Location: http://thousand-days.lobos.biz/
+
+/* THANKS */
+  UNICEF http://unicefstories.com/
+  Caktus Consulting Group http://caktusgroup.com/
+  CBMi http://cbmi.chop.edu/
+
+/* SITE */
+  Last update: 2013/07/23
+  Standards: HTML5, CSS3, SVG
+  Components: d3.js, dc.js, Bootstrap, Underscore, jQuery
+  Software: RapidSMS, Harvest, Django, Celery, Circus, Redis
+
+
+
+                               -o/-                       
+                               +oo//-                     
+                              :ooo+//:                    
+                             -ooooo///-                   
+                             /oooooo//:                   
+                            :ooooooo+//-                  
+                           -+oooooooo///-                 
+           -://////////////+oooooooooo++////////////::    
+            :+ooooooooooooooooooooooooooooooooooooo+:::-  
+              -/+ooooooooooooooooooooooooooooooo+/::////:-
+                -:+oooooooooooooooooooooooooooo/::///////:-
+                  --/+ooooooooooooooooooooo+::://////:-   
+                     -:+ooooooooooooooooo+:://////:--     
+                       /ooooooooooooooooo+//////:-        
+                      -ooooooooooooooooooo////-           
+                      /ooooooooo+oooooooooo//:            
+                     :ooooooo+/::/+oooooooo+//-           
+                    -oooooo/::///////+oooooo///-          
+                    /ooo+::://////:---:/+oooo//:          
+                   -o+/::///////:-      -:/+o+//-         
+                   :-:///////:-            -:/://         
+                     -////:-                 --//:        
+                       --                       -:        
