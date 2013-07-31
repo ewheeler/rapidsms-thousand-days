@@ -33,7 +33,6 @@ env.project_user = 'ewheeler'
 env.django_port = 8000
 env.circushttpd_port = 8001
 env.celeryflower_port = 8002
-env.cleaverwebui_port = 8003
 
 
 def setup_path():
