@@ -112,7 +112,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'cilantro.context_processors.cilantro',
     'openmrs.context_processors.static',
-    'experiments.context_processors.web_experiments',
+    'xray.context_processors.web_experiments',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -214,7 +214,7 @@ INSTALLED_APPS = (
     "nutrition",
     "appointments",
     "natalcare",
-    "experiments",
+    "xray",
 
     # Harvest stack
     "django.contrib.markup",
@@ -299,9 +299,3 @@ DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter',
                     'thousand.dbrouters.AvocadoRouter',
                     'thousand.dbrouters.SerranoRouter',
                     'thousand.dbrouters.CilantroRouter']
-
-# TODO use postgres
-CLEAVER_DATABASE = 'sqlite:///%s' %\
-                   os.path.abspath(os.path.join(PROJECT_ROOT,
-                                                'experiments',
-                                                'experiment.db'))

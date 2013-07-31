@@ -7,6 +7,7 @@ django-celery
 -e git+git://github.com/caktus/rapidsms-appointments.git#egg=appointments
 -e git+git://github.com/caktus/rapidsms-nutrition.git#egg=nutrition
 -e git+git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
+-e git+git://github.com/ewheeler/rapidsms-xray.git#egg=xray
 
 # harvest stack components
 avocado==2.0.17
@@ -17,6 +18,3 @@ cilantro==2.0.7
 SQLAlchemy
 South
 redis
--e git+git://github.com/ryanpetrello/cleaver.git#egg=cleaver
-phonenumbers
-pystache

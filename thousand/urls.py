@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^$', 'thousand.views.index', name='rapidsms-dashboard'),
     (r'^nutrition/', include('nutrition.urls')),
     (r'^appointments/', include('appointments.urls')),
+    (r'^xray/', include('xray.urls')),
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),

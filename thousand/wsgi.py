@@ -13,10 +13,6 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-#import os
-
-#os.environ.setdefault("DJANGO_SETTINGS_MODULE", "thousand.settings")
-from django.conf import settings
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
@@ -26,9 +22,9 @@ application = get_wsgi_application()
 
 # Apply cleaver WSGI middleware
 from cleaver import SplitMiddleware
-from cleaver.backend.db import SQLAlchemyBackend
-from experiments.identity import WebIdentityProvider
+from cleaver.backend.redis import RedisBackend
+from xray.identity import WebIdentityProvider
 application = SplitMiddleware(application,
                               WebIdentityProvider(),
-                              SQLAlchemyBackend(settings.CLEAVER_DATABASE)
+                              RedisBackend()
                               )
