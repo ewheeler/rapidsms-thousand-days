@@ -3,11 +3,13 @@ redis_ppa:
     - ppa: chris-lea/redis-server
 
 redis-server:
-  service:
-    - running
+  pkg.latest:
+    - refresh: True
     - require:
-      - pkg: redis-server
-  pkg:
-    - installed
+       - pkgrepo: redis_ppa
+
+  service.running:
+    - enable: True
+    - reload: True
     - require:
-      - pkgrepo: redis_ppa
+       - pkg: redis-server
