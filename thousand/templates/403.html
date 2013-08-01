@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load i18n %}
+{% block title %}403 Forbidden{% endblock %}
+
+{% block content %}
+<div class="span9">
+  {% if user.is_authenticated %}
+    <div class="page-header">
+      <h1>403 Forbidden</h1>
+    </div>
+    <p>You do not have permission to access the requested page.</p>
+
+  {% else %}
+    <h1>Please log in to RapidSMS</h1>
+
+    <div class="">
+      <a href="{% url 'rapidsms-login' %}">{% trans "Log in" %}</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}
