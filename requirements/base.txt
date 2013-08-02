@@ -1,18 +1,17 @@
 # core requirements
-Django==1.4
+Django==1.5
 RapidSMS==0.15.0
 django-celery
 
 # 1000 days components
--e git+git://github.com/caktus/rapidsms-appointments.git#egg=appointments
--e git+git://github.com/caktus/rapidsms-nutrition.git#egg=nutrition
--e git+git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
--e git+git://github.com/ewheeler/rapidsms-xray.git#egg=xray
+-e git://github.com/caktus/rapidsms-appointments.git#egg=appointments
+-e git://github.com/caktus/rapidsms-nutrition.git#egg=nutrition
+-e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
+-e git://github.com/ewheeler/rapidsms-xray.git#egg=xray
 
 # harvest stack components
-avocado==2.0.17
-serrano==2.0.13
-cilantro==2.0.7
+avocado==2.0.24
+serrano==2.0.18
 
 # etc
 SQLAlchemy

@@ -1,5 +1,7 @@
 {% load url from future %}
 
 {% block extra_admin_links %}
-    <li><a href="{% url 'xray_dashboard' %}">X-ray</a></li>
+    {% if perms.xray.view_events %}
+      <li><a href="{% url 'xray_dashboard' %}">X-ray</a></li>
+    {% endif %}
 {% endblock extra_admin_links %}

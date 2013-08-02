@@ -8,3 +8,4 @@ gevent-socketio
 flower
 fabric
 raven
+django-siteauth

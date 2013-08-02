@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import permission_required
 from avocado.models import DataConcept
 from openmrs.models import (Patient, Encounter, LabResult, SystemsReview,
     EncounterVaccine, HIVDetails, TBDetails, PCPDetails)
 
 
+@login_required
+@permission_required('openmrs.view_patients', raise_exception=True)
 def get_vaccine_table(encounter):
     # Get all Vaccine information
     enc_vac = EncounterVaccine.objects.filter(encounter=encounter)
@@ -32,8 +36,10 @@ def get_vaccine_table(encounter):
     return ""
 
 
-def patient_view(request, pk):
-    p = get_object_or_404(Patient, pk=pk)
+@login_required
+@permission_required('openmrs.view_patients', raise_exception=True)
+def patient_view(request, mrn):
+    p = get_object_or_404(Patient, mrn=mrn)
 
     enc = Encounter.objects.filter(patient=p).order_by('-encounter_datetime')
 
@@ -115,7 +121,7 @@ def patient_view(request, pk):
 
         enc_list.append([e, results, sys_reviews, vaccines, drug_list,
             diagnoses, hiv_details, tb_details, pcp_details])
-    
+
     return render(request, 'patient.html', {
         'patient': p,
         'encounters': enc_list,

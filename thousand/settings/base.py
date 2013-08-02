@@ -110,7 +110,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.i18n',
     'django.core.context_processors.static',
-    'cilantro.context_processors.cilantro',
     'openmrs.context_processors.static',
     'xray.context_processors.web_experiments',
 )
@@ -120,8 +119,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'serrano.middleware.SessionMiddleware',
 )
 
@@ -225,8 +224,7 @@ INSTALLED_APPS = (
     "openmrs.diagnoses",
     "avocado",
     "serrano",
-    "cilantro",
-
+    "haystack",
     "rapidsms.contrib.default",  # Must be last
 )
 
@@ -281,6 +279,19 @@ CELERYBEAT_SCHEDULE = {
     },
 }
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'serrano.backends.TokenBackend',
+)
+
+
+DATABASE_ROUTERS = ['thousand.dbrouters.PatientRouter', ]
+
+# Haystack
+HAYSTACK_SITECONF = 'avocado.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_PATH, 'whoosh.index')
+
 MODELTREES = {
     'default': {
         'model': 'openmrs.patient',
@@ -288,14 +299,9 @@ MODELTREES = {
 }
 
 SERRANO_CORS_ENABLED = True
+SERRANO_AUTH_REQUIRED = False
+SERRANO_TOKEN_TIMEOUT = 1200
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'serrano.backends.TokenBackend',
-)
+# SESSIONS AND COOKIES
 
-
-DATABASE_ROUTERS = ['thousand.dbrouters.OpenmrsRouter',
-                    'thousand.dbrouters.AvocadoRouter',
-                    'thousand.dbrouters.SerranoRouter',
-                    'thousand.dbrouters.CilantroRouter']
+CSRF_COOKIE_NAME = 'openmrs_csrftoken'

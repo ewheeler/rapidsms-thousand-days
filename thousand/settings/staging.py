@@ -4,7 +4,6 @@ from thousand.settings.base import *
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-SERRANO_AUTH_REQUIRED = True
 
 DATABASES = {
     'default': {
@@ -61,6 +60,7 @@ TEMP.insert(0, 'raven.contrib.django.raven_compat.'
                'middleware.SentryResponseErrorIdMiddleware')
 TEMP.append('raven.contrib.django.raven_compat.'
             'middleware.Sentry404CatchMiddleware')
+TEMP.append('siteauth.middleware.SiteAuthenticationMiddleware')
 MIDDLEWARE_CLASSES = tuple(TEMP)
 
 INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
@@ -75,3 +75,17 @@ CELERY_QUEUES["sentry"] = {
     "exchange": "default",
     "binding_key": "sentry"
 }
+
+# For non-publicly accessible applications, the siteauth app can be used to
+# restrict access site-wide.
+SITEAUTH_ACCESS_ORDER = 'allow/deny'
+
+# whitelist of urls allowing non-authenticated access
+SITEAUTH_ALLOW_URLS = (
+    r'^$',
+    r'^accounts/',
+    r'^admin/',
+)
+
+SERRANO_AUTH_REQUIRED = True
+SERRANO_TOKEN_TIMEOUT = 1200
