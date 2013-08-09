@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     (r'^timelines/', include('timelines.urls')),
     (r'^xray/', include('xray.urls')),
     (r'^alerts/', include('alerts.urls')),
+    (r'^groups/', include('groups.urls')),
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),

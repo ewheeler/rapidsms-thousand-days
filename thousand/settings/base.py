@@ -123,6 +123,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'pagination.middleware.PaginationMiddleware',
     'serrano.middleware.SessionMiddleware',
 )
 
@@ -218,6 +219,9 @@ INSTALLED_APPS = (
     "xray",
     "alerts",
     "thousand.help",
+    "groups",
+    "pagination",
+    "sorter",
 
     # Harvest stack
     "django.contrib.markup",
@@ -315,3 +319,8 @@ CSRF_COOKIE_NAME = 'openmrs_csrftoken'
 # RAPIDSMS-ALERTS
 LOGISTICS_NOTIF_GENERATORS = ['thousand.example_alerts.notify', ]
 SYSTEM_USERNAME = 'thousandbot'
+
+SORTER_ALLOWED_CRITERIA = {
+        'sort_contacts': ['id', 'name', 'email', 'phone'],
+        'sort_groups': ['id', 'name', 'count'],
+}
