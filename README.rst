@@ -29,6 +29,7 @@ local development system:
 - Postgres >= 8.4 (9.1 recommended)
 - git >= 1.7
 
+
 Getting Started
 ---------------
 
@@ -243,3 +244,36 @@ Events
 ------
 
 TODO
+
+
+Documentation
+-----------------------------------
+
+Documentation on using rapidsms-thousand-days is available on
+`Read The Docs <http://readthedocs.org/docs/rapidsms-thousand-days/>`_.
+
+
+Running the Tests
+------------------------------------
+
+You can run the tests with via::
+
+    python setup.py test
+
+or::
+
+    python runtests.py
+
+
+License
+--------------------------------------
+
+rapidsms-thousand-days is released under the BSD License. See the
+`LICENSE <https://github.com/ewheeler/rapidsms-thousand-days/blob/master/LICENSE>`_ file for more details.
+
+
+Contributing
+--------------------------------------
+
+If you think you've found a bug or are interested in contributing to this project
+check out `rapidsms-thousand-days on Github <https://github.com/ewheeler/rapidsms-thousand-days>`_.
