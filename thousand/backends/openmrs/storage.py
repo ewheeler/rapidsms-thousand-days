@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-import operator
+import datetime
 
 from django.db.models import Q
 from django.forms.models import model_to_dict
@@ -26,6 +26,7 @@ class DjangoStorage(HealthcareStorage):
         comparisons.GTE: 'gte',
     }
 
+
     def _patient_to_dict(self, patient):
         "Convert a Patient model to a dictionary."
         # Mapping of all fields
@@ -35,6 +36,14 @@ class DjangoStorage(HealthcareStorage):
             result['created_date'] = patient.created_date
         if hasattr(patient, 'updated_date'):
             result['updated_date'] = patient.updated_date
+        # openmrs includes `gender`, so also add as `sex`
+        if hasattr(patient, 'gender'):
+            result['sex'] = patient.gender
+        # openmrs models do not have `status`
+        result['status'] = 'A'
+        # rapidsms-nutrition expects `birth_date`
+        if hasattr(patient, 'birthdate'):
+            result['birth_date'] = patient.birthdate
         return result
 
     def _provider_to_dict(self, provider):
@@ -47,8 +56,16 @@ class DjangoStorage(HealthcareStorage):
         return result
 
     def _lookup_to_q(self, lookup):
-        field, operator, value = lookup
-        lookup_type = self._comparison_mapping[operator]
+        if len(lookup) == 1:
+            # for queries like client.patients.filter(sex__in=['M', 'F'])
+            # `lookup` may be a one element list containing the expected tuple
+            field, op, value = lookup[0]
+        else:
+            field, op, value = lookup
+        # openmrs app calls it `gender`, so substitute if called as `sex`
+        if field == "sex":
+            field = "gender"
+        lookup_type = self._comparison_mapping[op]
         params = {'{0}__{1}'.format(field, lookup_type): value}
         return Q(**params)
 
@@ -93,7 +110,8 @@ class DjangoStorage(HealthcareStorage):
         # FIXME: Might need additional error handling
         try:
             data['updated_date'] = now()
-            return Patient.objects.using('patients').filter(pk=id).update(**data)
+            return Patient.objects.using('patients').filter(pk=id)\
+                                                    .update(**data)
         except ValueError:
             return False
 
@@ -116,7 +134,8 @@ class DjangoStorage(HealthcareStorage):
             q = reduce(operator.and_, map(self._lookup_to_q, lookups))
         else:
             q = Q()
-        return map(self._patient_to_dict, Patient.objects.using('patients').filter(q))
+        return map(self._patient_to_dict, Patient.objects.using('patients')
+                   .filter(q))
 
     def link_patient(self, id, source_id, source_name):
         "Associated a source/id pair with this patient."

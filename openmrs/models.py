@@ -10,6 +10,10 @@ class Patient(models.Model):
     birthdate_estimated = models.NullBooleanField('birthdate estimated?', blank=True)
     mrn = models.CharField(max_length=10, null=True)
 
+    @property
+    def sex(self):
+        return self.gender
+
     class Meta(object):
         db_table = 'patient'
 
