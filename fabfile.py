@@ -109,6 +109,13 @@ def syncdb():
 
 
 @task
+def load_fixtures():
+    """Load fixtures."""
+    manage_run('loaddata appointments_timeline')
+    manage_run('loaddata appointments_milestone')
+
+
+@task
 def collectstatic():
     """Collect static files."""
     manage_run('collectstatic --noinput')
@@ -197,6 +204,7 @@ def setup_server(*roles):
     if 'data' in roles:
         put('dev-thousand.db', env.code_root)
         put('patients.db', env.code_root)
+        load_fixtures()
 
 
 @task
