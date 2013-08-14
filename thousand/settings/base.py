@@ -222,9 +222,9 @@ INSTALLED_APPS = (
     "openmrs.drugs",
     "openmrs.vaccines",
     "openmrs.diagnoses",
+    "haystack",
     "avocado",
     "serrano",
-    "haystack",
     "rapidsms.contrib.default",  # Must be last
 )
 
