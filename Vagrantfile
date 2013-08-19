@@ -21,7 +21,7 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: "192.168.50.4"
 
     ## For masterless, mount your file roots file root
-    config.vm.synced_folder "salt/roots/", "/srv/"
+    #config.vm.synced_folder "salt/roots/", "/srv/"
 
     # Create a forwarded port mapping which allows access to a specific port
     # within the machine from a port on the host machine. In the example below,
@@ -30,13 +30,13 @@ Vagrant.configure("2") do |config|
 
     ## Set your salt configs here
     # https://github.com/saltstack/salty-vagrant
-    config.vm.provision :salt do |salt|
-        ## Minion config is set to ``file_client: local`` for masterless
-        salt.minion_config = "salt/minion"
+    #config.vm.provision :salt do |salt|
+    #    ## Minion config is set to ``file_client: local`` for masterless
+    #    salt.minion_config = "conf/minion"
 
         ## Installs our example formula in "salt/roots/salt"
-        salt.run_highstate = true
-    end
+    #    salt.run_highstate = true
+    #end
 end
 # salt-call --local state.highstate -l debug
 # http://www.barrymorrison.com/2013/Mar/11/deploying-django-with-salt-stack/
