@@ -10,3 +10,4 @@ base:
         - nginx
         - locale
         - redis
+        - circus

@@ -91,7 +91,7 @@ def staging():
 def production():
     env.environment = 'production'
     env.hosts = ["thousand-days.lobos.biz"]
-    env.branch = 'master'
+    env.branch = 'salt'
     env.server_name = 'thousand-days.lobos.biz'
     env.project_user = 'ubuntu'
     env.user = 'ubuntu'
@@ -327,6 +327,21 @@ def deploy(branch=None):
         load_fixtures()
 
 @task
+def upload_data():
+    sudo('chmod 775 %(code_root)s' % env)
+    sudo('chown %(project_user)s:admin -R %(code_root)s' % env)
+    put('dev-thousand.db', env.code_root)
+    put('patients.db', env.code_root)
+    load_fixtures()
+
+
+@task
+def setup_nginx():
+    remove_default_site()
+    upload_nginx_site_conf(site_name=u'%(project)s-%(environment)s' % env)
+
+
+@task
 def setup_server(*roles):
     """Install packages and add configurations for server given roles."""
     require('environment')
@@ -425,6 +440,10 @@ def remove_default_site():
     """Remove the default Nginx site if it exists."""
 
     nginx_default = u'/etc/nginx/conf.d/default.conf'
+    if files.exists(nginx_default):
+        sudo(u'rm %s' % nginx_default)
+
+    nginx_default = u'/etc/nginx/sites-enabled/default'
     if files.exists(nginx_default):
         sudo(u'rm %s' % nginx_default)
 

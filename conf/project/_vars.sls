@@ -12,3 +12,4 @@
 
 {% set log_dir = path_from_root('log') %}
 {% set server_socket = build_path(run_dir, project + '.sock') %}
+{% set settings = pillar['project_name'] + ".settings." + pillar['environment'] %}

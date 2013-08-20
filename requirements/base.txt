@@ -10,7 +10,7 @@ django-celery
 -e git://github.com/ewheeler/rapidsms-xray.git#egg=xray
 
 # harvest stack components
-Whoosh==2.4.1
+Whoosh==2.4.0
 django-haystack==1.2.7
 avocado==2.0.24
 serrano==2.0.18
