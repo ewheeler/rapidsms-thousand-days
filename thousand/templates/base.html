@@ -69,6 +69,9 @@
                                                 <li><a href="{% url 'admin:index' %}">{% trans "Django Admin" %}</a></li>
                                                 <li><a href="http://circus{{ BASE_DOMAIN }}/">{% trans "Circus Admin" %}</a></li>
                                                 <li><a href="http://celery{{ BASE_DOMAIN }}/">{% trans "Celery Admin" %}</a></li>
+						{% if SENTRY_URL %}
+                                                  <li><a href="https://app.getsentry.com/rapidsms/thousand-days/">{% trans "Sentry Admin" %}</a></li>
+						{% endif %}
 					       </ul>
 					    </li>
                                         {% endif %}

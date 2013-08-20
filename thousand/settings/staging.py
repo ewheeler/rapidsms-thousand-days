@@ -73,6 +73,8 @@ RAVEN_CONFIG = {
            '021fe82debde4c4f9017e89250bbfcc8@app.getsentry.com/10728',
 }
 
+SENTRY_URL = "https://app.getsentry.com/rapidsms/thousand-days/"
+
 CELERY_QUEUES["sentry"] = {
     "exchange": "default",
     "binding_key": "sentry"
