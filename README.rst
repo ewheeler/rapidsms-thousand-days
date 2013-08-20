@@ -170,10 +170,10 @@ but it's easier to::
 which will both provision and reboot.
 
 You can provision a new server with the
-``setup_server`` fab command. It takes a list of roles for this server
-('app', 'db', 'lb', 'data') or you can say 'all'::
+``provision`` fab command::
 
-        fab vagrant setup_server:all
+
+        fab vagrant provision
 
 Then you have to do an initial deploy.  You also use this command to
 deploy updates::
