@@ -40,17 +40,6 @@ env.circushttpd_port = 8001
 env.celeryflower_port = 8002
 
 
-def old_setup_path():
-    env.home = '/home/%(project_user)s/' % env
-    env.root = os.path.join(env.home, 'www', env.environment)
-    env.code_root = os.path.join(env.root, env.project)
-    env.project_root = os.path.join(env.code_root, env.project)
-    env.virtualenv_root = os.path.join(env.root, 'env')
-    env.log_dir = os.path.join(env.root, 'log')
-    env.vhost = '%s_%s' % (env.project, env.environment)
-    env.settings = '%(project)s.settings.%(environment)s' % env
-
-
 def setup_path():
     env.home = '/home/%(project_user)s/' % env
     env.root = os.path.join('/var/www/', '%(project)s-%(environment)s' % env)
@@ -158,24 +147,6 @@ def provision(common='master'):
                                       .format(state, result['comment']))
 
 
-@task
-def old_update_requirements():
-    """Update required Python libraries."""
-    require('environment')
-    run(u'HOME=%(home)s %(virtualenv)s/bin/pip install -U pip' % {
-        'virtualenv': env.virtualenv_root,
-        'home': env.home,
-        })
-    run(u'HOME=%(home)s %(virtualenv)s/bin/pip install'
-        u' --use-mirrors --quiet -r %(requirements)s' % {
-        'virtualenv': env.virtualenv_root,
-        'requirements': os.path.join(env.code_root,
-                                     'requirements',
-                                     'production.txt'),
-        'home': env.home,
-        })
-
-
 def project_run(cmd):
     """ Uses sudo to allow developer to run commands as project user."""
     sudo(cmd, user=env.project_user)
@@ -202,18 +173,6 @@ def manage_run(command):
 
 
 @task
-def old_manage_run(command):
-    """Run a Django management command on the remote server."""
-    require('environment')
-    manage_base = u"%(virtualenv_root)s/bin/django-admin.py " % env
-    if '--pythonpath' not in command:
-        command = u"%s --pythonpath=%s" % (command, env.code_root)
-    if '--settings' not in command:
-        command = u"%s --settings=%s" % (command, env.settings)
-    run(u'%s %s' % (manage_base, command))
-
-
-@task
 def syncdb():
     """Run syncdb and South migrations."""
     manage_run('syncdb --noinput')
@@ -236,40 +195,6 @@ def collectstatic():
 def match_changes(changes, match):
     pattern = re.compile(match)
     return pattern.search(changes) is not None
-
-
-@task
-def old_deploy(branch=None):
-    """Deploy to a given environment."""
-    require('environment')
-    if branch is not None:
-        env.branch = branch
-    requirements = False
-    migrations = False
-    # Fetch latest changes
-    with cd(env.code_root):
-        # remove pyc files
-        sudo('find . -name "*.pyc" -exec rm {} \;')
-        with settings(user=env.project_user):
-            run('git fetch origin')
-        # Look for new requirements or migrations
-        changes = run("git diff origin/%(branch)s --stat-name-width=9999" %
-                      env)
-        requirements = match_changes(changes, r"requirements/")
-        migrations = match_changes(changes, r"/migrations/")
-        if requirements or migrations:
-            sudo("service circus stop")
-        with settings(user=env.project_user):
-            run("git reset --hard origin/%(branch)s" % env)
-    if requirements:
-        update_requirements()
-        # New requirements might need new tables/migrations
-        syncdb()
-    elif migrations:
-        syncdb()
-    collectstatic()
-    sudo("service circus restart")
-
 
 
 @task
@@ -339,54 +264,6 @@ def upload_data():
 def setup_nginx():
     remove_default_site()
     upload_nginx_site_conf(site_name=u'%(project)s-%(environment)s' % env)
-
-
-@task
-def setup_server(*roles):
-    """Install packages and add configurations for server given roles."""
-    require('environment')
-
-    roles = list(roles)
-
-    if not roles:
-        abort("setup_server requires one or more server roles,"
-              "e.g. setup_server:app or setup_server:all")
-
-    if roles == ['all', ]:
-        roles = SERVER_ROLES
-    if 'base' not in roles:
-        roles.insert(0, 'base')
-    if 'app' in roles:
-        # Create project directories and install Python requirements
-        run('mkdir -p %(root)s' % env)
-        run('mkdir -p %(log_dir)s' % env)
-        # FIXME: update to SSH as normal user and use sudo
-        # we ssh as the project_user here to maintain ssh agent
-        # forwarding, because it doesn't work with sudo. read:
-        # http://serverfault.com/q/107187
-        with settings(user=env.project_user):
-            if not files.exists(env.code_root):
-                run('git clone --quiet %(repo)s %(code_root)s' % env)
-            with cd(env.code_root):
-                run('git checkout %(branch)s' % env)
-        if not files.exists(env.virtualenv_root):
-            run('virtualenv --quiet -p python2.7'
-                ' --clear --distribute %s' % env.virtualenv_root)
-            # TODO: Why do we need this next part?
-            path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7',
-                                     'site-packages', 'project.pth')
-            files.append(path_file, env.code_root, use_sudo=True)
-            sudo('chown %s:%s %s' % (env.project_user,
-                                     env.project_user, path_file))
-        update_requirements()
-        upload_circus_conf(app_name=u'%(project)s-%(environment)s' % env)
-    if 'lb' in roles:
-        remove_default_site()
-        upload_nginx_site_conf(site_name=u'%(project)s-%(environment)s' % env)
-    if 'data' in roles:
-        put('dev-thousand.db', env.code_root)
-        put('patients.db', env.code_root)
-        load_fixtures()
 
 
 @task
