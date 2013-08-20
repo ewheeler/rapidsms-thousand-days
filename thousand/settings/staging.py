@@ -5,6 +5,8 @@ from thousand.settings.base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+ALLOWED_HOSTS = [ '.vagrant.localhost', '.vagrant.curta.local' ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
