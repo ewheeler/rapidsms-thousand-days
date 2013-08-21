@@ -54,7 +54,7 @@ def vagrant():
     env.environment = 'staging'
     env.hosts = ['127.0.0.1']
     env.port = 2222
-    env.branch = 'salt'
+    env.branch = 'master'
     env.server_name = 'vagrant.localhost'
     env.project_user = 'vagrant'
     env.user = 'vagrant'
@@ -80,7 +80,7 @@ def staging():
 def production():
     env.environment = 'production'
     env.hosts = ["thousand-days.lobos.biz"]
-    env.branch = 'salt'
+    env.branch = 'master'
     env.server_name = 'thousand-days.lobos.biz'
     env.project_user = 'ubuntu'
     env.user = 'ubuntu'
