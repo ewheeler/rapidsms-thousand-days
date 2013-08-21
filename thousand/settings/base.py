@@ -49,7 +49,7 @@ LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
-ALLOWED_HOSTS = [ '.localhost', ]
+ALLOWED_HOSTS = ['.localhost', ]
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
