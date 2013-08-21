@@ -5,7 +5,7 @@ from thousand.settings.base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = [ '.vagrant.localhost', '.vagrant.curta.local' ]
+ALLOWED_HOSTS = ['.vagrant.localhost:8089', '.vagrant.curta.local:8089']
 
 DATABASES = {
     'default': {
