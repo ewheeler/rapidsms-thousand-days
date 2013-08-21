@@ -114,7 +114,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'openmrs.context_processors.static',
     'xray.context_processors.web_experiments',
-    'thousand.context_processors.additional_settings',
+    'thousand.context_processors.template_variables',
 )
 
 MIDDLEWARE_CLASSES = (

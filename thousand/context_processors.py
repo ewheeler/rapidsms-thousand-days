@@ -1,10 +1,11 @@
 from django.conf import settings
 
 
-def additional_settings(request):
-    additions = {'BASE_DOMAIN': settings.ALLOWED_HOSTS[0]}
+def template_variables(request):
+    variables = {'BASE_DOMAIN': settings.ALLOWED_HOSTS[0]}
     try:
-        additions.update({'SENTRY_URL': settings.SENTRY_URL})
+        # not present in dev settings, so ignore if absent
+        variables.update({'SENTRY_URL': settings.SENTRY_URL})
     except AttributeError:
         pass
-    return additions
+    return variables
