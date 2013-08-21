@@ -5,7 +5,8 @@ from thousand.settings.base import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-ALLOWED_HOSTS = ['.vagrant.localhost:8089', '.vagrant.curta.local:8089']
+ALLOWED_HOSTS = ['.vagrant.localhost:8089', '.vagrant.curta.local:8089',
+                 '.vagrant.localhost', '.vagrant.curta.local']
 
 DATABASES = {
     'default': {
@@ -30,11 +31,6 @@ LOGGING['handlers']['rapidsms_file']['filename'] = \
     os.path.join(PROJECT_ROOT, 'rapidsms-router.log')
 
 COMPRESS_ENABLED = True
-
-# ALLOWED_HOSTS needs to be set or Django will 500.
-# But our nginx config rejects bad hosts in requests, so we can just
-# wildcard this for Django.
-ALLOWED_HOSTS = ['*']
 
 LOGGING['handlers']['sentry'] = {
     'level': 'ERROR',
