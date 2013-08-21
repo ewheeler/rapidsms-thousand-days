@@ -47,7 +47,7 @@ project_user:
   user.present:
     - name: {{ pillar['project_name'] }}
     - remove_groups: False
-    - groups: [www-data]
+    - groups: [www-data, admin]
 
 root_dir:
   file.directory:
@@ -63,7 +63,7 @@ run_dir:
   file.directory:
     - name: {{ vars.run_dir }}
     - user: {{ pillar['project_name'] }}
-    - group: {{ pillar['project_name'] }}
+    - group: admin
     - mode: 775
     - makedirs: True
     - require:
@@ -73,7 +73,7 @@ log_dir:
   file.directory:
     - name: {{ vars.log_dir }}
     - user: {{ pillar['project_name'] }}
-    - group: www-data
+    - group: admin
     - mode: 775
     - makedirs: True
     - require:
@@ -92,7 +92,8 @@ venv_dir:
   file.directory:
     - name: {{ venv_dir }}
     - user: {{ pillar['project_name'] }}
-    - group: {{ pillar['project_name'] }}
+    - group: admin
+    - mode: 775
     - recurse:
       - user
       - group
