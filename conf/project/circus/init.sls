@@ -18,7 +18,6 @@ chaussette:
 circus:
   pip:
     - installed
-  service.running:
     - require:
       - pip: meinheld
       - pip: chaussette
