@@ -54,9 +54,9 @@ def vagrant():
     env.environment = 'staging'
     env.hosts = ['127.0.0.1']
     env.port = 2222
-    env.branch = 'master'
+    env.branch = 'salt'
     env.server_name = 'vagrant.localhost'
-    env.project_user = 'ewheeler'
+    env.project_user = 'vagrant'
     env.user = 'vagrant'
     # use vagrant ssh key
     result = local('vagrant ssh-config | grep IdentityFile', capture=True)
@@ -235,7 +235,7 @@ def deploy(branch=None):
         # Add code root to the Python path
         path_file = os.path.join(env.virtualenv_root, 'lib', 'python2.7', 'site-packages', 'project.pth')
         files.append(path_file, env.code_root, use_sudo=True)
-        sudo('chown %s:%s %s' % (env.project_user, env.project_user, path_file))
+        sudo('chown %s:admin %s' % (env.project_user, path_file))
         sudo('chmod 775 %(code_root)s' % env)
     sudo('chown %(project_user)s:admin -R %(code_root)s' % env)
     if requirements:
@@ -294,22 +294,6 @@ def upload_template(filename, destination, context=None,
         use_sudo=use_sudo,
         mode=mode
     )
-
-
-@task
-def upload_circus_conf(app_name, template_name=None, context=None):
-    """Upload circus configuration from a template."""
-    # TODO should this be a salt-managed file?
-    template_name = template_name or u'circus/circus.ini'
-    destination = u"/etc/circus.ini"
-    upload_template(template_name, destination, context=context, use_sudo=True)
-    sudo('chown root:root /etc/circus.ini')
-
-    upstart_conf = u'circus/circus.conf'
-    upstart_destination = u'/etc/init/circus.conf'
-    upload_template(upstart_conf, upstart_destination,
-                    context=context, use_sudo=True)
-    sudo('chown root:root /etc/init/circus.conf')
 
 
 @task
