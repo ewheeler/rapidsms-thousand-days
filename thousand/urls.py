@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     (r'^nutrition/', include('nutrition.urls')),
     (r'^appointments/', include('appointments.urls')),
     (r'^xray/', include('xray.urls')),
+    (r'^alerts/', include('alerts.urls')),
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),

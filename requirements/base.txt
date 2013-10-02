@@ -8,6 +8,7 @@ django-celery
 -e git://github.com/ewheeler/rapidsms-nutrition.git#egg=nutrition
 -e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
 -e git://github.com/ewheeler/rapidsms-xray.git#egg=xray
+-e git://github.com/ewheeler/rapidsms-alerts.git#egg=alerts
 
 # harvest stack components
 Whoosh==2.4.0

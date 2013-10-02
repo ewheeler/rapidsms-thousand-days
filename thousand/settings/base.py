@@ -217,6 +217,7 @@ INSTALLED_APPS = (
     "appointments",
     "natalcare",
     "xray",
+    "alerts",
 
     # Harvest stack
     "django.contrib.markup",
@@ -308,3 +309,7 @@ SERRANO_TOKEN_TIMEOUT = 1200
 # SESSIONS AND COOKIES
 
 CSRF_COOKIE_NAME = 'openmrs_csrftoken'
+
+# RAPIDSMS-ALERTS
+LOGISTICS_NOTIF_GENERATORS = ['thousand.example_alerts.notify', ]
+SYSTEM_USERNAME = 'thousandbot'

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load url from future %}
+{% load alerts_tags %}
 
 {% block extra_stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}thousand/stylesheets/dc.css"/>
@@ -111,7 +112,7 @@ function vis() {
     var mapDistricts = [];
 
     var caseData;
-    var debug = true;
+    var debug = false;
 
     queue()
       //.defer(d3.json, "/static/webapp/javascripts/wb_rw_districts.json")
@@ -419,6 +420,8 @@ function vis() {
 
 {% block content %}
 <div class="page-header"><h1>{{ dashboard_title_experiment }}</h1></div>
+
+  {% notifications %}
 
 <div class="container">
         <ol class="legend"></ol>
