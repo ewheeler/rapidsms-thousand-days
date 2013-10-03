@@ -14,5 +14,13 @@
             "name": "New pregancy/Antenatal Care Visits", 
             "slug": "pregnancy|pre|preg|anc|ante"
         }
+    },
+    {
+        "pk": 3, 
+        "model": "appointments.timeline", 
+        "fields": {
+            "name": "ANC/PNC Advice", 
+            "slug": "advice|advise"
+        }
     }
 ]
