@@ -243,6 +243,7 @@ HEALTHCARE_STORAGE_BACKEND = "thousand.backends.openmrs.storage.DjangoStorage"
 LOGIN_REDIRECT_URL = '/'
 
 RAPIDSMS_HANDLERS = (
+    'rapidsms.contrib.registration.handlers.register.RegisterHandler',
     'rapidsms.contrib.echo.handlers.echo.EchoHandler',
     'rapidsms.contrib.echo.handlers.ping.PingHandler',
     'nutrition.handlers.CreateReportHandler',
