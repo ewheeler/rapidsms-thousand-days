@@ -214,7 +214,7 @@ INSTALLED_APPS = (
     # Thousand Days
     "thousand.backends.openmrs",
     "nutrition",
-    "appointments",
+    "timelines",
     "natalcare",
     "xray",
     "alerts",

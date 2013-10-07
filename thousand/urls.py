@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'thousand.views.index', name='rapidsms-dashboard'),
     (r'^nutrition/', include('nutrition.urls')),
-    (r'^appointments/', include('appointments.urls')),
+    (r'^timelines/', include('timelines.urls')),
     (r'^xray/', include('xray.urls')),
     (r'^alerts/', include('alerts.urls')),
 
