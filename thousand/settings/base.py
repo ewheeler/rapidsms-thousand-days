@@ -20,12 +20,11 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'dev-thousand.db'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        #'ENGINE': 'django.db.backends.sqlite3',
+        #'NAME': os.path.join(PROJECT_ROOT, 'dev-thousand.db'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'postgres',
+        'NAME': 'thousand',
     },
     'patients': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -218,6 +217,7 @@ INSTALLED_APPS = (
     "natalcare",
     "xray",
     "alerts",
+    "thousand.help",
 
     # Harvest stack
     "django.contrib.markup",
@@ -228,8 +228,7 @@ INSTALLED_APPS = (
     "openmrs.diagnoses",
     "haystack",
     "avocado",
-    "serrano",
-    "rapidsms.contrib.default",  # Must be last
+    "serrano"
 )
 
 INSTALLED_BACKENDS = {
@@ -244,18 +243,20 @@ LOGIN_REDIRECT_URL = '/'
 
 RAPIDSMS_HANDLERS = (
     'rapidsms.contrib.registration.handlers.register.RegisterHandler',
-    'rapidsms.contrib.echo.handlers.echo.EchoHandler',
-    'rapidsms.contrib.echo.handlers.ping.PingHandler',
+    'rapidsms.contrib.registration.handlers.language.LanguageHandler',
     'nutrition.handlers.CreateReportHandler',
     'nutrition.handlers.CancelReportHandler',
-    'appointments.handlers.confirm.ConfirmHandler',
-    'appointments.handlers.move.MoveHandler',
-    'appointments.handlers.new.NewHandler',
-    'appointments.handlers.quit.QuitHandler',
-    'appointments.handlers.status.StatusHandler',
+    'timelines.handlers.confirm.ConfirmHandler',
+    'timelines.handlers.move.MoveHandler',
+    'timelines.handlers.new.NewHandler',
+    'timelines.handlers.quit.QuitHandler',
+    'timelines.handlers.status.StatusHandler',
     'natalcare.handlers.birth.BirthHandler',
     'natalcare.handlers.pregnancy.PregnancyHandler',
 )
+
+RAPIDSMS_HELP_KEYWORDS = ('HELP', 'AIDE')
+LANGUAGES = (('en', 'English'),)
 
 # django-celery config
 import djcelery
@@ -267,19 +268,19 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_IMPORTS = ("appointments.tasks", )
+CELERY_IMPORTS = ("timelines.tasks", )
 CELERY_QUEUES = {
     "default": {
         "exchange": "default",
         "binding_key": "default"},
 }
 CELERYBEAT_SCHEDULE = {
-    'generate-appointments': {
-        'task': 'appointments.tasks.generate_appointments',
+    'generate-occurrences': {
+        'task': 'timelines.tasks.generate_occurrences',
         'schedule': crontab(minute=1),
     },
     'send-notifications': {
-        'task': 'appointments.tasks.send_appointment_notifications',
+        'task': 'timelines.tasks.send_occurrence_notifications',
         'schedule': crontab(minute=5),
     },
 }

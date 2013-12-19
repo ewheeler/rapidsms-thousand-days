@@ -1,7 +1,7 @@
 [
     {
         "pk": 1, 
-        "model": "appointments.timeline", 
+        "model": "timelines.timeline", 
         "fields": {
             "name": "New Birth/Postnatal Care Visits", 
             "slug": "birth|bir|postnatal|pnc"
@@ -9,7 +9,7 @@
     }, 
     {
         "pk": 2, 
-        "model": "appointments.timeline", 
+        "model": "timelines.timeline", 
         "fields": {
             "name": "New pregancy/Antenatal Care Visits", 
             "slug": "pregnancy|pre|preg|anc|ante"
@@ -17,7 +17,7 @@
     },
     {
         "pk": 3, 
-        "model": "appointments.timeline", 
+        "model": "timelines.timeline", 
         "fields": {
             "name": "ANC/PNC Advice", 
             "slug": "advice|advise"
