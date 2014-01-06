@@ -14,5 +14,6 @@ base:
         - memcached
         - postfix
         - version-control
+        - npm
         - nodejs
         - statsd
