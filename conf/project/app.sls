@@ -23,20 +23,6 @@ app-packages:
             - zlib1g-dev
             - sqlite3
 
-memcached:
-    pkg:
-        - installed
-    service:
-        - running
-        - enable: True
-
-postfix:
-    pkg:
-        - installed
-    service:
-        - running
-        - enable: True
-
 include:
   - memcached
   - postfix

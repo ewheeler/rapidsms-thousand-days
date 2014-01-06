@@ -11,3 +11,8 @@ base:
         - locale
         - redis
         - circus
+        - memcached
+        - postfix
+        - version-control
+        - nodejs
+        - statsd

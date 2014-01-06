@@ -137,14 +137,19 @@ def provision(common='master'):
             except (TypeError, ValueError) as e:
                 error(u'Non-JSON output from salt-call', exception=e)
             else:
-                for state, result in results['local'].items():
-                    if not result["result"]:
-                        if 'name' in result:
-                            print red(u'Error with %(name)s state: %(comment)s'
-                                      % result)
-                        else:
-                            print red(u'Error with {0} state: {1}'
-                                      .format(state, result['comment']))
+                if isinstance(results['local'], list):
+                    for result in results['local']:
+                        print red(u'Error: {0}'.format(result))
+                else:
+                    for state, result in results['local'].items():
+                        if not result["result"]:
+                            if 'name' in result:
+                                print red(u'Error with %(name)s '
+                                          'state: %(comment)s'
+                                          % result)
+                            else:
+                                print red(u'Error with {0} state: {1}'
+                                          .format(state, result['comment']))
 
 
 def project_run(cmd):
