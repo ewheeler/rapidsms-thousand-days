@@ -56,12 +56,19 @@ LOGGING['loggers']['sentry.errors'] = {
 TEMP = list(copy.copy(MIDDLEWARE_CLASSES))
 TEMP.insert(0, 'raven.contrib.django.raven_compat.'
                'middleware.SentryResponseErrorIdMiddleware')
+# add statsd at the top
+TEMP.insert(0, 'django_statsd.middleware.StatsdMiddleware')
 TEMP.append('raven.contrib.django.raven_compat.'
             'middleware.Sentry404CatchMiddleware')
 TEMP.append('siteauth.middleware.SiteAuthenticationMiddleware')
+# add statsd timer at the bottom
+TEMP.append('django_statsd.middleware.StatsdMiddlewareTimer')
 MIDDLEWARE_CLASSES = tuple(TEMP)
 
 INSTALLED_APPS += ("raven.contrib.django.raven_compat",)
+INSTALLED_APPS += ("django_statsd",)
+
+STATSD_TRACK_MIDDLEWARE = True
 
 # TODO separate staging and prod configs
 RAVEN_CONFIG = {

@@ -72,6 +72,9 @@
 						{% if SENTRY_URL %}
                                                   <li><a href="https://app.getsentry.com/rapidsms/thousand-days/">{% trans "Sentry Admin" %}</a></li>
 						{% endif %}
+						{% if STATSD_TRACK_MIDDLEWARE %}
+                                                  <li><a href="http://graphite{{ BASE_DOMAIN }}/">{% trans "Graphite" %}</a></li>
+						{% endif %}
 					       </ul>
 					    </li>
                                         {% endif %}

@@ -9,3 +9,5 @@ flower
 fabric
 raven
 django-siteauth
+django-statsd
+pystache
