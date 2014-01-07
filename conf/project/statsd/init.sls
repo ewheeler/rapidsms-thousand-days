@@ -42,25 +42,25 @@ install_graphite_web:
 
 /opt/graphite/conf/carbon.conf:
     file.managed:
-        - source: salt://project/statsd/opt/graphite/conf/carbon.conf
+        - source: salt://statsd/opt/graphite/conf/carbon.conf
         - require:
             - cmd.run: install_carbon
 
 /opt/graphite/conf/storage-schemas.conf:
     file.managed:
-        - source: salt://project/statsd/opt/graphite/conf/storage-schemas.conf
+        - source: salt://statsd/opt/graphite/conf/storage-schemas.conf
         - require:
             - cmd.run: install_carbon
 
 /opt/graphite/conf/storage-aggregation.conf:
     file.managed:
-        - source: salt://project/statsd/opt/graphite/conf/storage-aggregation.conf
+        - source: salt://statsd/opt/graphite/conf/storage-aggregation.conf
         - require:
             - cmd.run: install_carbon
 
 /opt/graphite/webapp/graphite/local_settings.py:
     file.managed:
-        - source: salt://project/statsd/opt/graphite/webapp/graphite/local_settings.py
+        - source: salt://statsd/opt/graphite/webapp/graphite/local_settings.py
         - require:
             - cmd.run: install_graphite_web
 
@@ -79,7 +79,7 @@ git://github.com/etsy/statsd.git:
 
 /opt/statsd/localConfig.js:
     file.managed:
-        - source: salt://project/statsd/opt/statsd/localConfig.js
+        - source: salt://statsd/opt/statsd/localConfig.js
         - require:
             - git: git://github.com/etsy/statsd.git
 
