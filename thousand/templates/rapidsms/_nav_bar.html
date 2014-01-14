@@ -1,10 +1,11 @@
 {% load url from future %}
+{% load i18n %}
 
-<li><a href="{% url 'message_log' %}">Message Log</a></li>
-<li><a href="{% url 'registration' %}">Registration</a></li>
-<li><a href="{% url 'list-groups' %}">Groups</a></li>
-<li><a href="{% url 'messaging' %}">Messaging</a></li>
-<li><a href="{% url 'httptester-index' %}">Message Tester</a></li>
-<li><a href="{% url 'nutrition_reports' %}">Nutrition</a></li>
-<li><a href="{% url 'occurrence_list' %}">Timelines</a></li>
-<li><a href="{% url 'query' %}">Patients</a></li>
+<li><a href="{% url 'message_log' %}">{% trans "Message Log" %}</a></li>
+<li><a href="{% url 'registration' %}">{% trans "Registration" %}</a></li>
+<li><a href="{% url 'list-groups' %}">{% trans "Groups" %}</a></li>
+<li><a href="{% url 'messaging' %}">{% trans "Messaging" %}</a></li>
+<li><a href="{% url 'httptester-index' %}">{% trans "Message Tester" %}</a></li>
+<li><a href="{% url 'nutrition_reports' %}">{% trans "Nutrition" %}</a></li>
+<li><a href="{% url 'occurrence_list' %}">{% trans "Timelines" %}</a></li>
+<li><a href="{% url 'query' %}">{% trans "Patients" %}</a></li>

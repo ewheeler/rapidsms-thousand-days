@@ -1,7 +1,8 @@
 {% load url from future %}
+{% load i18n %}
 
 {% block extra_admin_links %}
     {% if perms.xray.view_events %}
-      <li><a href="{% url 'xray_dashboard' %}">X-ray</a></li>
+      <li><a href="{% url 'xray_dashboard' %}">{% trans "X-ray" %}</a></li>
     {% endif %}
 {% endblock extra_admin_links %}
