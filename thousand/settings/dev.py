@@ -10,9 +10,10 @@ SERRANO_AUTH_REQUIRED = False
 #    'debug_toolbar.middleware.DebugToolbarMiddleware',
 #)
 
-#INSTALLED_APPS += (
+INSTALLED_APPS += (
 #    'debug_toolbar',
-#)
+     'django_extensions',
+)
 
 INTERNAL_IPS = ('127.0.0.1', )
 
