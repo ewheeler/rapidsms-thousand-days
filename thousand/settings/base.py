@@ -1,4 +1,6 @@
 # Django settings for thousand project.
+# NOTE these settings may be overridden by values
+# specificed in settings/local.py or other settings files
 
 import os
 
@@ -40,11 +42,13 @@ DATABASES = {
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # In a Windows environment this must be set to your system time zone.
-TIME_ZONE = 'America/New_York'
+# please set this in settings/local.py
+# TIME_ZONE = 'America/New_York'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+# please set this in settings/local.py
+# LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
@@ -126,6 +130,8 @@ MIDDLEWARE_CLASSES = (
     'pagination.middleware.PaginationMiddleware',
     'serrano.middleware.SessionMiddleware',
 )
+
+PAGINATOR_OBJECTS_PER_PAGE = 20
 
 ROOT_URLCONF = 'thousand.urls'
 
@@ -215,6 +221,7 @@ INSTALLED_APPS = (
     "thousand.backends.openmrs",
     "nutrition",
     "timelines",
+    "hvad",  # used by timelines
     "natalcare",
     "xray",
     "alerts",
@@ -260,7 +267,7 @@ RAPIDSMS_HANDLERS = (
 )
 
 RAPIDSMS_HELP_KEYWORDS = ('HELP', 'AIDE')
-LANGUAGES = (('en', 'English'),)
+LANGUAGES = (('en-UG', 'English'),)
 
 # django-celery config
 import djcelery

@@ -1,1595 +1,2843 @@
 [
-    {
-        "pk": 1, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 1, 
-            "name": "6 day appointment", 
-            "offset": 6
-        }
-    }, 
-    {
-        "pk": 2, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 1, 
-            "name": "6 week appointment", 
-            "offset": 42
-        }
-    }, 
-    {
-        "pk": 3, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 1, 
-            "name": "6 month appointment", 
-            "offset": 180
-        }
-    }, 
-    {
-        "pk": 4, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 2, 
-            "name": "1st ANC visit", 
-            "offset": 63
-        }
-    }, 
-    {
-        "pk": 5, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 2, 
-            "name": "2nd ANC visit", 
-            "offset": 175
-        }
-    }, 
-    {
-        "pk": 6, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 2, 
-            "name": "3rd ANC visit", 
-            "offset": 224
-        }
-    }, 
-    {
-        "pk": 7, 
-        "model": "timelines.milestone", 
-        "fields": {
-            "timeline": 2, 
-            "name": "4th ANC visit", 
-            "offset": 259
-        }
-    },
-    {
-        "fields": {
-            "message": "Congratulations on your pregnancy! Have you gone to the clinic? You should be checked at least 4 times at a health centre to ensure a healthy pregnancy/baby.", 
-            "name": "01-1-ANC", 
-            "offset": 8, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 8
-    }, 
-    {
-        "fields": {
-            "message": "Have you told someone you trust about your pregnancy? Tell your partner, a friend or family member early on so that they can support you.", 
-            "name": "01-3-ANC", 
-            "offset": 10, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 9
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
-            "name": "01-5-PMTCT", 
-            "offset": 12, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 13
-    }, 
-    {
-        "fields": {
-            "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
-            "name": "02-1-Malaria", 
-            "offset": 15, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 18
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy! Drink a lot of boiled water, juice and milk. Eat healthy four times a day: fruit, vegetables, beans or g-nuts. Eggs, meat or fish two times a week", 
-            "name": "02-3-Nutrition", 
-            "offset": 17, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 21
-    }, 
-    {
-        "fields": {
-            "message": "Have you gone for your first health visit? Every pregnant woman should go to the health centre for at least 4 visits. Go as soon as you know you are pregnant.", 
-            "name": "02-5-ANC", 
-            "offset": 19, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 10
-    }, 
-    {
-        "fields": {
-            "message": "Do you know where you will have your baby? What will you do if there is a problem during pregnancy? Speak with your family or health worker now, to make a plan.", 
-            "name": "03-1-Birth Planning", 
-            "offset": 22, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 27
-    }, 
-    {
-        "fields": {
-            "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
-            "name": "03-4-Danger Signs", 
-            "offset": 25, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 34
-    }, 
-    {
-        "fields": {
-            "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
-            "name": "04-1-PMTCT", 
-            "offset": 29, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 14
-    }, 
-    {
-        "fields": {
-            "message": "You can prevent malaria by closing your windows and doors before dark and sleeping under a net every night. Visit a health worker if you need a mosquito net!", 
-            "name": "04-3-Malaria", 
-            "offset": 31, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 19
-    }, 
-    {
-        "fields": {
-            "message": "Make a pregnancy plan: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
-            "name": "04-5-Birth Planning", 
-            "offset": 33, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 28
-    }, 
-    {
-        "fields": {
-            "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
-            "name": "05-1-Danger Signs", 
-            "offset": 36, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 35
-    }, 
-    {
-        "fields": {
-            "message": "Women should give birth in a health clinic with a doctor, nurse or midwife. Where will you give birth? Talk to a health worker, family or friends. Make a plan", 
-            "name": "05-3-Birth Planning", 
-            "offset": 38, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 29
-    }, 
-    {
-        "fields": {
-            "message": "Have you and your partner been tested? Go to a health centre for HIV testing and talk to a health worker about preventing infection of your baby.", 
-            "name": "06-1-PMTCT", 
-            "offset": 43, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 15
-    }, 
-    {
-        "fields": {
-            "message": "Have you visited a clinic? Visit the health centre to check for anaemia, sphyilis, HIV and TB, and to get medicine to build your blood, for malaria and tetanus.", 
-            "name": "06-3-ANC", 
-            "offset": 45, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 11
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy! Preganant women should not use alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
-            "name": "06-5-Nutrition", 
-            "offset": 47, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 22
-    }, 
-    {
-        "fields": {
-            "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
-            "name": "07-1-Hygiene", 
-            "offset": 50, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 26
-    }, 
-    {
-        "fields": {
-            "message": "How will you get to a health clinic when you go into labour? Is there enough money to go there? Make a plan and discuss with your partner, friends and family.", 
-            "name": "07-3-Birth Planning", 
-            "offset": 52, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 30
-    }, 
-    {
-        "fields": {
-            "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
-            "name": "07-5-PMTCT", 
-            "offset": 54, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 16
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your HIV status? An infected woman can protect her baby by taking action. Visit a clinic with your partner for tests and help keep your baby safe!", 
-            "name": "08-1-PMTCT", 
-            "offset": 57, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 17
-    }, 
-    {
-        "fields": {
-            "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
-            "name": "08-4-Malaria", 
-            "offset": 60, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 20
-    }, 
-    {
-        "fields": {
-            "message": "Drink safe and boiled water! Do not drink water directly from lakes, ponds and rivers. Do not eat soil or clay. This can make you and your baby sick.", 
-            "name": "09-1-Nutrition", 
-            "offset": 64, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 23
-    }, 
-    {
-        "fields": {
-            "message": "Pregnancy is a wonderful time but you may also have worries.Talk about your pregnancy with your partner, friends and family members so they can support you.", 
-            "name": "09-3-Birth Planning", 
-            "offset": 66, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 31
-    }, 
-    {
-        "fields": {
-            "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
-            "name": "10-1-Danger Signs", 
-            "offset": 71, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 36
-    }, 
-    {
-        "fields": {
-            "message": "At the health clinic a health worker will check your blood pressure and feel your belly. They will tell you around what date your baby should be born.", 
-            "name": "10-3-ANC", 
-            "offset": 73, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 12
-    }, 
-    {
-        "fields": {
-            "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
-            "name": "11-1-Nutrition", 
-            "offset": 78, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 24
-    }, 
-    {
-        "fields": {
-            "message": "Who will go with you to the clinic when you go into labour? Choose someone you trust and who can make decisions for you if needed. Make a plan with this person.", 
-            "name": "11-4-Birth Planning", 
-            "offset": 81, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 32
-    }, 
-    {
-        "fields": {
-            "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
-            "name": "12-1-Nutrition", 
-            "offset": 85, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 25
-    }, 
-    {
-        "fields": {
-            "message": "What date is your baby due? Start planning with your partner, family and health worker so that you are prepared when the time comes.", 
-            "name": "12-4-Birth Planning", 
-            "offset": 88, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 33
-    }, 
-    {
-        "fields": {
-            "message": "Congratulations on your pregnancy! Have you gone for your first health visit? Go for your first visit as soon as possible for the health of you and your baby!", 
-            "name": "13-1-ANC", 
-            "offset": 92, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 37
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
-            "name": "13-3-PMTCT", 
-            "offset": 94, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 45
-    }, 
-    {
-        "fields": {
-            "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
-            "name": "13-6-Nutrition", 
-            "offset": 97, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 51
-    }, 
-    {
-        "fields": {
-            "message": "Pregnant women are more likely to get malaria. At your 2nd and 3rd health visit you will get medicine SP or Fansidar to prevent malaria. It's safe for your baby", 
-            "name": "14-1-Malaria", 
-            "offset": 99, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 55
-    }, 
-    {
-        "fields": {
-            "message": "What date is your baby due? Start planning with your partner, family and health worker now, so that you are prepared when the time comes.", 
-            "name": "14-3-Birth Planning", 
-            "offset": 101, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 61
-    }, 
-    {
-        "fields": {
-            "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
-            "name": "14-5-Danger Signs", 
-            "offset": 103, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 66
-    }, 
-    {
-        "fields": {
-            "message": "Have you gone for your first health visit? Every pregnant woman should go to the health centre for at least 4 visits. Go as soon as you know you are pregnant.", 
-            "name": "15-1-ANC", 
-            "offset": 106, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 38
-    }, 
-    {
-        "fields": {
-            "message": "Women should give birth in a health clinic with a doctor, nurse or midwife. Where will you give birth? Talk to a health worker, family or friends. Make a plan", 
-            "name": "15-4-Birth Planning", 
-            "offset": 109, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 62
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, talk with your health worker and make a plan for breastfeeding. Your baby will be well nourished and safe!", 
-            "name": "16-1-PMTCT", 
-            "offset": 113, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 46
-    }, 
-    {
-        "fields": {
-            "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
-            "name": "16-3-Malaria", 
-            "offset": 115, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 56
-    }, 
-    {
-        "fields": {
-            "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
-            "name": "16-6-Nutrition", 
-            "offset": 118, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 52
-    }, 
-    {
-        "fields": {
-            "message": "Go to the clinic to check for diseases that harm you or your baby. A health worker will check your blood pressure and your belly to see how the baby is growing.", 
-            "name": "17-1-ANC", 
-            "offset": 120, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 39
-    }, 
-    {
-        "fields": {
-            "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
-            "name": "17-4-Hygiene", 
-            "offset": 123, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 60
-    }, 
-    {
-        "fields": {
-            "message": "How will you get to a health clinic when you go into labour? Is there enough money to go there? Make a plan and discuss with your partner, friends and family.", 
-            "name": "18-1-Birth Planning", 
-            "offset": 127, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 63
-    }, 
-    {
-        "fields": {
-            "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
-            "name": "18-3-Danger Signs", 
-            "offset": 129, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 67
-    }, 
-    {
-        "fields": {
-            "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
-            "name": "18-6-PMTCT", 
-            "offset": 132, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 47
-    }, 
-    {
-        "fields": {
-            "message": "At the clinic you will be asked questions: How are you feeling? Do you eat well? Do you sleep under a net? Are you taking tablets? Tell them about any problems.", 
-            "name": "19-1-ANC", 
-            "offset": 134, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 40
-    }, 
-    {
-        "fields": {
-            "message": "Do you use a mosquito net at night? Prevent malaria by closing windows and doors before dark and sleeping under a net. Talk to a health worker about a net.", 
-            "name": "19-4-Malaria", 
-            "offset": 137, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 57
-    }, 
-    {
-        "fields": {
-            "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
-            "name": "20-1-PMTCT", 
-            "offset": 141, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 48
-    }, 
-    {
-        "fields": {
-            "message": "Take your iron and folate tablets every evening after a meal. Iron may make your poo black but don't worry! Tell your health worker if you have any problems.", 
-            "name": "20-3-Nutrition", 
-            "offset": 143, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 53
-    }, 
-    {
-        "fields": {
-            "message": "Who will go with you to the clinic when you go into labour? Choose someone you trust and who can make decisions for you if needed. Make a plan with this person.", 
-            "name": "20-5-Birth Planning", 
-            "offset": 145, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 64
-    }, 
-    {
-        "fields": {
-            "message": "If you think that your baby has stopped moving or if you feel contractions before your due date, go to the health clinic NOW for a check.", 
-            "name": "21-1-Danger Signs", 
-            "offset": 148, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 68
-    }, 
-    {
-        "fields": {
-            "message": "At the clinic you should get medicine to build your blood, prevent malaria, treat for worms and protect against tetanus. These are safe for you and your baby.", 
-            "name": "21-3-ANC", 
-            "offset": 150, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 41
-    }, 
-    {
-        "fields": {
-            "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
-            "name": "21-5-Malaria", 
-            "offset": 152, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 58
-    }, 
-    {
-        "fields": {
-            "message": "Plan for any problems: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
-            "name": "22-1-Birth Planning", 
-            "offset": 155, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 65
-    }, 
-    {
-        "fields": {
-            "message": "Have you and your partner been tested? Go to a health centre for HIV testing and talk to a health worker about preventing infection of your baby.", 
-            "name": "22-3-PMTCT", 
-            "offset": 157, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 49
-    }, 
-    {
-        "fields": {
-            "message": "If you have any problems with your pregnancy you may need to have more than four health visits. Follow the advice that your health worker gives you.", 
-            "name": "22-6-ANC", 
-            "offset": 160, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 44
-    }, 
-    {
-        "fields": {
-            "message": "Have you felt the baby move? At the clinic a health worker will feel your belly to check the baby. Usually the top of the womb can be felt at 20 weeks pregnancy", 
-            "name": "23-1-ANC", 
-            "offset": 162, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 42
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy! Pregnant women should get plenty of rest. They should not take alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
-            "name": "23-3-Nutrition", 
-            "offset": 164, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 54
-    }, 
-    {
-        "fields": {
-            "message": "Pregnant women can have malaria without knowing it. It is important to take two doses of SP (Fansidar) to prevent malaria. Have you had your first dose of SP?", 
-            "name": "23-6-Malaria", 
-            "offset": 167, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 59
-    }, 
-    {
-        "fields": {
-            "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
-            "name": "24-1-Danger Signs", 
-            "offset": 169, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 69
-    }, 
-    {
-        "fields": {
-            "message": "Pregnant women should go for at least four health visits. Did you go for a second visit? A health worker will listen to the baby's heart and check its growth.", 
-            "name": "24-3-ANC", 
-            "offset": 171, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 43
-    }, 
-    {
-        "fields": {
-            "message": "If you have HIV you need to take medicine to protect your baby. Tell your health care worker if you know you are infected. Get tested if you don't know!", 
-            "name": "24-5-PMTCT", 
-            "offset": 173, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 50
-    }, 
-    {
-        "fields": {
-            "message": "Every pregnant woman should go for at least 4 health visits. How many times have you gone? If you've not had 3 visits go to the clinic now, it is not too late!", 
-            "name": "25-1-ANC", 
-            "offset": 176, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 70
-    }, 
-    {
-        "fields": {
-            "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
-            "name": "25-4-Malaria", 
-            "offset": 179, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 85
-    }, 
-    {
-        "fields": {
-            "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
-            "name": "26-1-Danger Signs", 
-            "offset": 183, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 103
-    }, 
-    {
-        "fields": {
-            "message": "When is your baby due? How will you get to a health clinic when you go into labour? Is there enough money to go there? Plan together with friends and family.", 
-            "name": "26-3-Birth Planning", 
-            "offset": 185, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 94
-    }, 
-    {
-        "fields": {
-            "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
-            "name": "26-5-PMTCT", 
-            "offset": 187, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 79
-    }, 
-    {
-        "fields": {
-            "message": "Pregnancy is a wonderful time but you may also have worries.Talk about your pregnancy with your partner, friends and family members so they can support you.", 
-            "name": "27-1-ANC", 
-            "offset": 190, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 71
-    }, 
-    {
-        "fields": {
-            "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
-            "name": "27-4-Nutrition", 
-            "offset": 193, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 82
-    }, 
-    {
-        "fields": {
-            "message": "It is imprtant to give birth in a health clinic with a nurse, midwife or doctor.  Make a plan with your health worker, partner, friends and family.", 
-            "name": "28-1-Birth Planning", 
-            "offset": 197, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 93
-    }, 
-    {
-        "fields": {
-            "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
-            "name": "28-3-Danger Signs", 
-            "offset": 199, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 100
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
-            "name": "28-5-PMTCT", 
-            "offset": 201, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 77
-    }, 
-    {
-        "fields": {
-            "message": "Every pregnant woman should go for at least 4 health centre visits. Have you gone for your fourth visit yet?", 
-            "name": "29-1-ANC", 
-            "offset": 204, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 72
-    }, 
-    {
-        "fields": {
-            "message": "You can prevent malaria by closing your windows and doors before dark and sleeping under a net every night. Visit a health worker if you need a mosquito net!", 
-            "name": "29-3-Malaria", 
-            "offset": 206, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 86
-    }, 
-    {
-        "fields": {
-            "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
-            "name": "29-5-Hygiene", 
-            "offset": 208, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 92
-    }, 
-    {
-        "fields": {
-            "message": "Who will go with you to the health clinic when you are in labour? Choose someone you trust who can make decisions for you in case you can't. Plan together.", 
-            "name": "30-1-Birth Planning", 
-            "offset": 211, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 95
-    }, 
-    {
-        "fields": {
-            "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
-            "name": "30-3-PMTCT", 
-            "offset": 213, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 78
-    }, 
-    {
-        "fields": {
-            "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
-            "name": "30-5-Nutrition", 
-            "offset": 215, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 83
-    }, 
-    {
-        "fields": {
-            "message": "Malaria can cause problems for the baby and mother: low birth weight, stillbirth and even death. Did you get a ITN voucher from the clinic to prevent malaria?", 
-            "name": "31-1-Malaria", 
-            "offset": 218, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 87
-    }, 
-    {
-        "fields": {
-            "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
-            "name": "31-4-Danger Signs", 
-            "offset": 221, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 101
-    }, 
-    {
-        "fields": {
-            "message": "Plan for any problems: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
-            "name": "32-1-Birth Planning", 
-            "offset": 225, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 96
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy! Pregnant women should get plenty of rest. They should not take alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
-            "name": "32-3-Nutrition", 
-            "offset": 227, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 84
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, talk with your health worker and make a plan for breastfeeding. Your baby will be well nourished and safe!", 
-            "name": "32-5-PMTCT", 
-            "offset": 229, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 80
-    }, 
-    {
-        "fields": {
-            "message": "If you have any problems with your pregnancy you may need to have more than four health visits. Follow the advice that your health worker gives you.", 
-            "name": "33-1-ANC", 
-            "offset": 232, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 73
-    }, 
-    {
-        "fields": {
-            "message": "Pregnant women should take SP even when they are not sick because they are more likely to get malaria or they don't know they are sick. It is safe for the baby.", 
-            "name": "33-4-Malaria", 
-            "offset": 235, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 88
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive make sure to give birth at a clinic and tell the health worker about your status. You can get medicine to protect your baby from HIV.", 
-            "name": "34-1-PMTCT", 
-            "offset": 239, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 81
-    }, 
-    {
-        "fields": {
-            "message": "Know signs of labour: If you have strong pains in the lower belly and back, bloody mucous or water leaking from the vagina go to the health clinic right away!", 
-            "name": "34-4-Birth Planning", 
-            "offset": 242, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 97
-    }, 
-    {
-        "fields": {
-            "message": "At the clinic a health worker will feel your belly to check baby's growth,  position and heart. They will also check your blood level, blood pressure and urine.", 
-            "name": "35-1-ANC", 
-            "offset": 246, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 74
-    }, 
-    {
-        "fields": {
-            "message": "It is very important for pregnant women to receive a second dose of SP (Fansidar) to prevent malaria during pregnancy. Have you had your second dose of SP?", 
-            "name": "35-3-Malaria", 
-            "offset": 248, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 89
-    }, 
-    {
-        "fields": {
-            "message": "Have you the things you need for a clean birth and to keep you and baby warm? Make sure you have clean khangas orkitenges to go with you to clinic for birth.", 
-            "name": "35-5-Birth Planning", 
-            "offset": 250, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 98
-    }, 
-    {
-        "fields": {
-            "message": "After your baby is born, make sure that you both sleep under a mosquito net to prevent malaria. Talk with your health worker if you do not have a mosquito net.", 
-            "name": "36-1-Malaria", 
-            "offset": 253, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 91
-    }, 
-    {
-        "fields": {
-            "message": "If you have gone past your due date go to a clinic to check the baby. They may give you medicine to make you go into labour or plan for caesarean section.", 
-            "name": "36-4-Birth Planning", 
-            "offset": 256, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 104
-    }, 
-    {
-        "fields": {
-            "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
-            "name": "37-1-Malaria", 
-            "offset": 260, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 90
-    }, 
-    {
-        "fields": {
-            "message": "You are almost there, hold on! Have you made all the needed plans for giving birth? Do you have money you need to get to the health centre?", 
-            "name": "37-3-Birth Planning", 
-            "offset": 262, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 99
-    }, 
-    {
-        "fields": {
-            "message": "Congratulations it is almost time! You should be visited by a health worker 3 times and go with baby to the clinic during the first week after the baby is born.", 
-            "name": "37-5-ANC", 
-            "offset": 264, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 76
-    }, 
-    {
-        "fields": {
-            "message": "At the clinic a health worker will talk to you about labour: regular pains in the belly and back that get stronger, bloody mucous and water leaking from vagina.", 
-            "name": "38-1-ANC", 
-            "offset": 267, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 75
-    }, 
-    {
-        "fields": {
-            "message": "If you think that your baby has stopped moving or if you feel contractions before your due date, go to the health clinic NOW for a check.", 
-            "name": "38-4-Danger Signs", 
-            "offset": 270, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 102
-    }, 
-    {
-        "fields": {
-            "message": "Every woman and her baby should be seen by a health worker at a health clinic in the first week after delivery. Have you gone to the clinic after giving birth?", 
-            "name": "39-1-PNC", 
-            "offset": 274, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 105
-    }, 
-    {
-        "fields": {
-            "message": "You know that the move of HIV from mother to child can be stopped? If you have HIV you and baby must take medicine to protect the baby.Go to clinic for medicine", 
-            "name": "39-4-PMTCT", 
-            "offset": 277, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 111
-    }, 
-    {
-        "fields": {
-            "message": "Breastmilk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you are having any problems with breastfeeding.", 
-            "name": "39-5-Nutrition", 
-            "offset": 278, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 114
-    }, 
-    {
-        "fields": {
-            "message": "Breastmilk is the only food your baby needs for the first 6 months of life! Give your baby only breastmilk and nothing else to eat or drink until 6 months.", 
-            "name": "40-1-Nutrition", 
-            "offset": 281, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 113
-    }, 
-    {
-        "fields": {
-            "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
-            "name": "40-3-Birth Spacing", 
-            "offset": 283, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 116
-    }, 
-    {
-        "fields": {
-            "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
-            "name": "40-5-Danger Signs", 
-            "offset": 285, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 117
-    }, 
-    {
-        "fields": {
-            "message": "At your first visit after birth a health worker will check your baby's health and give medicines. Have your baby checked during the first week after delivery.", 
-            "name": "41-1-PNC", 
-            "offset": 288, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 106
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
-            "name": "41-3-PMTCT", 
-            "offset": 290, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 112
-    }, 
-    {
-        "fields": {
-            "message": "Prevent malaria by sleeping with your baby under a mosquito net every night.  Talk with your health worker if you do not have a mosquito net.", 
-            "name": "41-5-Malaria", 
-            "offset": 292, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 115
-    }, 
-    {
-        "fields": {
-            "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
-            "name": "42-1-Danger Signs", 
-            "offset": 295, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 118
-    }, 
-    {
-        "fields": {
-            "message": "Go to the clinic for a check during the first week after giving birth. A health worker will check to see you are well. Tell them if you are having any problems.", 
-            "name": "42-3-PNC", 
-            "offset": 297, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 107
-    }, 
-    {
-        "fields": {
-            "message": "Remember to keep your baby warm and dry after birth and put them on the breast within the first hour of life.  ", 
-            "name": "42-5-PNC", 
-            "offset": 299, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 108
-    }, 
-    {
-        "fields": {
-            "message": "Keep umbilical cord clean and dry and do not apply anything. It will fall off after 10 to 21 days. If cord looks red, hot or swollen go to health centre.", 
-            "name": "43-1-PNC", 
-            "offset": 302, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 109
-    }, 
-    {
-        "fields": {
-            "message": "Go to the health clinic NOW if your baby has bleeding, fever, shaking, cries all the time, can't feed well or is not moving much.", 
-            "name": "43-3-PNC", 
-            "offset": 304, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 110
-    }, 
-    {
-        "fields": {
-            "message": "Go to the health clinic for a check 6 weeks after the baby is born. A health worker will check your health and baby's growth, test for HIV and give medicines.", 
-            "name": "44-1-PNC", 
-            "offset": 309, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 119
-    }, 
-    {
-        "fields": {
-            "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
-            "name": "44-3-Birth Spacing", 
-            "offset": 311, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 121
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, your baby can be tested for HIV when 6 weeks old. Take your baby to the clinic for a check and HIV testing at 6 weeks after birth.", 
-            "name": "44-6-PMTCT", 
-            "offset": 314, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 123
-    }, 
-    {
-        "fields": {
-            "message": "Breast milk is the only food your baby needs for the first 6 months of life!  Give your baby only breastmilk and nothing else until they are 6 months old.", 
-            "name": "45-1-Nutrition", 
-            "offset": 316, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 125
-    }, 
-    {
-        "fields": {
-            "message": "Malaria is very dangerous to babies! Prevent malaria by sleeping with your baby under a mosquito net. Talk to a health worker if you do not have a net.", 
-            "name": "45-3-Malaria", 
-            "offset": 318, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 129
-    }, 
-    {
-        "fields": {
-            "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
-            "name": "45-5-Danger Signs", 
-            "offset": 320, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 132
-    }, 
-    {
-        "fields": {
-            "message": "Take your baby to a health clinic at 6 weeks old. A health worker will check the baby's weight, give medicines and will test baby for HIV if you are positive.", 
-            "name": "46-1-PNC", 
-            "offset": 323, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 120
-    }, 
-    {
-        "fields": {
-            "message": "Breast milk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you have any trouble with breastfeeding.", 
-            "name": "46-3-Nutrition", 
-            "offset": 325, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 126
-    }, 
-    {
-        "fields": {
-            "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
-            "name": "46-5-Danger Signs", 
-            "offset": 327, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 133
-    }, 
-    {
-        "fields": {
-            "message": "Malaria is very dangerous to babies! Prevent malaria by closing windows and doors before dark and sleeping with baby under a net. No Net? Talk to health worker.", 
-            "name": "47-1-Malaria", 
-            "offset": 330, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 130
-    }, 
-    {
-        "fields": {
-            "message": "Be sure to take your baby to the health clinic for medicines and a check-up at 6 weeks. See a health worker NOW if your baby has any problems.", 
-            "name": "47-3-PNC", 
-            "offset": 332, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 122
-    }, 
-    {
-        "fields": {
-            "message": "If you have HIV it is important that you and your baby take medicine to protect the baby from HIV. Go to a health clinic for medicine if you don't have any.", 
-            "name": "47-5-PMTCT", 
-            "offset": 334, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 124
-    }, 
-    {
-        "fields": {
-            "message": "When you are breastfeeding eat 3 or 4 meals with a variety of fruit,vegetables,meat,rice and bread every day. Drink lots of boiled water and fresh fruit juice.", 
-            "name": "48-1-Nutrition", 
-            "offset": 337, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 127
-    }, 
-    {
-        "fields": {
-            "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
-            "name": "48-3-Malaria", 
-            "offset": 339, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 131
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy while you are breastfeeding! Get plenty of rest.  Avoid alcohol, drugs, tobacco and herbal medicines, as these can harm your baby.", 
-            "name": "48-6-Nutrition", 
-            "offset": 342, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 128
-    }, 
-    {
-        "fields": {
-            "message": "Have you taken your baby to the health clinic for medicines and testing?  Take your baby for a check-up and be sure that the birth has been registered.", 
-            "name": "49-1-PNC", 
-            "offset": 344, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 134
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, your baby can be tested for HIV at 6 weeks old. Take your baby to the health clinic for testing now if you don't know their status.", 
-            "name": "49-4-PMTCT", 
-            "offset": 347, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 141
-    }, 
-    {
-        "fields": {
-            "message": "Breast milk is the only food your baby needs for the first 6 months of life!  Give your baby only breastmilk and nothing else until they are 6 months old.", 
-            "name": "50-1-Nutrition", 
-            "offset": 351, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 146
-    }, 
-    {
-        "fields": {
-            "message": "Malaria is very dangerous to babies! Prevent malaria by closing windows and doors before dark and sleeping with baby under a net. No Net? Talk to health worker.", 
-            "name": "50-3-Malaria", 
-            "offset": 353, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 152
-    }, 
-    {
-        "fields": {
-            "message": "Taking tea leaves, herbs or bathing after sex will NOT prevent pregnancy. Talk with your health worker about ways to prevent unplanned pregnancy.", 
-            "name": "50-5-Birth Spacing", 
-            "offset": 355, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 157
-    }, 
-    {
-        "fields": {
-            "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
-            "name": "51-1-Danger Signs", 
-            "offset": 358, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 158
-    }, 
-    {
-        "fields": {
-            "message": "If you have HIV or if your baby was early or had low birth weight you should go to the health clinic at least 6 times during first 6 months after birth.", 
-            "name": "51-4-PNC", 
-            "offset": 361, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 135
-    }, 
-    {
-        "fields": {
-            "message": "Do you know your baby's HIV status? Go to a health clinic if you are HIV positive and your baby has not been tested yet.", 
-            "name": "52-1-PMTCT", 
-            "offset": 365, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 139
-    }, 
-    {
-        "fields": {
-            "message": "Breast milk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you have any trouble with breastfeeding.", 
-            "name": "52-3-Nutrition", 
-            "offset": 367, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 147
-    }, 
-    {
-        "fields": {
-            "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
-            "name": "52-5-Malaria", 
-            "offset": 369, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 153
-    }, 
-    {
-        "fields": {
-            "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
-            "name": "53-1-Birth Spacing", 
-            "offset": 372, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 154
-    }, 
-    {
-        "fields": {
-            "message": "Have you and baby been to the health centre lately? It is important that you are seen by a health worker at 6 weeks and at 6 months after the baby is born.", 
-            "name": "53-4-PNC", 
-            "offset": 375, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 136
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, do not forget to give your baby medicine to prevent HIV.  Be sure to store HIV drugs away from sunlight so that they stay fresh.", 
-            "name": "54-1-PMTCT", 
-            "offset": 379, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 140
-    }, 
-    {
-        "fields": {
-            "message": "When you are breastfeeding eat 3 or 4 meals with a variety of fruit,vegetables,meat,rice and bread every day. Drink lots of boiled water and fresh fruit juice.", 
-            "name": "54-3-Nutrition", 
-            "offset": 381, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 148
-    }, 
-    {
-        "fields": {
-            "message": "Getting pregnant soon after your delivery can be unhealthy. Have you considered birth spacing? Speak to your partner and to a health worker.", 
-            "name": "54-6-Birth Spacing", 
-            "offset": 384, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 155
-    }, 
-    {
-        "fields": {
-            "message": "If your baby is not feeding well this could be a sign that they are very sick. Take your baby to a health clinic NOW if they are not feeding well.", 
-            "name": "55-1-Danger Signs", 
-            "offset": 386, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 160
-    }, 
-    {
-        "fields": {
-            "message": "At a 6 month visit, a health worker will check baby weight/height, give medicine and talk about what foods they can eat. Don't forget a 6 month visit to clinic!", 
-            "name": "55-3-PNC", 
-            "offset": 388, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 137
-    }, 
-    {
-        "fields": {
-            "message": "Breastmilk is the healthiest food for your baby. HIV positive moms and their babies must take medicine for all the time they breastfeed.Talk to a health worker!", 
-            "name": "55-5-PMTCT", 
-            "offset": 390, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 142
-    }, 
-    {
-        "fields": {
-            "message": "Using family planning will not make you infertile. Planning is safe, reversible and you can choose time for next baby. Talk to your partner and a health worker!", 
-            "name": "56-1-Birth Spacing", 
-            "offset": 393, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 156
-    }, 
-    {
-        "fields": {
-            "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
-            "name": "56-4-Danger Signs", 
-            "offset": 396, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 159
-    }, 
-    {
-        "fields": {
-            "message": "At a health visit 6 months after birth a health worker will examine and talk to you about staying healthy. Ask them about how to prevent unplanned pregnancy!", 
-            "name": "57-1-PNC", 
-            "offset": 400, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 138
-    }, 
-    {
-        "fields": {
-            "message": "If you are HIV positive, remember that you and your baby both need to take medicine to prevent your baby from catching HIV.", 
-            "name": "57-3-PMTCT", 
-            "offset": 402, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 143
-    }, 
-    {
-        "fields": {
-            "message": "How is the baby growing? Breast milk is the only food your baby needs during the first 6 months. Talk to a health worker about what to feed baby after 6 months.", 
-            "name": "57-5-Nutrition", 
-            "offset": 404, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 150
-    }, 
-    {
-        "fields": {
-            "message": "Malaria is very dangerous to babies! Prevent malaria by sleeping with your baby under a mosquito net. Talk to a health worker if you do not have a net.", 
-            "name": "58-1-Malaria", 
-            "offset": 407, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 151
-    }, 
-    {
-        "fields": {
-            "message": "Take your baby to the health clinic for HIV testing when they are 6 weeks old and again when they stop breastfeeding. Go get the help and medicine you need.", 
-            "name": "58-4-PMTCT", 
-            "offset": 410, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 144
-    }, 
-    {
-        "fields": {
-            "message": "Did you know that HIV positive women still need to take medicine after they stop breastfeeding? Stay healthy for yourself and your baby. See your health worker.", 
-            "name": "59-1-PMTCT", 
-            "offset": 414, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 145
-    }, 
-    {
-        "fields": {
-            "message": "Stay healthy while you are breastfeeding! Get plenty of rest.  Avoid alcohol, drugs, tobacco and herbal medicines, as these can harm your baby.", 
-            "name": "59-4-Nutrition", 
-            "offset": 417, 
-            "timeline": 3
-        }, 
-        "model": "timelines.milestone", 
-        "pk": 149
-    }
+{
+  "pk": 1, 
+  "model": "timelines.timeline", 
+  "fields": {
+    "name": "New Birth/Postnatal Care Visits", 
+    "slug": "birth|bir|postnatal|pnc"
+  }
+},
+{
+  "pk": 2, 
+  "model": "timelines.timeline", 
+  "fields": {
+    "name": "New pregancy/Antenatal Care Visits", 
+    "slug": "pregnancy|pre|preg|anc|ante"
+  }
+},
+{
+  "pk": 3, 
+  "model": "timelines.timeline", 
+  "fields": {
+    "name": "ANC/PNC Advice", 
+    "slug": "advice|advise"
+  }
+},
+{
+  "pk": 39, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you gone for your first health visit? Every pregnant woman should go to the health centre for at least 4 visits. Go as soon as you know you are pregnant.", 
+    "master": 38, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 40, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Women should give birth in a health clinic with a doctor, nurse or midwife. Where will you give birth? Talk to a health worker, family or friends. Make a plan", 
+    "master": 62, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 41, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, talk with your health worker and make a plan for breastfeeding. Your baby will be well nourished and safe!", 
+    "master": 46, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 42, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
+    "master": 56, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 43, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
+    "master": 52, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 44, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the clinic to check for diseases that harm you or your baby. A health worker will check your blood pressure and your belly to see how the baby is growing.", 
+    "master": 39, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 45, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
+    "master": 60, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 46, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "How will you get to a health clinic when you go into labour? Is there enough money to go there? Make a plan and discuss with your partner, friends and family.", 
+    "master": 63, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 47, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
+    "master": 67, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 48, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
+    "master": 47, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 49, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At the clinic you will be asked questions: How are you feeling? Do you eat well? Do you sleep under a net? Are you taking tablets? Tell them about any problems.", 
+    "master": 40, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 50, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you use a mosquito net at night? Prevent malaria by closing windows and doors before dark and sleeping under a net. Talk to a health worker about a net.", 
+    "master": 57, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 51, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
+    "master": 48, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 52, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Take your iron and folate tablets every evening after a meal. Iron may make your poo black but don't worry! Tell your health worker if you have any problems.", 
+    "master": 53, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 53, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Who will go with you to the clinic when you go into labour? Choose someone you trust and who can make decisions for you if needed. Make a plan with this person.", 
+    "master": 64, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 54, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you think that your baby has stopped moving or if you feel contractions before your due date, go to the health clinic NOW for a check.", 
+    "master": 68, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 55, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At the clinic you should get medicine to build your blood, prevent malaria, treat for worms and protect against tetanus. These are safe for you and your baby.", 
+    "master": 41, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 56, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
+    "master": 58, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 57, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Plan for any problems: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
+    "master": 65, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 58, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you and your partner been tested? Go to a health centre for HIV testing and talk to a health worker about preventing infection of your baby.", 
+    "master": 49, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 59, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have any problems with your pregnancy you may need to have more than four health visits. Follow the advice that your health worker gives you.", 
+    "master": 44, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 60, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you felt the baby move? At the clinic a health worker will feel your belly to check the baby. Usually the top of the womb can be felt at 20 weeks pregnancy", 
+    "master": 42, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 61, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy! Pregnant women should get plenty of rest. They should not take alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
+    "master": 54, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 62, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnant women can have malaria without knowing it. It is important to take two doses of SP (Fansidar) to prevent malaria. Have you had your first dose of SP?", 
+    "master": 59, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 63, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
+    "master": 69, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 64, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnant women should go for at least four health visits. Did you go for a second visit? A health worker will listen to the baby's heart and check its growth.", 
+    "master": 43, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 65, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have HIV you need to take medicine to protect your baby. Tell your health care worker if you know you are infected. Get tested if you don't know!", 
+    "master": 50, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 66, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Every pregnant woman should go for at least 4 health visits. How many times have you gone? If you've not had 3 visits go to the clinic now, it is not too late!", 
+    "master": 70, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 67, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
+    "master": 85, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 68, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
+    "master": 103, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 69, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "When is your baby due? How will you get to a health clinic when you go into labour? Is there enough money to go there? Plan together with friends and family.", 
+    "master": 94, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 70, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
+    "master": 79, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 71, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnancy is a wonderful time but you may also have worries.Talk about your pregnancy with your partner, friends and family members so they can support you.", 
+    "master": 71, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 72, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
+    "master": 82, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 73, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "It is imprtant to give birth in a health clinic with a nurse, midwife or doctor.  Make a plan with your health worker, partner, friends and family.", 
+    "master": 93, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 74, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
+    "master": 100, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 75, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
+    "master": 77, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 76, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Every pregnant woman should go for at least 4 health centre visits. Have you gone for your fourth visit yet?", 
+    "master": 72, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 77, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You can prevent malaria by closing your windows and doors before dark and sleeping under a net every night. Visit a health worker if you need a mosquito net!", 
+    "master": 86, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 78, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
+    "master": 92, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 79, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Who will go with you to the health clinic when you are in labour? Choose someone you trust who can make decisions for you in case you can't. Plan together.", 
+    "master": 95, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 80, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
+    "master": 78, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 81, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
+    "master": 83, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 82, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Malaria can cause problems for the baby and mother: low birth weight, stillbirth and even death. Did you get a ITN voucher from the clinic to prevent malaria?", 
+    "master": 87, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 83, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
+    "master": 101, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 84, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Plan for any problems: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
+    "master": 96, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 85, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy! Pregnant women should get plenty of rest. They should not take alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
+    "master": 84, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 86, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, talk with your health worker and make a plan for breastfeeding. Your baby will be well nourished and safe!", 
+    "master": 80, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 87, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have any problems with your pregnancy you may need to have more than four health visits. Follow the advice that your health worker gives you.", 
+    "master": 73, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 88, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnant women should take SP even when they are not sick because they are more likely to get malaria or they don't know they are sick. It is safe for the baby.", 
+    "master": 88, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 89, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive make sure to give birth at a clinic and tell the health worker about your status. You can get medicine to protect your baby from HIV.", 
+    "master": 81, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 90, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Know signs of labour: If you have strong pains in the lower belly and back, bloody mucous or water leaking from the vagina go to the health clinic right away!", 
+    "master": 97, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 91, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At the clinic a health worker will feel your belly to check baby's growth,  position and heart. They will also check your blood level, blood pressure and urine.", 
+    "master": 74, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 92, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "It is very important for pregnant women to receive a second dose of SP (Fansidar) to prevent malaria during pregnancy. Have you had your second dose of SP?", 
+    "master": 89, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 93, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you the things you need for a clean birth and to keep you and baby warm? Make sure you have clean khangas orkitenges to go with you to clinic for birth.", 
+    "master": 98, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 94, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "After your baby is born, make sure that you both sleep under a mosquito net to prevent malaria. Talk with your health worker if you do not have a mosquito net.", 
+    "master": 91, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 95, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have gone past your due date go to a clinic to check the baby. They may give you medicine to make you go into labour or plan for caesarean section.", 
+    "master": 104, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 96, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
+    "master": 90, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 97, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You are almost there, hold on! Have you made all the needed plans for giving birth? Do you have money you need to get to the health centre?", 
+    "master": 99, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 98, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Congratulations it is almost time! You should be visited by a health worker 3 times and go with baby to the clinic during the first week after the baby is born.", 
+    "master": 76, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 99, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At the clinic a health worker will talk to you about labour: regular pains in the belly and back that get stronger, bloody mucous and water leaking from vagina.", 
+    "master": 75, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 100, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you think that your baby has stopped moving or if you feel contractions before your due date, go to the health clinic NOW for a check.", 
+    "master": 102, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 101, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Every woman and her baby should be seen by a health worker at a health clinic in the first week after delivery. Have you gone to the clinic after giving birth?", 
+    "master": 105, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 102, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You know that the move of HIV from mother to child can be stopped? If you have HIV you and baby must take medicine to protect the baby.Go to clinic for medicine", 
+    "master": 111, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 103, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breastmilk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you are having any problems with breastfeeding.", 
+    "master": 114, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 104, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breastmilk is the only food your baby needs for the first 6 months of life! Give your baby only breastmilk and nothing else to eat or drink until 6 months.", 
+    "master": 113, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 105, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
+    "master": 116, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 106, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
+    "master": 117, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 107, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At your first visit after birth a health worker will check your baby's health and give medicines. Have your baby checked during the first week after delivery.", 
+    "master": 106, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 108, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
+    "master": 112, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 109, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Prevent malaria by sleeping with your baby under a mosquito net every night.  Talk with your health worker if you do not have a mosquito net.", 
+    "master": 115, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 110, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
+    "master": 118, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 111, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the clinic for a check during the first week after giving birth. A health worker will check to see you are well. Tell them if you are having any problems.", 
+    "master": 107, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 112, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Remember to keep your baby warm and dry after birth and put them on the breast within the first hour of life.  ", 
+    "master": 108, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 113, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Keep umbilical cord clean and dry and do not apply anything. It will fall off after 10 to 21 days. If cord looks red, hot or swollen go to health centre.", 
+    "master": 109, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 114, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the health clinic NOW if your baby has bleeding, fever, shaking, cries all the time, can't feed well or is not moving much.", 
+    "master": 110, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 115, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the health clinic for a check 6 weeks after the baby is born. A health worker will check your health and baby's growth, test for HIV and give medicines.", 
+    "master": 119, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 116, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
+    "master": 121, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 117, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, your baby can be tested for HIV when 6 weeks old. Take your baby to the clinic for a check and HIV testing at 6 weeks after birth.", 
+    "master": 123, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 118, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breast milk is the only food your baby needs for the first 6 months of life!  Give your baby only breastmilk and nothing else until they are 6 months old.", 
+    "master": 125, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 119, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Malaria is very dangerous to babies! Prevent malaria by sleeping with your baby under a mosquito net. Talk to a health worker if you do not have a net.", 
+    "master": 129, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 120, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
+    "master": 132, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 121, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Take your baby to a health clinic at 6 weeks old. A health worker will check the baby's weight, give medicines and will test baby for HIV if you are positive.", 
+    "master": 120, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 122, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breast milk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you have any trouble with breastfeeding.", 
+    "master": 126, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 123, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
+    "master": 133, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 124, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Malaria is very dangerous to babies! Prevent malaria by closing windows and doors before dark and sleeping with baby under a net. No Net? Talk to health worker.", 
+    "master": 130, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 125, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Be sure to take your baby to the health clinic for medicines and a check-up at 6 weeks. See a health worker NOW if your baby has any problems.", 
+    "master": 122, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 126, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have HIV it is important that you and your baby take medicine to protect the baby from HIV. Go to a health clinic for medicine if you don't have any.", 
+    "master": 124, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 127, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "When you are breastfeeding eat 3 or 4 meals with a variety of fruit,vegetables,meat,rice and bread every day. Drink lots of boiled water and fresh fruit juice.", 
+    "master": 127, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 128, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
+    "master": 131, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 129, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy while you are breastfeeding! Get plenty of rest.  Avoid alcohol, drugs, tobacco and herbal medicines, as these can harm your baby.", 
+    "master": 128, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 130, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you taken your baby to the health clinic for medicines and testing?  Take your baby for a check-up and be sure that the birth has been registered.", 
+    "master": 134, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 131, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, your baby can be tested for HIV at 6 weeks old. Take your baby to the health clinic for testing now if you don't know their status.", 
+    "master": 141, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 132, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breast milk is the only food your baby needs for the first 6 months of life!  Give your baby only breastmilk and nothing else until they are 6 months old.", 
+    "master": 146, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 133, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Malaria is very dangerous to babies! Prevent malaria by closing windows and doors before dark and sleeping with baby under a net. No Net? Talk to health worker.", 
+    "master": 152, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 134, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Taking tea leaves, herbs or bathing after sex will NOT prevent pregnancy. Talk with your health worker about ways to prevent unplanned pregnancy.", 
+    "master": 157, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 135, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to clinic NOW if you have: bleeding or bad smelling fluid from vagina, pain in  belly, fever,headache, blurred vision, or problems breathing or breastfeeding", 
+    "master": 158, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 136, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have HIV or if your baby was early or had low birth weight you should go to the health clinic at least 6 times during first 6 months after birth.", 
+    "master": 135, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 137, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your baby's HIV status? Go to a health clinic if you are HIV positive and your baby has not been tested yet.", 
+    "master": 139, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 138, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breast milk is the only food your baby needs for the first 6 months of life! Ask your health worker for help if you have any trouble with breastfeeding.", 
+    "master": 147, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 139, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
+    "master": 153, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 140, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Did you know that you can get pregnant again soon after delivery? Talk to your partner and health worker about using condoms and preventing unplanned pregnancy.", 
+    "master": 154, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 141, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you and baby been to the health centre lately? It is important that you are seen by a health worker at 6 weeks and at 6 months after the baby is born.", 
+    "master": 136, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 142, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, do not forget to give your baby medicine to prevent HIV.  Be sure to store HIV drugs away from sunlight so that they stay fresh.", 
+    "master": 140, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 143, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "When you are breastfeeding eat 3 or 4 meals with a variety of fruit,vegetables,meat,rice and bread every day. Drink lots of boiled water and fresh fruit juice.", 
+    "master": 148, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 144, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Getting pregnant soon after your delivery can be unhealthy. Have you considered birth spacing? Speak to your partner and to a health worker.", 
+    "master": 155, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 145, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If your baby is not feeding well this could be a sign that they are very sick. Take your baby to a health clinic NOW if they are not feeding well.", 
+    "master": 160, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 146, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At a 6 month visit, a health worker will check baby weight/height, give medicine and talk about what foods they can eat. Don't forget a 6 month visit to clinic!", 
+    "master": 137, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 147, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Breastmilk is the healthiest food for your baby. HIV positive moms and their babies must take medicine for all the time they breastfeed.Talk to a health worker!", 
+    "master": 142, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 148, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Using family planning will not make you infertile. Planning is safe, reversible and you can choose time for next baby. Talk to your partner and a health worker!", 
+    "master": 156, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 149, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to the health clinic NOW if your baby has fever, problems breathing, cries all the time, is unable to suck, moves less than normal or has bad shaking.", 
+    "master": 159, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 150, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At a health visit 6 months after birth a health worker will examine and talk to you about staying healthy. Ask them about how to prevent unplanned pregnancy!", 
+    "master": 138, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 151, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you are HIV positive, remember that you and your baby both need to take medicine to prevent your baby from catching HIV.", 
+    "master": 143, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 152, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "How is the baby growing? Breast milk is the only food your baby needs during the first 6 months. Talk to a health worker about what to feed baby after 6 months.", 
+    "master": 150, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 153, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Malaria is very dangerous to babies! Prevent malaria by sleeping with your baby under a mosquito net. Talk to a health worker if you do not have a net.", 
+    "master": 151, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 154, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Take your baby to the health clinic for HIV testing when they are 6 weeks old and again when they stop breastfeeding. Go get the help and medicine you need.", 
+    "master": 144, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 155, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Did you know that HIV positive women still need to take medicine after they stop breastfeeding? Stay healthy for yourself and your baby. See your health worker.", 
+    "master": 145, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 156, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy while you are breastfeeding! Get plenty of rest.  Avoid alcohol, drugs, tobacco and herbal medicines, as these can harm your baby.", 
+    "master": 149, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 157, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your HIV status? An infected woman can protect her baby by taking action. Visit a clinic with your partner for tests and help keep your baby safe!", 
+    "master": 161, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 158, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy! Drink a lot of boiled water, juice and milk. Eat healthy four times a day: fruit, vegetables, beans or g-nuts. Eggs, meat or fish two times a week", 
+    "master": 162, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 159, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You should always use a condom during sex. If you don't have HIV, condoms can protect you and your baby. Talk about it with your health worker and your partner.", 
+    "master": 163, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 160, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
+    "master": 164, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 161, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Are you taking iron and folate tablets? They are important for a healthy baby and to maintain a mother's blood level.  Make sure you take them every day!", 
+    "master": 165, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 162, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Who will go with you to the clinic when you go into labour? Choose someone you trust and who can make decisions for you if needed. Make a plan with this person.", 
+    "master": 166, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 163, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
+    "master": 167, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 164, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "At the health clinic a health worker will check your blood pressure and feel your belly. They will tell you around what date your baby should be born.", 
+    "master": 168, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 165, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Eat 4 meals a day and bites between meals. Eat a variety of foods like bread, rice, fruit, vegetables, meat. Do not get thirsty, drink boiled water and juice.", 
+    "master": 169, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 166, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Women should give birth in a health clinic with a doctor, nurse or midwife. Where will you give birth? Talk to a health worker, family or friends. Make a plan", 
+    "master": 170, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 167, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you and your partner been tested? Go to a health centre for HIV testing and talk to a health worker about preventing infection of your baby.", 
+    "master": 171, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 168, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Keep your body clean by bathing regularly. Brush your teeth every day.  Always wash your hands after using the latrine, before eating and before preparing food.", 
+    "master": 172, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 169, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
+    "master": 173, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 170, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you sleep under a mosquito net at night to stop malaria? Malaria harms a mothers and babies. It causes babies to be born small or born dead. Get a net!", 
+    "master": 174, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 171, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have fever, headache, joint paints, poor appetite, nausea, vomiting, diarrhoea, chest pain or look pale, go to a health centre now for help with malaria.", 
+    "master": 175, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 172, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnant women are more likely to get malaria. At your 2nd and 3rd health visit you will get medicine SP or Fansidar to prevent malaria. It's safe for your baby", 
+    "master": 176, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 173, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "What date is your baby due? Start planning with your partner, family and health worker now, so that you are prepared when the time comes.", 
+    "master": 177, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 174, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you visited a clinic? Visit the health centre to check for anaemia, sphyilis, HIV and TB, and to get medicine to build your blood, for malaria and tetanus.", 
+    "master": 178, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 175, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "How will you get to a health clinic when you go into labour? Is there enough money to go there? Make a plan and discuss with your partner, friends and family.", 
+    "master": 179, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 176, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "What date is your baby due? Start planning with your partner, family and health worker so that you are prepared when the time comes.", 
+    "master": 180, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 177, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you gone for your first health visit? Every pregnant woman should go to the health centre for at least 4 visits. Go as soon as you know you are pregnant.", 
+    "master": 181, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 178, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know your HIV status? Mothers can prevent their babies from being infected with HIV by taking action. Visit a health centre with your partner for testing", 
+    "master": 182, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 179, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Have you told someone you trust about your pregnancy? Tell your partner, a friend or family member early on so that they can support you.", 
+    "master": 183, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 180, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know that the move of HIV from mother to child can be stopped? If you have HIV remember to take your medicine to prevent your baby from getting infected.", 
+    "master": 184, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 181, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Pregnancy is a wonderful time but you may also have worries.Talk about your pregnancy with your partner, friends and family members so they can support you.", 
+    "master": 185, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 182, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Know danger signs like vaginal bleeding, severe belly pain, fever, headache, blurred vision or swelling. Go to the health centre NOW if you have these problems.", 
+    "master": 186, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 183, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Stay healthy! Preganant women should not use alcohol, drugs, tobacco or herbal medicines because these can harm your baby.", 
+    "master": 187, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 184, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Make a pregnancy plan: Where to go for treatment? How to get there? Is there money set aside? Who will help at home if you are away? Talk to family and friends.", 
+    "master": 188, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 185, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Go to a health centre NOW if you have vaginal bleeding, fever, bad headache or blurred vision, swelling of face or body, convulsions or bad pain in lower  belly", 
+    "master": 189, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 186, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "You can prevent malaria by closing your windows and doors before dark and sleeping under a net every night. Visit a health worker if you need a mosquito net!", 
+    "master": 190, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 187, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "If you have vaginal discharge, sores on your private parts, or pain in lower belly go to a health clinic NOW to get help for the health of you and your baby!", 
+    "master": 191, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 188, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Congratulations on your pregnancy! Have you gone for your first health visit? Go for your first visit as soon as possible for the health of you and your baby!", 
+    "master": 192, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 189, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Congratulations on your pregnancy! Have you gone to the clinic? You should be checked at least 4 times at a health centre to ensure a healthy pregnancy/baby.", 
+    "master": 193, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 190, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Drink safe and boiled water! Do not drink water directly from lakes, ponds and rivers. Do not eat soil or clay. This can make you and your baby sick.", 
+    "master": 194, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 191, 
+  "model": "timelines.milestonetranslation", 
+  "fields": {
+    "message": "Do you know where you will have your baby? What will you do if there is a problem during pregnancy? Speak with your family or health worker now, to make a plan.", 
+    "master": 195, 
+    "language_code": "en"
+  }
+},
+{
+  "pk": 1, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 1, 
+    "name": "6 day appointment", 
+    "offset": 6
+  }
+},
+{
+  "pk": 2, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 1, 
+    "name": "6 week appointment", 
+    "offset": 42
+  }
+},
+{
+  "pk": 3, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 1, 
+    "name": "6 month appointment", 
+    "offset": 180
+  }
+},
+{
+  "pk": 4, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 2, 
+    "name": "1st ANC visit", 
+    "offset": 63
+  }
+},
+{
+  "pk": 5, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 2, 
+    "name": "2nd ANC visit", 
+    "offset": 175
+  }
+},
+{
+  "pk": 6, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 2, 
+    "name": "3rd ANC visit", 
+    "offset": 224
+  }
+},
+{
+  "pk": 7, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 2, 
+    "name": "4th ANC visit", 
+    "offset": 259
+  }
+},
+{
+  "pk": 38, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "15-1-ANC", 
+    "offset": 106
+  }
+},
+{
+  "pk": 39, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "17-1-ANC", 
+    "offset": 120
+  }
+},
+{
+  "pk": 40, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "19-1-ANC", 
+    "offset": 134
+  }
+},
+{
+  "pk": 41, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "21-3-ANC", 
+    "offset": 150
+  }
+},
+{
+  "pk": 42, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "23-1-ANC", 
+    "offset": 162
+  }
+},
+{
+  "pk": 43, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "24-3-ANC", 
+    "offset": 171
+  }
+},
+{
+  "pk": 44, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "22-6-ANC", 
+    "offset": 160
+  }
+},
+{
+  "pk": 46, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "16-1-PMTCT", 
+    "offset": 113
+  }
+},
+{
+  "pk": 47, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "18-6-PMTCT", 
+    "offset": 132
+  }
+},
+{
+  "pk": 48, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "20-1-PMTCT", 
+    "offset": 141
+  }
+},
+{
+  "pk": 49, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "22-3-PMTCT", 
+    "offset": 157
+  }
+},
+{
+  "pk": 50, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "24-5-PMTCT", 
+    "offset": 173
+  }
+},
+{
+  "pk": 52, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "16-6-Nutrition", 
+    "offset": 118
+  }
+},
+{
+  "pk": 53, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "20-3-Nutrition", 
+    "offset": 143
+  }
+},
+{
+  "pk": 54, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "23-3-Nutrition", 
+    "offset": 164
+  }
+},
+{
+  "pk": 56, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "16-3-Malaria", 
+    "offset": 115
+  }
+},
+{
+  "pk": 57, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "19-4-Malaria", 
+    "offset": 137
+  }
+},
+{
+  "pk": 58, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "21-5-Malaria", 
+    "offset": 152
+  }
+},
+{
+  "pk": 59, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "23-6-Malaria", 
+    "offset": 167
+  }
+},
+{
+  "pk": 60, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "17-4-Hygiene", 
+    "offset": 123
+  }
+},
+{
+  "pk": 62, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "15-4-Birth Planning", 
+    "offset": 109
+  }
+},
+{
+  "pk": 63, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "18-1-Birth Planning", 
+    "offset": 127
+  }
+},
+{
+  "pk": 64, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "20-5-Birth Planning", 
+    "offset": 145
+  }
+},
+{
+  "pk": 65, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "22-1-Birth Planning", 
+    "offset": 155
+  }
+},
+{
+  "pk": 67, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "18-3-Danger Signs", 
+    "offset": 129
+  }
+},
+{
+  "pk": 68, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "21-1-Danger Signs", 
+    "offset": 148
+  }
+},
+{
+  "pk": 69, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "24-1-Danger Signs", 
+    "offset": 169
+  }
+},
+{
+  "pk": 70, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "25-1-ANC", 
+    "offset": 176
+  }
+},
+{
+  "pk": 71, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "27-1-ANC", 
+    "offset": 190
+  }
+},
+{
+  "pk": 72, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "29-1-ANC", 
+    "offset": 204
+  }
+},
+{
+  "pk": 73, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "33-1-ANC", 
+    "offset": 232
+  }
+},
+{
+  "pk": 74, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "35-1-ANC", 
+    "offset": 246
+  }
+},
+{
+  "pk": 75, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "38-1-ANC", 
+    "offset": 267
+  }
+},
+{
+  "pk": 76, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "37-5-ANC", 
+    "offset": 264
+  }
+},
+{
+  "pk": 77, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "28-5-PMTCT", 
+    "offset": 201
+  }
+},
+{
+  "pk": 78, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "30-3-PMTCT", 
+    "offset": 213
+  }
+},
+{
+  "pk": 79, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "26-5-PMTCT", 
+    "offset": 187
+  }
+},
+{
+  "pk": 80, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "32-5-PMTCT", 
+    "offset": 229
+  }
+},
+{
+  "pk": 81, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "34-1-PMTCT", 
+    "offset": 239
+  }
+},
+{
+  "pk": 82, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "27-4-Nutrition", 
+    "offset": 193
+  }
+},
+{
+  "pk": 83, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "30-5-Nutrition", 
+    "offset": 215
+  }
+},
+{
+  "pk": 84, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "32-3-Nutrition", 
+    "offset": 227
+  }
+},
+{
+  "pk": 85, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "25-4-Malaria", 
+    "offset": 179
+  }
+},
+{
+  "pk": 86, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "29-3-Malaria", 
+    "offset": 206
+  }
+},
+{
+  "pk": 87, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "31-1-Malaria", 
+    "offset": 218
+  }
+},
+{
+  "pk": 88, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "33-4-Malaria", 
+    "offset": 235
+  }
+},
+{
+  "pk": 89, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "35-3-Malaria", 
+    "offset": 248
+  }
+},
+{
+  "pk": 90, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "37-1-Malaria", 
+    "offset": 260
+  }
+},
+{
+  "pk": 91, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "36-1-Malaria", 
+    "offset": 253
+  }
+},
+{
+  "pk": 92, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "29-5-Hygiene", 
+    "offset": 208
+  }
+},
+{
+  "pk": 93, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "28-1-Birth Planning", 
+    "offset": 197
+  }
+},
+{
+  "pk": 94, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "26-3-Birth Planning", 
+    "offset": 185
+  }
+},
+{
+  "pk": 95, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "30-1-Birth Planning", 
+    "offset": 211
+  }
+},
+{
+  "pk": 96, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "32-1-Birth Planning", 
+    "offset": 225
+  }
+},
+{
+  "pk": 97, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "34-4-Birth Planning", 
+    "offset": 242
+  }
+},
+{
+  "pk": 98, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "35-5-Birth Planning", 
+    "offset": 250
+  }
+},
+{
+  "pk": 99, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "37-3-Birth Planning", 
+    "offset": 262
+  }
+},
+{
+  "pk": 100, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "28-3-Danger Signs", 
+    "offset": 199
+  }
+},
+{
+  "pk": 101, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "31-4-Danger Signs", 
+    "offset": 221
+  }
+},
+{
+  "pk": 102, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "38-4-Danger Signs", 
+    "offset": 270
+  }
+},
+{
+  "pk": 103, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "26-1-Danger Signs", 
+    "offset": 183
+  }
+},
+{
+  "pk": 104, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "36-4-Birth Planning", 
+    "offset": 256
+  }
+},
+{
+  "pk": 105, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "39-1-PNC", 
+    "offset": 274
+  }
+},
+{
+  "pk": 106, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "41-1-PNC", 
+    "offset": 288
+  }
+},
+{
+  "pk": 107, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "42-3-PNC", 
+    "offset": 297
+  }
+},
+{
+  "pk": 108, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "42-5-PNC", 
+    "offset": 299
+  }
+},
+{
+  "pk": 109, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "43-1-PNC", 
+    "offset": 302
+  }
+},
+{
+  "pk": 110, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "43-3-PNC", 
+    "offset": 304
+  }
+},
+{
+  "pk": 111, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "39-4-PMTCT", 
+    "offset": 277
+  }
+},
+{
+  "pk": 112, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "41-3-PMTCT", 
+    "offset": 290
+  }
+},
+{
+  "pk": 113, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "40-1-Nutrition", 
+    "offset": 281
+  }
+},
+{
+  "pk": 114, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "39-5-Nutrition", 
+    "offset": 278
+  }
+},
+{
+  "pk": 115, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "41-5-Malaria", 
+    "offset": 292
+  }
+},
+{
+  "pk": 116, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "40-3-Birth Spacing", 
+    "offset": 283
+  }
+},
+{
+  "pk": 117, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "40-5-Danger Signs", 
+    "offset": 285
+  }
+},
+{
+  "pk": 118, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "42-1-Danger Signs", 
+    "offset": 295
+  }
+},
+{
+  "pk": 119, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "44-1-PNC", 
+    "offset": 309
+  }
+},
+{
+  "pk": 120, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "46-1-PNC", 
+    "offset": 323
+  }
+},
+{
+  "pk": 121, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "44-3-Birth Spacing", 
+    "offset": 311
+  }
+},
+{
+  "pk": 122, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "47-3-PNC", 
+    "offset": 332
+  }
+},
+{
+  "pk": 123, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "44-6-PMTCT", 
+    "offset": 314
+  }
+},
+{
+  "pk": 124, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "47-5-PMTCT", 
+    "offset": 334
+  }
+},
+{
+  "pk": 125, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "45-1-Nutrition", 
+    "offset": 316
+  }
+},
+{
+  "pk": 126, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "46-3-Nutrition", 
+    "offset": 325
+  }
+},
+{
+  "pk": 127, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "48-1-Nutrition", 
+    "offset": 337
+  }
+},
+{
+  "pk": 128, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "48-6-Nutrition", 
+    "offset": 342
+  }
+},
+{
+  "pk": 129, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "45-3-Malaria", 
+    "offset": 318
+  }
+},
+{
+  "pk": 130, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "47-1-Malaria", 
+    "offset": 330
+  }
+},
+{
+  "pk": 131, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "48-3-Malaria", 
+    "offset": 339
+  }
+},
+{
+  "pk": 132, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "45-5-Danger Signs", 
+    "offset": 320
+  }
+},
+{
+  "pk": 133, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "46-5-Danger Signs", 
+    "offset": 327
+  }
+},
+{
+  "pk": 134, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "49-1-PNC", 
+    "offset": 344
+  }
+},
+{
+  "pk": 135, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "51-4-PNC", 
+    "offset": 361
+  }
+},
+{
+  "pk": 136, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "53-4-PNC", 
+    "offset": 375
+  }
+},
+{
+  "pk": 137, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "55-3-PNC", 
+    "offset": 388
+  }
+},
+{
+  "pk": 138, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "57-1-PNC", 
+    "offset": 400
+  }
+},
+{
+  "pk": 139, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "52-1-PMTCT", 
+    "offset": 365
+  }
+},
+{
+  "pk": 140, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "54-1-PMTCT", 
+    "offset": 379
+  }
+},
+{
+  "pk": 141, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "49-4-PMTCT", 
+    "offset": 347
+  }
+},
+{
+  "pk": 142, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "55-5-PMTCT", 
+    "offset": 390
+  }
+},
+{
+  "pk": 143, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "57-3-PMTCT", 
+    "offset": 402
+  }
+},
+{
+  "pk": 144, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "58-4-PMTCT", 
+    "offset": 410
+  }
+},
+{
+  "pk": 145, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "59-1-PMTCT", 
+    "offset": 414
+  }
+},
+{
+  "pk": 146, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "50-1-Nutrition", 
+    "offset": 351
+  }
+},
+{
+  "pk": 147, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "52-3-Nutrition", 
+    "offset": 367
+  }
+},
+{
+  "pk": 148, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "54-3-Nutrition", 
+    "offset": 381
+  }
+},
+{
+  "pk": 149, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "59-4-Nutrition", 
+    "offset": 417
+  }
+},
+{
+  "pk": 150, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "57-5-Nutrition", 
+    "offset": 404
+  }
+},
+{
+  "pk": 151, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "58-1-Malaria", 
+    "offset": 407
+  }
+},
+{
+  "pk": 152, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "50-3-Malaria", 
+    "offset": 353
+  }
+},
+{
+  "pk": 153, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "52-5-Malaria", 
+    "offset": 369
+  }
+},
+{
+  "pk": 154, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "53-1-Birth Spacing", 
+    "offset": 372
+  }
+},
+{
+  "pk": 155, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "54-6-Birth Spacing", 
+    "offset": 384
+  }
+},
+{
+  "pk": 156, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "56-1-Birth Spacing", 
+    "offset": 393
+  }
+},
+{
+  "pk": 157, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "50-5-Birth Spacing", 
+    "offset": 355
+  }
+},
+{
+  "pk": 158, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "51-1-Danger Signs", 
+    "offset": 358
+  }
+},
+{
+  "pk": 159, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "56-4-Danger Signs", 
+    "offset": 396
+  }
+},
+{
+  "pk": 160, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "55-1-Danger Signs", 
+    "offset": 386
+  }
+},
+{
+  "pk": 161, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "08-1-PMTCT", 
+    "offset": 57
+  }
+},
+{
+  "pk": 162, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "02-3-Nutrition", 
+    "offset": 17
+  }
+},
+{
+  "pk": 163, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "07-5-PMTCT", 
+    "offset": 54
+  }
+},
+{
+  "pk": 164, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "01-5-PMTCT", 
+    "offset": 12
+  }
+},
+{
+  "pk": 165, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "12-1-Nutrition", 
+    "offset": 85
+  }
+},
+{
+  "pk": 166, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "11-4-Birth Planning", 
+    "offset": 81
+  }
+},
+{
+  "pk": 167, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "13-6-Nutrition", 
+    "offset": 97
+  }
+},
+{
+  "pk": 168, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "10-3-ANC", 
+    "offset": 73
+  }
+},
+{
+  "pk": 169, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "11-1-Nutrition", 
+    "offset": 78
+  }
+},
+{
+  "pk": 170, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "05-3-Birth Planning", 
+    "offset": 38
+  }
+},
+{
+  "pk": 171, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "06-1-PMTCT", 
+    "offset": 43
+  }
+},
+{
+  "pk": 172, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "07-1-Hygiene", 
+    "offset": 50
+  }
+},
+{
+  "pk": 173, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "14-5-Danger Signs", 
+    "offset": 103
+  }
+},
+{
+  "pk": 174, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "02-1-Malaria", 
+    "offset": 15
+  }
+},
+{
+  "pk": 175, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "08-4-Malaria", 
+    "offset": 60
+  }
+},
+{
+  "pk": 176, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "14-1-Malaria", 
+    "offset": 99
+  }
+},
+{
+  "pk": 177, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "14-3-Birth Planning", 
+    "offset": 101
+  }
+},
+{
+  "pk": 178, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "06-3-ANC", 
+    "offset": 45
+  }
+},
+{
+  "pk": 179, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "07-3-Birth Planning", 
+    "offset": 52
+  }
+},
+{
+  "pk": 180, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "12-4-Birth Planning", 
+    "offset": 88
+  }
+},
+{
+  "pk": 181, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "02-5-ANC", 
+    "offset": 19
+  }
+},
+{
+  "pk": 182, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "13-3-PMTCT", 
+    "offset": 94
+  }
+},
+{
+  "pk": 183, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "01-3-ANC", 
+    "offset": 10
+  }
+},
+{
+  "pk": 184, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "04-1-PMTCT", 
+    "offset": 29
+  }
+},
+{
+  "pk": 185, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "09-3-Birth Planning", 
+    "offset": 66
+  }
+},
+{
+  "pk": 186, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "05-1-Danger Signs", 
+    "offset": 36
+  }
+},
+{
+  "pk": 187, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "06-5-Nutrition", 
+    "offset": 47
+  }
+},
+{
+  "pk": 188, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "04-5-Birth Planning", 
+    "offset": 33
+  }
+},
+{
+  "pk": 189, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "03-4-Danger Signs", 
+    "offset": 25
+  }
+},
+{
+  "pk": 190, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "04-3-Malaria", 
+    "offset": 31
+  }
+},
+{
+  "pk": 191, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "10-1-Danger Signs", 
+    "offset": 71
+  }
+},
+{
+  "pk": 192, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "13-1-ANC", 
+    "offset": 92
+  }
+},
+{
+  "pk": 193, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "01-1-ANC", 
+    "offset": 8
+  }
+},
+{
+  "pk": 194, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "09-1-Nutrition", 
+    "offset": 64
+  }
+},
+{
+  "pk": 195, 
+  "model": "timelines.milestone", 
+  "fields": {
+    "timeline": 3, 
+    "name": "03-1-Birth Planning", 
+    "offset": 22
+  }
+}
 ]
