@@ -190,6 +190,11 @@ LOGGING = {
     }
 }
 
+# Haystack
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_SITECONF = 'avocado.search_sites'
+HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_PATH, 'whoosh.index')
+
 INSTALLED_APPS = (
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -262,6 +267,7 @@ RAPIDSMS_HANDLERS = (
     'timelines.handlers.new.NewHandler',
     'timelines.handlers.quit.QuitHandler',
     'timelines.handlers.status.StatusHandler',
+    'timelines.handlers.subscribe.SubscribeHandler',
     'natalcare.handlers.birth.BirthHandler',
     'natalcare.handlers.pregnancy.PregnancyHandler',
 )
@@ -303,11 +309,6 @@ AUTHENTICATION_BACKENDS = (
 
 
 DATABASE_ROUTERS = ['thousand.dbrouters.PatientRouter', ]
-
-# Haystack
-HAYSTACK_SITECONF = 'avocado.search_sites'
-HAYSTACK_SEARCH_ENGINE = 'whoosh'
-HAYSTACK_WHOOSH_PATH = os.path.join(PROJECT_PATH, 'whoosh.index')
 
 MODELTREES = {
     'default': {
