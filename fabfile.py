@@ -187,8 +187,8 @@ def syncdb():
 @task
 def load_fixtures():
     """Load fixtures."""
-    manage_run('loaddata appointments_timeline')
-    manage_run('loaddata appointments_milestone')
+    manage_run('loaddata timelines_timeline')
+    manage_run('loaddata timelines_milestone')
 
 
 @task
