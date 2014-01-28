@@ -1,0 +1,339 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% load alerts_tags %}
+
+{% block extra_stylesheets %}
+    <style>
+    #map {
+      /* mostly a copy of bootstrap's .well */
+      background-color: #f5f5f5;
+      border: 1px solid #e3e3e3;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+      -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.05);
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 960px;
+      height: 500px;
+    }
+    .background {
+      fill: none;
+      pointer-events: all;
+    }
+    #regions, #districts, #parishes {
+      fill: #cde;
+      stroke: #fff;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+    }
+    #healthcenters {
+      fill: #f00;
+    }
+    #regions .active, #districts .active, #parishes .active {
+      fill: #89a;
+    }
+    .lighten {
+      fill: #cde;
+    }
+    .invisible {
+      display:none;
+    }
+    #cities {
+      stroke-width: 0;
+    }
+    .city {
+      fill: #345;
+      stroke: #fff;
+    }
+    pre.prettyprint {
+      border: 1px solid #ccc;
+      margin-bottom: 0;
+      padding: 9.5px;
+    }
+    div.tiptool  { color: #222; background: #fff; padding: .5em; text-shadow: #f5f5f5 0 1px 0;
+                   border-radius: 2px; box-shadow: 0px 0px 2px 0px #a6a6a6; opacity: 0.9; position: absolute; }
+    div.tiptool .sep { color: #444; font-weight: 300; }
+    </style>
+{% endblock extra_stylesheets %}
+
+{% block extra_javascript %}
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/d3.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}thousand/javascripts/d3.geo.projection.v0.min.js"></script>
+{% endblock extra_javascript %}
+
+{% block content %}
+<div class="page-header"><h1>{{ dashboard_title_experiment }}</h1></div>
+  <div class="container">
+    {% notifications %}
+    <div id="map">
+    </div>
+  </div>
+</div>
+
+<script>
+var width = 960,
+    height = 500,
+    centered,
+    region,
+    district,
+    parish;
+
+var tooltip = d3.select("body")
+  .append("div")
+  .attr("class", "tiptool");
+
+var controls = d3.select("body")
+  .append("div")
+  .attr("class", "controls")
+    .append("a")
+      .attr("id", "reset")
+      .attr("class", "invisible")
+      .attr("href", "#")
+      .text("reset")
+      .on("click", click_reset);
+
+var svg = d3.select("#map")
+  .append("svg")
+    .attr("preserveAspectRatio", "xMidYMid")
+    .attr("viewBox", "0 0 " + width + " " + height)
+    .attr("width", width)
+    .attr("height", height);
+
+svg.append("rect")
+    .attr("class", "background")
+    .attr("width", width)
+    .attr("height", height);
+
+var g = svg.append("g")
+    .attr("id", "country");
+
+var projection = d3.geo.albers()
+    .center([33.25, 1.3])
+    .rotate([-1, 11.5, -16.4])
+    .parallels([25, 35])
+    .translate([width / 2, height / 1.5])
+    .scale(5000);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+d3.json("{{ STATIC_URL }}thousand/javascripts/regions.json", function(shape) {
+  g.append("g")
+    .attr("id", "regions")
+    .selectAll("path")
+      .data(shape.features)
+    .enter().append("path")
+      .attr("id", function(d) {return d['properties']['Reg_2011']; })
+      .attr("class", "region")
+      .attr("d", path)
+      .on("mousemove", update_tooltip)
+      // using mouseover for fill is less painful than css hover bc
+      // svgs for region/district/parish are not hierarchal in the DOM
+      .on("mouseover", update_fill)
+      .on("mouseout", hide_tooltip)
+      .on("click", click_region);
+
+});
+
+// preload districts
+d3.json("{{ STATIC_URL }}thousand/javascripts/uganda_districts_2011_005.json", function(error, shape) {
+  g.append("g")
+    .attr("id", "districts")
+    .attr("class", "invisible")
+    .selectAll("path")
+      .data(shape.features)
+    .enter()
+      .append("path")
+        .attr("id", function(d) {return d.properties['DNAME_2010']; })
+        .attr("class", function(d) {
+            return "district lighten " + d.properties['Reg_2011'];
+          })
+        .attr("d", path)
+    .on("mousemove", update_tooltip)
+    .on("mouseover", update_fill)
+    .on("mouseout", hide_tooltip)
+    .on("click", click_district);
+});
+
+function load_parishes() {
+  d3.json("{{ STATIC_URL }}thousand/javascripts/uganda_parish_2011_50.json" , function(error, shape) {
+    g.append("g")
+      .attr("id", "parishes")
+      .attr("class", "invisible")
+      .selectAll("path")
+        .data(shape.features)
+      .enter()
+      .append("path")
+      .attr("id", function(p) {return p.properties['PNAME_2006']; })
+      .attr("class", function(p) {
+          return "parish lighten " + p.properties['Reg_2011'] + " " + p.properties['DNAME_2010'];
+        })
+      .on("mousemove", update_tooltip)
+      .on("mouseover", update_fill)
+      .on("mouseout", hide_tooltip)
+      .attr("d", path);
+  });
+  /*d3.json("{{ STATIC_URL }}thousand/javascripts/uganda_health_centers_replotted.json" , function(error, shape) {
+    g.append("g")
+      .attr("id", "healthcenters")
+      .attr("class", "invisible")
+      .selectAll("path")
+        .data(shape.features)
+      .enter()
+      .append("path")
+      .attr("class", function(p) {
+          return "healthcenter " + p.properties['Reg_2011'] + " " + p.properties['DNAME_2010'];
+        })
+      .on("mousemove", update_tooltip)
+      .on("mouseover", update_fill)
+      .on("mouseout", hide_tooltip)
+      .attr("d", path.pointRadius(.3));
+  });*/
+}
+
+function update_districts(xyz) {
+  g.selectAll(["#parishes", "#regions"]).classed("invisible", true);
+  g.select("#districts").classed("invisible", false);
+  g.selectAll(".district")
+    .attr("class", function(d) {
+      if (d.properties['Reg_2011'] == region.properties['Reg_2011']) {
+        return "district active " + d.properties['Reg_2011'];
+      } else {
+        return "district lighten " + d.properties['Reg_2011'];
+      }})
+  zoom(xyz);
+}
+
+function update_parishes(xyz) {
+  g.selectAll(["#districts", "#regions"]).classed("invisible", true);
+  g.select("#parishes").classed("invisible", false);
+  g.select("#healthcenters").classed("invisible", false);
+  g.selectAll(".parish")
+    .attr("class", function(d) {
+      if (district.properties['DNAME_2010'] == d.properties['DNAME_2010']) {
+        return "parish active " + d.properties['Reg_2011'] + " " + d.properties['DNAME_2010'];
+      } else {
+        return "parish lighten " + d.properties['Reg_2011'] + " " + d.properties['DNAME_2010'];
+      }})
+  zoom(xyz);
+}
+
+function click_region(r) {
+  district = null;
+  parish = null;
+  tooltip.classed("invisible", true)
+  controls.classed("invisible", false)
+  if (region) {
+    g.selectAll("#" + region.properties['Reg_2011']).style('display', null);
+  }
+  if (r && region !== r) {
+    var xyz = get_xyz(r);
+    region = r;
+    if (r.id.substring(0, 14)  == 'uganda_regions') {
+      update_districts(xyz);
+    } else {
+      zoom(xyz);
+    }
+  } else {
+    var xyz = [width / 2, height / 1.5, 1];
+    region = null;
+    zoom(xyz);
+  }
+  if (g[0][0].lastChild.id != "parishes"){
+    // preload parishes
+    load_parishes();
+  }
+}
+
+function click_district(d) {
+  parish = null;
+  tooltip.classed("invisible", true)
+  if (district) {
+    g.selectAll("#" + district.properties['Reg_2011']).style('display', null);
+  }
+  if (d && district !== d) {
+    var xyz = get_xyz(d);
+    district = d;
+
+    district_name = district.properties.name;
+    update_parishes(xyz);
+  } else {
+    parish = null;
+    district = null;
+    click_region(region);
+  }
+}
+
+function click_reset(d) {
+    parish = null;
+    district = null;
+    region = null;
+    controls.classed("invisible", true)
+    g.selectAll(["#regions", "#districts", "#parishes"]).classed("active", false)
+    g.selectAll("#regions").classed('invisible', false)
+    g.selectAll(["#districts", "#parishes"]).classed('invisible', true)
+    var xyz = [width / 2, height / 1.5, 1];
+    zoom(xyz);
+}
+
+function zoom(xyz) {
+  g.transition()
+    .duration(750)
+    .attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
+    .selectAll(["#regions", "#districts", "#parishes"])
+    .style("stroke-width", 1.0 / xyz[2] + "px")
+    .selectAll(".city")
+    .attr("d", path.pointRadius(20.0 / xyz[2]));
+}
+
+function get_xyz(d) {
+  var bounds = path.bounds(d);
+  var w_scale = (bounds[1][0] - bounds[0][0]) / width;
+  var h_scale = (bounds[1][1] - bounds[0][1]) / height;
+  var z = .96 / Math.max(w_scale, h_scale);
+  var x = (bounds[1][0] + bounds[0][0]) / 2;
+  var y = (bounds[1][1] + bounds[0][1]) / 2 + (height / z / 6);
+  return [x, y, z];
+}
+
+function update_tooltip(d) {
+  var prop;
+  if (d.id && d.id.substring(0, 14)  == 'uganda_regions') {
+    prop = 'Reg_2011';
+  } else {
+    if (d.properties['DNAME_2006']) {
+      prop = 'DNAME_2006';
+    }
+    if (d.properties['DNAME_2010']) {
+      prop = 'DNAME_2010';
+    }
+    if (d.id && d.id.substring(0, 13)  == 'uganda_parish') {
+      prop = 'PNAME_2006';
+    }
+  }
+  var mouse = d3.mouse(svg.node()).map( function(d) { return parseInt(d); } );
+  var display = d.properties[prop];
+
+  if ((d.id && d.id.substring(0, 14)  == 'uganda_regions') || d3.select(this).classed('active')) {
+    tooltip
+      .classed("invisible", false)
+      .attr("style", "left:"+(mouse[0]+50)+"px;top:"+(mouse[1]+125)+"px")
+      .html(d.properties[prop])
+  }
+};
+
+function update_fill(d){
+  if ((d.id && d.id.substring(0, 14)  == 'uganda_regions') || d3.select(this).classed('active')) {
+    d3.select(this).style("fill", "#ffa")
+  }
+}
+
+function hide_tooltip(d){
+  tooltip.classed("invisible", true);
+  // let css rules determine fill color
+  d3.select(this).style("fill", "")
+};
+</script>
+{% endblock content %}
