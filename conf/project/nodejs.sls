@@ -6,7 +6,6 @@ nodejs:
   pkg.latest:
     - names:
       - nodejs
-      - npm
     - refresh: True
     - require:
       - pkgrepo: nodejs_ppa
