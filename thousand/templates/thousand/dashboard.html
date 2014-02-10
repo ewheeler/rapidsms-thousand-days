@@ -280,12 +280,12 @@ function click_reset(d) {
 
 function zoom(xyz) {
   g.transition()
-    .duration(750)
+    .duration(1250)
     .attr("transform", "translate(" + projection.translate() + ")scale(" + xyz[2] + ")translate(-" + xyz[0] + ",-" + xyz[1] + ")")
     .selectAll(["#regions", "#districts", "#parishes"])
     .style("stroke-width", 1.0 / xyz[2] + "px")
-    .selectAll(".city")
-    .attr("d", path.pointRadius(20.0 / xyz[2]));
+    //.selectAll(".city")
+    //.attr("d", path.pointRadius(20.0 / xyz[2]));
 }
 
 function get_xyz(d) {

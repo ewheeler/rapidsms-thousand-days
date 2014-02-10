@@ -268,6 +268,7 @@ RAPIDSMS_HANDLERS = (
     'timelines.handlers.quit.QuitHandler',
     'timelines.handlers.status.StatusHandler',
     'timelines.handlers.subscribe.SubscribeHandler',
+    'timelines.handlers.shift.ShiftHandler',
     'natalcare.handlers.birth.BirthHandler',
     'natalcare.handlers.pregnancy.PregnancyHandler',
 )
