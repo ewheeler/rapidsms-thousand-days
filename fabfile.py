@@ -79,11 +79,12 @@ def staging():
 @task
 def production():
     env.environment = 'production'
-    env.hosts = ["thousand-days.lobos.biz"]
+    env.hosts = ["omega.unicefuganda.org"]
     env.branch = 'master'
-    env.server_name = 'thousand-days.lobos.biz'
-    env.project_user = 'ubuntu'
-    env.user = 'ubuntu'
+    env.server_name = 'omega.unicefuganda.org'
+    env.project_user = 'thousand'
+    env.user = 'evan'
+    #env.key_filename = ['/Users/ewheeler/ewheeler.pem']
     setup_path()
 
 
