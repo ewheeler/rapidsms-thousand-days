@@ -36,5 +36,5 @@ urlpatterns = patterns('',
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.INSTALLED_BACKENDS.get("kannel-yo"):
-    urlpatterns + (url(r"^backend/kannel-yo/$",
-                       KannelBackendView.as_view(backend_name="kannel-yo")),)
+    urlpatterns + [url(r"^backend/kannel-yo/$",
+                       KannelBackendView.as_view(backend_name="kannel-yo")), ]
