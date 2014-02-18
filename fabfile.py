@@ -82,7 +82,7 @@ def production():
     env.hosts = ["omega.unicefuganda.org"]
     env.branch = 'master'
     env.server_name = 'omega.unicefuganda.org'
-    env.project_user = 'thousand'
+    env.project_user = 'evan'
     env.user = 'evan'
     #env.key_filename = ['/Users/ewheeler/ewheeler.pem']
     setup_path()
@@ -261,7 +261,7 @@ def deploy(branch=None):
 def upload_data():
     sudo('chmod 775 %(code_root)s' % env)
     sudo('chown %(project_user)s:admin -R %(code_root)s' % env)
-    put('dev-thousand.db', env.code_root)
+    #put('dev-thousand.db', env.code_root)
     put('patients.db', env.code_root)
     load_fixtures()
 
