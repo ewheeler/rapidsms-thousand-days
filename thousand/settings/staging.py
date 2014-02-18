@@ -76,11 +76,11 @@ if STATSD_TRACK_MIDDLEWARE:
 
 # TODO separate staging and prod configs
 RAVEN_CONFIG = {
-    'dsn': 'https://ca900f5daeee45fe90fdf8d0763d17b4:'
-           '021fe82debde4c4f9017e89250bbfcc8@app.getsentry.com/10728',
+    'dsn': 'http://a398c13c314241abb98cbcf724ac9ba9:'
+           'd17d84bf26fd498eb1f318e5ca86348a@sentry.unicefuganda.org/9',
 }
 
-SENTRY_URL = "https://app.getsentry.com/rapidsms/thousand-days/"
+SENTRY_URL = "http://sentry.unicefuganda.org/t4d/thousand-days/"
 
 CELERY_QUEUES["sentry"] = {
     "exchange": "default",
