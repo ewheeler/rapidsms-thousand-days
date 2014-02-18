@@ -3,7 +3,8 @@ from thousand.settings.staging import *
 # There should be only minor differences from staging
 ALLOWED_HOSTS = ['.thousand-days.lobos.biz',
                  '.omega.unicefuganda.org',
-                 '127.0.0.1:8000']
+                 '127.0.0.1',
+                 '196.0.26.59']
 EMAIL_SUBJECT_PREFIX = '[Thousand Prod] '
 
 INSTALLED_BACKENDS = {
