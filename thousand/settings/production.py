@@ -13,8 +13,7 @@ SHORT_DATE_FORMAT = 'd/m/Y'
 SHORT_DATETIME_FORMAT = 'H:i d/m/Y'
 
 # There should be only minor differences from staging
-ALLOWED_HOSTS = ['.thousand-days.lobos.biz',
-                 '.omega.unicefuganda.org',
+ALLOWED_HOSTS = ['.omega.unicefuganda.org',
                  '127.0.0.1',
                  '196.0.26.59']
 EMAIL_SUBJECT_PREFIX = '[Thousand Prod] '
