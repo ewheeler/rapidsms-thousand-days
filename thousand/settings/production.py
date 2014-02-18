@@ -1,5 +1,17 @@
 from thousand.settings.staging import *
 
+TIME_ZONE = 'Africa/Kampala'
+LANGUAGE_CODE = 'en-UG'
+COUNTRY_CODES = ('UG',)
+
+# disable L10N because django does not format
+# dates appropriately for 'en-UG'
+USE_L10N = False
+DATE_FORMAT = 'j N Y'
+DATETIME_FORMAT = 'H:i T j N Y'
+SHORT_DATE_FORMAT = 'd/m/Y'
+SHORT_DATETIME_FORMAT = 'H:i d/m/Y'
+
 # There should be only minor differences from staging
 ALLOWED_HOSTS = ['.thousand-days.lobos.biz',
                  '.omega.unicefuganda.org',
@@ -20,3 +32,5 @@ INSTALLED_BACKENDS = {
         "encode_errors": "ignore",
     },
 }
+
+LOGGING['handlers']['rapidsms_file']['filename'] = '/var/www/thousand-production/log/rapidsms-router.log'
