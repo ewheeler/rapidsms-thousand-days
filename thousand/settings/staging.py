@@ -10,12 +10,9 @@ ALLOWED_HOSTS = ['.vagrant.localhost:8089', '.vagrant.curta.local:8089',
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'dev-thousand.db'),
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'thousand',
+        'USER': 'postgres',
     },
     'patients': {
         'ENGINE': 'django.db.backends.sqlite3',
