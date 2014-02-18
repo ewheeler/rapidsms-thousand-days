@@ -2,6 +2,9 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+
+from rapidsms.backends.kannel.views import KannelBackendView
+
 import thousand
 
 admin.autodiscover()
@@ -31,3 +34,7 @@ urlpatterns = patterns('',
     (r'^patients/', include('openmrs.urls')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.INSTALLED_BACKENDS.get("kannel-yo"):
+    urlpatterns + url(r"^backend/kannel-yo/$",
+                      KannelBackendView.as_view(backend_name="kannel-yo"))
