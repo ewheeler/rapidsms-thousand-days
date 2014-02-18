@@ -216,6 +216,7 @@ INSTALLED_APPS = (
     # RapidSMS
     "rapidsms",
     "rapidsms.backends.database",
+    "rapidsms.router.celery",
     "rapidsms.contrib.echo",
     "rapidsms.contrib.handlers",
     "rapidsms.contrib.httptester",
@@ -275,6 +276,7 @@ RAPIDSMS_HANDLERS = (
 )
 
 RAPIDSMS_HELP_KEYWORDS = ('HELP', 'AIDE')
+RAPIDSMS_ROUTER = "rapidsms.router.celery.CeleryRouter"
 LANGUAGES = (('en-UG', 'English'),)
 
 # django-celery config
