@@ -13,6 +13,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'thousand',
         'USER': 'postgres',
+        'HOST': '127.0.0.1',
     },
     'patients': {
         'ENGINE': 'django.db.backends.sqlite3',
