@@ -168,12 +168,6 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
         },
-        'rapidsms_file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(PROJECT_PATH, 'rapidsms-router.log'),
-        },
-
     },
     'loggers': {
         'django.request': {
@@ -215,7 +209,7 @@ INSTALLED_APPS = (
 
     # RapidSMS
     "rapidsms",
-    "rapidsms.backends.database",
+    "rapidsms.backends.kannel",
     "rapidsms.router.celery",
     "rapidsms.contrib.echo",
     "rapidsms.contrib.handlers",
@@ -277,6 +271,12 @@ RAPIDSMS_HANDLERS = (
 
 RAPIDSMS_HELP_KEYWORDS = ('HELP', 'AIDE')
 RAPIDSMS_ROUTER = "rapidsms.router.celery.CeleryRouter"
+LOGGING_CONFIG = {
+    'rapidsms.router.celery': {
+        'handlers': ['rapidsms_file'],
+        'level': 'DEBUG',
+    },
+}
 LANGUAGES = (('en-UG', 'English'),)
 
 # django-celery config
@@ -289,12 +289,17 @@ CELERY_RESULT_BACKEND = "redis://localhost:6379/1"
 CELERYBEAT_SCHEDULER = "djcelery.schedulers.DatabaseScheduler"
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json', ]
 CELERY_IMPORTS = ("timelines.tasks", )
 CELERY_QUEUES = {
     "default": {
         "exchange": "default",
         "binding_key": "default"},
+    "celery": {
+        "exchange": "default",
+        "binding_key": "celery"},
 }
+
 CELERYBEAT_SCHEDULE = {
     'generate-occurrences': {
         'task': 'timelines.tasks.generate_occurrences',
