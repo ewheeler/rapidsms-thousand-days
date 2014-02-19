@@ -170,6 +170,7 @@ LOGGING = {
         },
         'rapidsms_file': {
             'level': 'DEBUG',
+            'class': 'logging.FileHandler',
             #'filename': os.path.join(PROJECT_PATH, 'rapidsms-router.log'),
             'filename': '/var/www/thousand-production/log/rapidsms-router.log',
         },
