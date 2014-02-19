@@ -184,6 +184,11 @@ LOGGING = {
             'propagate': True,
             'level': 'DEBUG',
         },
+        'rapidsms.router.celery': {
+            'handlers': ['rapidsms_file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
 
     }
 }
@@ -275,12 +280,6 @@ RAPIDSMS_HANDLERS = (
 
 RAPIDSMS_HELP_KEYWORDS = ('HELP', 'AIDE')
 RAPIDSMS_ROUTER = "rapidsms.router.celery.CeleryRouter"
-LOGGING_CONFIG = {
-    'rapidsms.router.celery': {
-        'handlers': ['rapidsms_file'],
-        'level': 'DEBUG',
-    },
-}
 LANGUAGES = (('en-UG', 'English'),)
 
 # django-celery config
