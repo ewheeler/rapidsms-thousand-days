@@ -22,7 +22,7 @@ INSTALLED_BACKENDS = {
     "kannel-yo": {
         "ENGINE": "rapidsms.backends.kannel.KannelBackend",
         "sendsms_url": "http://127.0.0.1:13013/cgi-bin/sendsms",
-        "sendsms_params": {"smsc": "smpp",
+        "sendsms_params": {"smsc": "yo",
                            "from": "6400",
                            "username": "kannel",
                            "password": "kannel"},
