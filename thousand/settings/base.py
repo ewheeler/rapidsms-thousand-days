@@ -168,6 +168,10 @@ LOGGING = {
             'level': 'ERROR',
             'class': 'django.utils.log.AdminEmailHandler',
         },
+        'rapidsms_file': {
+            'level': 'DEBUG',
+            'filename': os.path.join(PROJECT_PATH, 'rapidsms-router.log'),
+        },
     },
     'loggers': {
         'django.request': {
