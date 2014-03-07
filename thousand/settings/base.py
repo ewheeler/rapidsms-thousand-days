@@ -227,7 +227,7 @@ INSTALLED_APPS = (
     "rapidsms.contrib.httptester",
     "rapidsms.contrib.messagelog",
     "rapidsms.contrib.messaging",
-    "rapidsms.contrib.registration",
+    #"rapidsms.contrib.registration",
 
     # Thousand Days
     "thousand.backends.openmrs",
@@ -265,10 +265,10 @@ HEALTHCARE_STORAGE_BACKEND = "thousand.backends.openmrs.storage.DjangoStorage"
 LOGIN_REDIRECT_URL = '/'
 
 RAPIDSMS_HANDLERS = (
-    'rapidsms.contrib.registration.handlers.register.RegisterHandler',
+    #'rapidsms.contrib.registration.handlers.register.RegisterHandler',
     'rapidsms.contrib.registration.handlers.language.LanguageHandler',
-    'nutrition.handlers.CreateReportHandler',
-    'nutrition.handlers.CancelReportHandler',
+    #'nutrition.handlers.CreateReportHandler',
+    #'nutrition.handlers.CancelReportHandler',
     'timelines.handlers.confirm.ConfirmHandler',
     'timelines.handlers.move.MoveHandler',
     'timelines.handlers.new.NewHandler',
