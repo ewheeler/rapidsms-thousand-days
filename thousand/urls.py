@@ -22,8 +22,10 @@ urlpatterns = patterns('',
     (r'^registration/', include('rapidsms.contrib.registration.urls')),
 
     url(r'^$', 'thousand.views.dashboard', name='rapidsms-dashboard'),
+    url(r'^reporters/$', 'thousand.views.reporters_list', name='reporters'),
+    url(r'^reporters/csv/$', 'thousand.views.reporterCsvList', name='reporters-csv'),
     #url(r'^dashboard/$', 'thousand.views.dashboard'),
-    (r'^nutrition/', include('nutrition.urls')),
+    #(r'^nutrition/', include('nutrition.urls')),
     (r'^timelines/', include('timelines.urls')),
     (r'^xray/', include('xray.urls')),
     (r'^alerts/', include('alerts.urls')),
@@ -31,7 +33,7 @@ urlpatterns = patterns('',
 
     # Third party URLs
     (r'^selectable/', include('selectable.urls')),
-    (r'^patients/', include('openmrs.urls')),
+    #(r'^patients/', include('openmrs.urls')),
 
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

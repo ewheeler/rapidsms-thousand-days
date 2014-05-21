@@ -1,0 +1,49 @@
+
+{% extends "base.html" %}
+{% load url from future %}
+{% load alerts_tags %}
+{% load django_tables2 %}
+
+{% block extra_stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}thousand/stylesheets/pulse.css"/>
+    <style>
+      body {
+        background-color: {{ dashboard_background_color_experiment }};
+      }
+      .legend {
+        float: left;
+	clear: left;
+      }
+      #ug-chart {
+	margin-right: 20%;
+      }
+    </style>
+{% endblock extra_stylesheets %}
+
+{% block extra_javascript %}
+{% endblock extra_javascript %}
+
+{% block content %}
+<div class="page-header"><h1>{{ dashboard_title_experiment }}</h1></div>
+
+  {% notifications %}
+
+  <div class="container">
+    <div class='module'>
+        {% if reporter_list.data.queryset.exists %}
+            <p>
+                Displaying Registered reporters {{ reporter_list.page.start_index }} -
+                {{ reporter_list.page.end_index }} of {{ reporter_list.data.queryset.count }}.<br/>
+                {% url 'reporters-csv' as csv %}
+                <a href="{{ csv }}">Export results as CSV</a>
+            </p>
+            {% render_table reporter_list %}
+        {% else %}
+            <p>No reporters registered.</p>
+        {% endif %}
+    </dvi>
+  </div>
+  <script>
+
+  </script>
+{% endblock content %}
