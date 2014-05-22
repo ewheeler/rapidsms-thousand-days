@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from timelines.models import ReporterList, TimelineSubscription, Occurrence
+from timelines.models import ReporterList, Timeline, TimelineSubscription, Occurrence
 from .tables import ReporterTable, StatsTable
 from django_tables2 import RequestConfig
 #from rapidsms import settings
@@ -10,6 +10,7 @@ from rapidsms.contrib.messagelog.models import Message
 from rapidsms.models import Backend
 from timelines.unicsv import UnicodeCSVWriter
 from django.http import HttpResponse
+from django.core.cache import cache
 
 
 def index(request):
@@ -23,8 +24,26 @@ def dashboard(request):
     bname = getattr(settings, 'PREFERED_BACKEND', 'message_tester')
     default_backend = Backend.objects.get(name=bname)
     num_reporters = ReporterList.objects.count()
-    active_subs = TimelineSubscription.objects.filter(end=None).count()
-    inactive_subs = TimelineSubscription.objects.exclude(end=None).count()
+    if not cache.get('mother_subs'):
+        mother_subs = TimelineSubscription.objects.filter(
+            end=None, timeline=Timeline.objects.get(name='ANC/PNC Advice')).count()
+        cache.set('mother_subs', mother_subs, 40)
+    else:
+        mother_subs = cache.get('mother_subs')
+
+    if not cache.get('preg_subs'):
+        preg_subs = TimelineSubscription.objects.filter(
+            end=None, timeline=Timeline.objects.get(name='New pregancy/Antenatal Care Visits')).count()
+        cache.set('preg_subs', preg_subs, 40)
+    else:
+        preg_subs = cache.get('preg_subs')
+
+    if not cache.get('birth_subs'):
+        birth_subs = TimelineSubscription.objects.filter(
+            end=None, timeline=Timeline.objects.get(name='New Birth/Postnatal Care Visits')).count()
+        cache.set('birth_subs', birth_subs, 40)
+    else:
+        birth_subs = cache.get('birth_subs')
     sent_messages = Message.objects.filter(
         direction='O', connection__backend=default_backend).count()
     received_messages = Message.objects.filter(
@@ -33,11 +52,12 @@ def dashboard(request):
 
     data = [
         {'name': 'Number of registered VHTs', 'value': num_reporters, 'details': '/reporters'},
-        {'name': 'Number of active timeline subscriptions', 'value': active_subs},
-        {'name': 'Number of inactive timeline subscriptions', 'value': inactive_subs},
+        {'name': 'Mothers registered for ANC/PNC advise', 'value': mother_subs},
+        {'name': 'Mothers registered for Pregancy/Antenatal Care Visits', 'value': preg_subs},
+        {'name': 'Mothers registered for Birth/Postnatal Care Visits', 'value': birth_subs},
+        {'name': 'Number of confirmed visits', 'value': confirmed},
         {'name': 'Number of messages sent so far', 'value': sent_messages},
         {'name': 'Number of messages received so far', 'value': received_messages},
-        {'name': 'Number of confirmed visits', 'value': confirmed},
     ]
 
     stats = StatsTable(data, template="django_tables2/bootstrap-tables.html")
