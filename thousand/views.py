@@ -26,14 +26,16 @@ def dashboard(request):
     num_reporters = ReporterList.objects.count()
     if not cache.get('mother_subs'):
         mother_subs = TimelineSubscription.objects.filter(
-            end=None, timeline=Timeline.objects.get(name='ANC/PNC Advice')).count()
+            end=None, timeline=Timeline.objects.get(
+                name='ANC/PNC Advice')).distinct('pin').count()
         cache.set('mother_subs', mother_subs, 40)
     else:
         mother_subs = cache.get('mother_subs')
 
     if not cache.get('preg_subs'):
         preg_subs = TimelineSubscription.objects.filter(
-            end=None, timeline=Timeline.objects.get(name='New pregancy/Antenatal Care Visits')).count()
+            end=None, timeline=Timeline.objects.get(
+                name='New pregancy/Antenatal Care Visits')).count()
         cache.set('preg_subs', preg_subs, 40)
     else:
         preg_subs = cache.get('preg_subs')
@@ -52,7 +54,7 @@ def dashboard(request):
 
     data = [
         {'name': 'Number of registered VHTs', 'value': num_reporters, 'details': '/reporters'},
-        {'name': 'Mothers registered for ANC/PNC advise', 'value': mother_subs},
+        {'name': 'Mothers registered for ANC/PNC advice', 'value': mother_subs},
         {'name': 'Mothers registered for Pregancy/Antenatal Care Visits', 'value': preg_subs},
         {'name': 'Mothers registered for Birth/Postnatal Care Visits', 'value': birth_subs},
         {'name': 'Number of confirmed visits', 'value': confirmed},
