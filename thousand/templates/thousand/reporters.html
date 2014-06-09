@@ -30,14 +30,13 @@
 
   <div class="container">
     <div class='module'>
-        {% if reporter_list.data.queryset.exists %}
-            <p>
-                Displaying Registered reporters {{ reporter_list.page.start_index }} -
-                {{ reporter_list.page.end_index }} of {{ reporter_list.data.queryset.count }}.<br/>
-                {% url 'reporters-csv' as csv %}
-                <a href="{{ csv }}">Export results as CSV</a>
-            </p>
-            {% render_table reporter_list %}
+        {% if table.data.queryset.exists %}
+            {% for label, format in table.formats %}
+                <a href="{% querystring table.param_report=format %}">
+                    <img src="{{ STATIC_URL }}img/{{ format }}_icon.png" title="{{ label }}"/>
+                </a>
+            {% endfor %}
+            {% render_table table %}
         {% else %}
             <p>No reporters registered.</p>
         {% endif %}

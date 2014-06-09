@@ -341,5 +341,14 @@ function hide_tooltip(d){
   // let css rules determine fill color
   d3.select(this).style("fill", "")
 };
+
+$(function()
+{
+    $('.myurl').each(function(){
+        var txt = $(this).text();
+        txt = txt.replace("/", "");
+        $(this).text(txt);
+    });
+});
 </script>
 {% endblock content %}

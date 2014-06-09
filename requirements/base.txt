@@ -4,12 +4,12 @@ RapidSMS==0.15.0
 django-celery
 
 # 1000 days components
--e git://github.com/ewheeler/rapidsms-timelines.git#egg=timelines
--e git://github.com/ewheeler/rapidsms-nutrition.git#egg=nutrition
--e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
--e git://github.com/ewheeler/rapidsms-xray.git#egg=xray
--e git://github.com/ewheeler/rapidsms-alerts.git#egg=alerts
--e git://github.com/ewheeler/rapidsms-groups.git#egg=groups
+#-e git://github.com/ewheeler/rapidsms-timelines.git#egg=timelines
+#-e git://github.com/ewheeler/rapidsms-nutrition.git#egg=nutrition
+#-e git://github.com/caktus/rapidsms-natal-care.git#egg=natalcare
+#-e git://github.com/ewheeler/rapidsms-xray.git#egg=xray
+#-e git://github.com/ewheeler/rapidsms-alerts.git#egg=alerts
+#-e git://github.com/ewheeler/rapidsms-groups.git#egg=groups
 
 # harvest stack components
 Whoosh==2.4.0
@@ -21,3 +21,4 @@ serrano==2.0.18
 SQLAlchemy
 South
 redis
+django-tables2-reports

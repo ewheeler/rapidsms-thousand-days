@@ -1,15 +1,15 @@
 from __future__ import unicode_literals
 from django.template import RequestContext
 from django.shortcuts import render_to_response, render
-from timelines.models import ReporterList, Timeline, TimelineSubscription, Occurrence
-from .tables import ReporterTable, StatsTable
-from django_tables2 import RequestConfig
-#from rapidsms import settings
+from timelines.models import ReporterList, MessagesList, Timeline, TimelineSubscription, Occurrence, MessageErrorLog
+from .tables import ReporterTable, StatsTable, MessagesTable
+#from django_tables2 import RequestConfig
+from django_tables2_reports.config import RequestConfigReport as RequestConfig
 from django.conf import settings
 from rapidsms.contrib.messagelog.models import Message
 from rapidsms.models import Backend
-from timelines.unicsv import UnicodeCSVWriter
-from django.http import HttpResponse
+#from timelines.unicsv import UnicodeCSVWriter
+#from django.http import HttpResponse
 from django.core.cache import cache
 
 
@@ -54,12 +54,13 @@ def dashboard(request):
 
     data = [
         {'name': 'Number of registered VHTs', 'value': num_reporters, 'details': '/reporters'},
-        {'name': 'Mothers registered for ANC/PNC advice', 'value': mother_subs},
-        {'name': 'Mothers registered for Pregancy/Antenatal Care Visits', 'value': preg_subs},
-        {'name': 'Mothers registered for Birth/Postnatal Care Visits', 'value': birth_subs},
-        {'name': 'Number of confirmed visits', 'value': confirmed},
-        {'name': 'Number of messages sent so far', 'value': sent_messages},
-        {'name': 'Number of messages received so far', 'value': received_messages},
+        {'name': 'Mothers registered for ANC/PNC advice', 'value': mother_subs, 'details': ''},
+        {'name': 'Mothers registered for Pregancy/Antenatal Care Visits', 'value': preg_subs, 'details': ''},
+        {'name': 'Mothers registered for Birth/Postnatal Care Visits', 'value': birth_subs, 'details': ''},
+        {'name': 'Number of confirmed visits', 'value': confirmed, 'details': ''},
+        {'name': 'Number of messages sent so far', 'value': sent_messages, 'details': '/outmessages'},
+        {'name': 'Number of messages received so far', 'value': received_messages, 'details': '/inmessages'},
+        {'name': 'Error Messages', 'value': '', 'details': '/errormessages'},
     ]
 
     stats = StatsTable(data, template="django_tables2/bootstrap-tables.html")
@@ -73,33 +74,49 @@ def dashboard(request):
 
 
 def reporters_list(request):
-    reporter_list = ReporterTable(
+    table = ReporterTable(
         ReporterList.objects.all(),
         template="django_tables2/bootstrap-tables.html")
 
     paginate = {"per_page": settings.PAGINATOR_OBJECTS_PER_PAGE}
-    RequestConfig(request, paginate=paginate).configure(reporter_list)
+    RequestConfig(request, paginate=paginate).configure(table)
     return render(
         request, "thousand/reporters.html",
-        {'reporter_list': reporter_list})
+        {'table': table})
 
 
-def reporterCsvList(request):
-    table = ReporterTable(ReporterList.objects.all())
-    RequestConfig(request).configure(table)
+def incoming_messages(request):
+    table = MessagesTable(
+        MessagesList.objects.filter(direction='I'),
+        template="django_tables2/bootstrap-tables.html")
 
-    columns = [x.title() for x in table.columns.names()]
-    rows = [columns, ]
-    for item in table.rows:
-        cells = [x for x in item]
-        row = []
-        for cell in cells:
-            row.append(cell)
-        rows.append(row)
+    paginate = {"per_page": settings.PAGINATOR_OBJECTS_PER_PAGE}
+    RequestConfig(request, paginate=paginate).configure(table)
+    return render(
+        request, "thousand/reporters.html",
+        {'table': table})
 
-    response = HttpResponse(content_type='text/csv')
-    content_disposition = 'attachment; filename=%s.csv' % 'reporters'
-    response['Content-Disposition'] = content_disposition
-    writer = UnicodeCSVWriter(response)
-    writer.writerows(rows)
-    return response
+
+def outgoing_messages(request):
+    table = MessagesTable(
+        MessagesList.objects.filter(direction='O'),
+        template="django_tables2/bootstrap-tables.html")
+
+    paginate = {"per_page": settings.PAGINATOR_OBJECTS_PER_PAGE}
+    RequestConfig(request, paginate=paginate).configure(table)
+    return render(
+        request, "thousand/reporters.html",
+        {'table': table})
+
+
+def error_messages(request):
+    error_msg_ids = MessageErrorLog.objects.all().values_list('message')
+    table = MessagesTable(
+        MessagesList.objects.filter(direction='I', id__in=error_msg_ids),
+        template="django_tables2/bootstrap-tables.html")
+
+    paginate = {"per_page": settings.PAGINATOR_OBJECTS_PER_PAGE}
+    RequestConfig(request, paginate=paginate).configure(table)
+    return render(
+        request, "thousand/reporters.html",
+        {'table': table})

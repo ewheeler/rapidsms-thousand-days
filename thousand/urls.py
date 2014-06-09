@@ -5,7 +5,6 @@ from django.contrib import admin
 
 from rapidsms.backends.kannel.views import KannelBackendView
 
-import thousand
 
 admin.autodiscover()
 
@@ -23,7 +22,10 @@ urlpatterns = patterns('',
 
     url(r'^$', 'thousand.views.dashboard', name='rapidsms-dashboard'),
     url(r'^reporters/$', 'thousand.views.reporters_list', name='reporters'),
-    url(r'^reporters/csv/$', 'thousand.views.reporterCsvList', name='reporters-csv'),
+    url(r'^inmessages/$', 'thousand.views.incoming_messages', name='in-messages'),
+    url(r'^outmessages/$', 'thousand.views.outgoing_messages', name='out-messages'),
+    url(r'^errormessages/$', 'thousand.views.error_messages', name='error-messages'),
+    #url(r'^reporters/csv/$', 'thousand.views.reporterCsvList', name='reporters-csv'),
     #url(r'^dashboard/$', 'thousand.views.dashboard'),
     #(r'^nutrition/', include('nutrition.urls')),
     (r'^timelines/', include('timelines.urls')),

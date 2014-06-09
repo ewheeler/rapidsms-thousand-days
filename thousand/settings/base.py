@@ -116,12 +116,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.i18n',
     'django.core.context_processors.static',
     'openmrs.context_processors.static',
-    'xray.context_processors.web_experiments',
+    #'xray.context_processors.web_experiments',
     'thousand.context_processors.template_variables',
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -129,6 +131,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'serrano.middleware.SessionMiddleware',
+    'django_tables2_reports.middleware.TableReportMiddleware',
 )
 
 PAGINATOR_OBJECTS_PER_PAGE = 20
@@ -213,6 +216,7 @@ INSTALLED_APPS = (
     "django_nose",
     #"djtables",  # required by rapidsms.contrib.locations
     "django_tables2",
+    "django_tables2_reports",
     "selectable",
     "south",
     "kombu.transport.django",
@@ -221,6 +225,7 @@ INSTALLED_APPS = (
     # RapidSMS
     "rapidsms",
     "rapidsms.backends.kannel",
+    "rapidsms.backends.database",
     "rapidsms.router.celery",
     "rapidsms.contrib.echo",
     "rapidsms.contrib.handlers",
@@ -230,28 +235,28 @@ INSTALLED_APPS = (
     #"rapidsms.contrib.registration",
 
     # Thousand Days
-    "thousand.backends.openmrs",
+    #"thousand.backends.openmrs",
     #"nutrition",
     "timelines",
     "hvad",  # used by timelines
     "natalcare",
-    "xray",
+    #"xray",
     "alerts",
-    "thousand.help",
+    #"thousand.help",
     "groups",
     "pagination",
     "sorter",
 
     # Harvest stack
-    "django.contrib.markup",
-    "django.contrib.humanize",
-    "openmrs",
-    "openmrs.drugs",
-    "openmrs.vaccines",
-    "openmrs.diagnoses",
-    "haystack",
-    "avocado",
-    "serrano"
+    #"django.contrib.markup",
+    #"django.contrib.humanize",
+    #"openmrs",
+    #"openmrs.drugs",
+    #"openmrs.vaccines",
+    #"openmrs.diagnoses",
+    #"haystack",
+    #"avocado",
+    #"serrano"
 )
 
 INSTALLED_BACKENDS = {
@@ -343,6 +348,8 @@ LOGISTICS_NOTIF_GENERATORS = ['thousand.example_alerts.notify', ]
 SYSTEM_USERNAME = 'thousandbot'
 
 SORTER_ALLOWED_CRITERIA = {
-        'sort_contacts': ['id', 'name', 'email', 'phone'],
-        'sort_groups': ['id', 'name', 'count'],
+    'sort_contacts': ['id', 'name', 'email', 'phone'],
+    'sort_groups': ['id', 'name', 'count'],
 }
+
+EXCEL_SUPPORT = 'xlwt'
